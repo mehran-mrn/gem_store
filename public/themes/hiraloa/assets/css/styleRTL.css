@@ -496,7 +496,7 @@ button {
 
 /* ---Hiraola's Section Title--- */
 .hiraola-section_title {
-  text-align: left;
+  text-align: right;
   border-bottom: 1px solid #e5e5e5;
 }
 
@@ -678,7 +678,7 @@ button {
 .quantity .cart-plus-minus {
   position: relative;
   width: 76px;
-  text-align: left;
+  text-align: right;
 }
 
 .quantity .cart-plus-minus > .cart-plus-minus-box {
@@ -2926,7 +2926,7 @@ button.li-btn:hover {
       -ms-transform: translateY(-50%);
           transform: translateY(-50%);
   z-index: 8;
-  text-align: left;
+  text-align: right;
 }
 
 @media (max-width: 479px) {
@@ -3676,7 +3676,7 @@ button.li-btn:hover {
 }
 
 .offcanvas-menu_wrapper .offcanvas-menu-inner .offcanvas-component {
-  text-align: left;
+  text-align: right;
   padding-top: 20px;
 }
 
@@ -4587,7 +4587,7 @@ button.li-btn:hover {
 .hiraola-product-tab_slider-2 .slide-item .single_product .hiraola-product_content,
 .hiraola-product-tab_slider-3 .slide-item .single_product .hiraola-product_content,
 .shop-product-wrap .slide-item .single_product .hiraola-product_content {
-  text-align: left;
+  text-align: right;
   padding: 0 20px 20px;
 }
 
@@ -4666,7 +4666,7 @@ button.li-btn:hover {
 .hiraola-product-tab_slider-3 .slide-item .single_product .hiraola-product_content .product-desc_info .additional-add_action,
 .shop-product-wrap .slide-item .single_product .hiraola-product_content .product-desc_info .additional-add_action {
   display: inline-block;
-  float: right;
+  float: left;
 }
 
 .hiraola-product_slider .slide-item .single_product .hiraola-product_content .product-desc_info .additional-add_action > ul > li > a > i,
@@ -6568,7 +6568,7 @@ button.li-btn:hover {
 }
 
 .shop-toolbar .product-item-selection_area .product-short .nice-select {
-  width: 320px;
+  width: 150px;
   height: 30px;
   line-height: 25px;
 }
@@ -7979,7 +7979,7 @@ button.li-btn:hover {
 
 @media (max-width: 479px) {
   .hiraola-blog-details .hiraola-social_link {
-    text-align: left;
+    text-align: right;
   }
 }
 
