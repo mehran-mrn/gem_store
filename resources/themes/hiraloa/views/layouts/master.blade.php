@@ -42,6 +42,7 @@
     <!-- Main Style CSS (Please use minify version for better website load performance) -->
 {{--    <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/style.css')}}">--}}
     <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/styleRTL.css')}}">
+    <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/fonts.css')}}">
     <!--<link rel="stylesheet" href="assets/css/style.min.css">-->
     <!-- Vendor & Plugins CSS (Please remove the comment from below vendor.min.css & plugins.min.css for better website load performance and remove css files from the above) -->
     <!--

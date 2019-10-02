@@ -22,7 +22,7 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
             <div class="col-md-4 col-sm-4 d-lg-none d-block">
                 <div class="header-logo">
                     <a href="index.html">
-                        <img src="assets/images/menu/logo/2.png" alt="Hiraola's Header Logo">
+                        <img src="{{asset('/public/themes/hiraloa/assets/images/menu/logo/2.png')}}" alt="Hiraola's Header Logo">
                     </a>
                 </div>
             </div>

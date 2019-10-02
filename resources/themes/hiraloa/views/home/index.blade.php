@@ -1,4 +1,4 @@
-@extends('shop::layouts.master')
+@extends('hiraloa::layouts.master')
 
 @section('page_title')
     {{ __('shop::app.home.page-title') }}
@@ -24,15 +24,15 @@
 
     @if (isset($homeSEO))
         @isset($metaTitle)
-            <meta name="title" content="{{ $metaTitle }}" />
+            <meta name="title" content="{{ $metaTitle }}"/>
         @endisset
 
         @isset($metaDescription)
-            <meta name="description" content="{{ $metaDescription }}" />
+            <meta name="description" content="{{ $metaDescription }}"/>
         @endisset
 
         @isset($metaKeywords)
-            <meta name="keywords" content="{{ $metaKeywords }}" />
+            <meta name="keywords" content="{{ $metaKeywords }}"/>
         @endisset
     @endif
 @endsection

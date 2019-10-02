@@ -3977,12 +3977,13 @@ button.li-btn:hover {
 }
 
 .category-menu .category-heading > h2:after {
-  content: "\f03c";
+  content: "\f03b";
   font-family: 'Font Awesome 5 Free';
   font-weight: 600;
   position: absolute;
   top: 18px;
-  left: 20px;
+  right: 20px;
+
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -4049,19 +4050,21 @@ button.li-btn:hover {
 }
 
 .category-menu .category-menu-list > ul > li.right-menu > a::after {
+
   content: '\f078';
   font-family: 'Font Awesome 5 Free';
   font-weight: 600;
   font-size: 12px;
   position: absolute;
   top: 15px;
-  right: 0;
+  left: 0;
+
 }
 
 .category-menu .category-menu-list > ul > li.right-menu:hover > a::after {
-  -webkit-transform: rotate(-90deg);
-      -ms-transform: rotate(-90deg);
-          transform: rotate(-90deg);
+  -webkit-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+          transform: rotate(90deg);
 }
 
 .category-menu .category-menu-list > ul > li.rx-child {
@@ -4088,7 +4091,7 @@ button.li-btn:hover {
 .cat-mega-menu {
   position: absolute;
   top: 0;
-  left: 108%;
+  right: 108%;
   background: #ffffff;
   z-index: 999;
   width: 220px;

@@ -141,7 +141,7 @@
                                                         {"breakpoint":321, "settings": {"slidesToShow": 2}}
                                                     ]'>
                                 <div class="single-slide red">
-                                    <img src="assets/images/single-product/small-size/1.jpg" alt="Hiraola's Product Thumnail">
+                                    <img src="{{asset('public/themes/hiraloa/assets/images/single-product/small-size/1.jpg')}}" alt="Hiraola's Product Thumnail">
                                 </div>
                                 <div class="single-slide orange">
                                     <img src="assets/images/single-product/small-size/2.jpg" alt="Hiraola's Product Thumnail">
