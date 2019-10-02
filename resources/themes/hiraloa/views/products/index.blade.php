@@ -48,7 +48,7 @@
                                     <div class="row">
                                         <div class="col-lg-3 order-2 order-lg-2">
                                         </div>
-                                        <div class="col-lg-9 order-1 order-lg-1">
+                                        <div class="col-lg-12 order-1 order-lg-1">
                                             @include ('hiraloa::products.list.toolbar')
                                             @foreach ($products as $productFlat)
 
@@ -68,29 +68,28 @@
 
                         @inject ('toolbarHelper', 'Webkul\Product\Helpers\Toolbar')
 
-                        @if ($toolbarHelper->getCurrentMode() == 'grid')
-                            <div class="product-grid-3">
-                                @foreach ($products as $productFlat)
-
-                                    @include ('hiraloa::products.list.card', ['product' => $productFlat])
-
-                                @endforeach
-                            </div>
-                        @else
-                            <div class="product-list">
-                                @foreach ($products as $productFlat)
-
-                                    @include ('hiraloa::products.list.card', ['product' => $productFlat])
-
-                                @endforeach
-                            </div>
-                        @endif
 
                         {!! view_render_event('bagisto.shop.products.index.pagination.before', ['category' => $category]) !!}
 
-                        <div class="bottom-toolbar">
-                            {{ $products->appends(request()->input())->links() }}
-                        </div>
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="hiraola-paginatoin-area">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                                {{ $products->appends(request()->input())->links() }}
+
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                                <div class="product-select-box">
+                                                    <div class="product-short">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                         {!! view_render_event('bagisto.shop.products.index.pagination.after', ['category' => $category]) !!}
 
