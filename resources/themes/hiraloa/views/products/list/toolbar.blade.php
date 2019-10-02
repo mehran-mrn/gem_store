@@ -2,64 +2,20 @@
 
 {!! view_render_event('bagisto.shop.products.list.toolbar.before') !!}
 
-<div class="top-toolbar mb-35">
+<div class="shop-toolbar">
+    <div class="product-view-mode">
 
-    <div class="page-info">
-        <span>
-            {{ __('shop::app.products.pager-info', ['showing' => $products->firstItem() . '-' . $products->lastItem(), 'total' => $products->total()]) }}
-        </span>
-
-        <span class="sort-filter">
-            <i class="icon sort-icon" id="sort" ></i>
-            <i class="icon filter-icon" id="filter"></i>
-        </span>
+        <a href="{{$toolbarHelper->isModeActive('grid')? "": $toolbarHelper->getModeUrl('grid')}}"
+           class="{{$toolbarHelper->isModeActive('grid')? "active":""}} grid-3" data-target="gridview-3" data-toggle="tooltip" data-placement="top" title="Grid View"><i class="fa fa-th"></i></a>
+        <a href="{{$toolbarHelper->isModeActive('list')? "":$toolbarHelper->getModeUrl('list')}}"
+           class="{{$toolbarHelper->isModeActive('list')? "active":""}} list" data-target="listview" data-toggle="tooltip" data-placement="top" title="List View"><i class="fa fa-th-list"></i></a>
     </div>
+    {{ __('shop::app.products.pager-info', ['showing' => $products->firstItem() . '-' . $products->lastItem(), 'total' => $products->total()]) }}
 
-    <div class="pager">
-
-        <div class="view-mode">
-            @if ($toolbarHelper->isModeActive('grid'))
-                <span class="grid-view">
-                    <i class="icon grid-view-icon"></i>
-                </span>
-            @else
-                <a href="{{ $toolbarHelper->getModeUrl('grid') }}" class="grid-view">
-                    <i class="icon grid-view-icon"></i>
-                </a>
-            @endif
-
-            @if ($toolbarHelper->isModeActive('list'))
-                <span class="list-view">
-                    <i class="icon list-view-icon"></i>
-                </span>
-            @else
-                <a href="{{ $toolbarHelper->getModeUrl('list') }}" class="list-view">
-                    <i class="icon list-view-icon"></i>
-                </a>
-            @endif
-        </div>
-
-        <div class="sorter">
-            <label>{{ __('shop::app.products.sort-by') }}</label>
-
-            <select onchange="window.location.href = this.value">
-
-                @foreach ($toolbarHelper->getAvailableOrders() as $key => $order)
-
-                    <option value="{{ $toolbarHelper->getOrderUrl($key) }}" {{ $toolbarHelper->isOrderCurrent($key) ? 'selected' : '' }}>
-                        {{ __('shop::app.products.' . $order) }}
-                    </option>
-
-                @endforeach
-
-            </select>
-        </div>
-
-        <div class="limiter">
-            <label>{{ __('shop::app.products.show') }}</label>
-
-            <select onchange="window.location.href = this.value">
-
+    <div class="product-item-selection_area">
+        <div class="product-short">
+            <label class="select-label">{{ __('shop::app.products.show') }}</label>
+            <select onchange="window.location.href = this.value" class="nice-select">
                 @foreach ($toolbarHelper->getAvailableLimits() as $limit)
 
                     <option value="{{ $toolbarHelper->getLimitUrl($limit) }}" {{ $toolbarHelper->isLimitCurrent($limit) ? 'selected' : '' }}>
@@ -70,9 +26,21 @@
 
             </select>
         </div>
-
     </div>
+    <div class="product-item-selection_area">
+        <div class="product-short">
+            <label class="select-label">{{ __('shop::app.products.sort-by') }}</label>
+            <select onchange="window.location.href = this.value" class="nice-select">
+                @foreach ($toolbarHelper->getAvailableOrders() as $key => $order)
 
+                    <option value="{{ $toolbarHelper->getOrderUrl($key) }}" {{ $toolbarHelper->isOrderCurrent($key) ? 'selected' : '' }}>
+                        {{ __('shop::app.products.' . $order) }}
+                    </option>
+
+                @endforeach
+            </select>
+        </div>
+    </div>
 </div>
 
 {!! view_render_event('bagisto.shop.products.list.toolbar.after') !!}

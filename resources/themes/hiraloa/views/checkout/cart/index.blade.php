@@ -1,4 +1,4 @@
-@extends('shop::layouts.master')
+@extends('hiraloa::layouts.master')
 
 @section('page_title')
     {{ __('shop::app.checkout.cart.title') }}

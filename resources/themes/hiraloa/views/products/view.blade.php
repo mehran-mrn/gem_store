@@ -49,11 +49,11 @@
 
                         <div class="quantity control-group" :class="[errors.has('quantity') ? 'has-error' : '']">
 
-                            <label class="required">{{ __('hiraloa::app.products.quantity') }}</label>
+                            <label class="required">{{ __('shop::app.products.quantity') }}</label>
 
                             <input class="control quantity-change" value="-" style="width: 35px; border-radius: 3px 0px 0px 3px;" onclick="updateQunatity('remove')" readonly>
 
-                            <input name="quantity" id="quantity" class="control quantity-change" value="1" v-validate="'required|numeric|min_value:1'" style="width: 60px; position: relative; margin-left: -4px; margin-right: -4px; border-right: none;border-left: none; border-radius: 0px;" data-vv-as="&quot;{{ __('hiraloa::app.products.quantity') }}&quot;" readonly>
+                            <input name="quantity" id="quantity" class="control quantity-change" value="1" v-validate="'required|numeric|min_value:1'" style="width: 60px; position: relative; margin-left: -4px; margin-right: -4px; border-right: none;border-left: none; border-radius: 0px;" data-vv-as="&quot;{{ __('shop::app.products.quantity') }}&quot;" readonly>
 
                             <input class="control quantity-change" value="+" style="width: 35px; padding: 0 12px; border-radius: 0px 3px 3px 0px;" onclick=updateQunatity('add') readonly>
 
@@ -72,9 +72,9 @@
 
                         {!! view_render_event('bagisto.shop.products.view.description.before', ['product' => $product]) !!}
 
-                        <accordian :title="'{{ __('hiraloa::app.products.description') }}'" :active="true">
+                        <accordian :title="'{{ __('shop::app.products.description') }}'" :active="true">
                             <div slot="header">
-                                {{ __('hiraloa::app.products.description') }}
+                                {{ __('shop::app.products.description') }}
                                 <i class="icon expand-icon right"></i>
                             </div>
 
@@ -193,7 +193,7 @@
                 if (quantity > 1) {
                     quantity = parseInt(quantity) - 1;
                 } else {
-                    alert('{{ __('hiraloa::app.products.less-quantity') }}');
+                    alert('{{ __('shop::app.products.less-quantity') }}');
                 }
             }
             document.getElementById("quantity").value = quantity;

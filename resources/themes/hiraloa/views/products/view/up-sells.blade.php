@@ -8,7 +8,7 @@
     <div class="attached-products-wrapper">
 
         <div class="title">
-            {{ __('hiraloa::app.products.up-sell-title') }}
+            {{ __('shop::app.products.up-sell-title') }}
             <span class="border-bottom"></span>
         </div>
 

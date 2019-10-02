@@ -12,7 +12,7 @@
 
         <div class="total-reviews">
             {{ 
-                __('hiraloa::app.products.total-rating', [
+                __('shop::app.products.total-rating', [
                         'total_rating' => $reviewHelper->getTotalRating($product),
                         'total_reviews' => $total,
                     ]) 

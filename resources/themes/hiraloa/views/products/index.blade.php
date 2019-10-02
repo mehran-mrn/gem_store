@@ -30,8 +30,10 @@
 
                 @if (in_array($category->display_mode, [null, 'description_only', 'products_and_description']))
                     @if ($category->description)
-                        <div class="category-description">
+                        <div class="breadcrumb-area">
+                            <div class="container">
                             {!! $category->description !!}
+                            </div>
                         </div>
                     @endif
                 @endif
@@ -40,8 +42,29 @@
                     <?php $products = $productRepository->getAll($category->id); ?>
 
                     @if ($products->count())
+                        <!-- Begin Hiraola's Content Wrapper Area -->
+                            <div class="hiraola-content_wrapper">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-3 order-2 order-lg-2">
+                                        </div>
+                                        <div class="col-lg-9 order-1 order-lg-1">
+                                            @include ('hiraloa::products.list.toolbar')
+                                            @foreach ($products as $productFlat)
 
-                        @include ('hiraloa::products.list.toolbar')
+                                                @include ('hiraloa::products.list.card', ['product' => $productFlat])
+
+                                            @endforeach
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Hiraola's Content Wrapper Area End Here -->
+
+
 
                         @inject ('toolbarHelper', 'Webkul\Product\Helpers\Toolbar')
 
@@ -72,14 +95,21 @@
                         {!! view_render_event('bagisto.shop.products.index.pagination.after', ['category' => $category]) !!}
 
                     @else
+                        <!-- Begin Hiraola's Error 404 Page Area -->
+                            <div class="error404-area">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-8 ml-auto mr-auto text-center">
+                                            <div class="search-error-wrapper">
+                                                <h2>{{ __('shop::app.products.whoops') }}</h2>
+                                                <p class="short_desc">{{ __('shop::app.products.empty') }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Hiraola's Error 404 Page End Here -->
 
-                        <div class="product-list empty">
-                            <h2>{{ __('hiraloa::app.products.whoops') }}</h2>
-
-                            <p>
-                                {{ __('hiraloa::app.products.empty') }}
-                            </p>
-                        </div>
 
                     @endif
                 @endif

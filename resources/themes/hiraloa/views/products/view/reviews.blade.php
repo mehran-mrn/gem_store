@@ -5,7 +5,7 @@
 @if ($total = $reviewHelper->getTotalReviews($product))
     <div class="rating-reviews">
         <div class="rating-header">
-            {{ __('hiraloa::app.products.reviews-title') }}
+            {{ __('shop::app.products.reviews-title') }}
         </div>
 
         <div class="overall">
@@ -24,14 +24,14 @@
                 </span>
 
                 <div class="total-reviews">
-                    {{ __('hiraloa::app.products.total-reviews', ['total' => $total]) }}
+                    {{ __('shop::app.products.total-reviews', ['total' => $total]) }}
                 </div>
 
             </div>
 
             @if (core()->getConfigData('catalog.products.review.guest_review') || auth()->guard('customer')->check())
                 <a href="{{ route('shop.reviews.create', $product->url_key) }}" class="btn btn-lg btn-primary">
-                    {{ __('hiraloa::app.products.write-review-btn') }}
+                    {{ __('shop::app.products.write-review-btn') }}
                 </a>
             @endif
 
@@ -59,7 +59,7 @@
 
                     <div class="reviewer-details">
                         <span class="by">
-                            {{ __('hiraloa::app.products.by', ['name' => $review->name]) }},
+                            {{ __('shop::app.products.by', ['name' => $review->name]) }},
                         </span>
 
                         <span class="when">
@@ -70,7 +70,7 @@
             @endforeach
 
             <a href="{{ route('shop.reviews.index', $product->url_key) }}" class="view-all">
-                {{ __('hiraloa::app.products.view-all') }}
+                {{ __('shop::app.products.view-all') }}
             </a>
 
         </div>
@@ -80,7 +80,7 @@
         <div class="rating-reviews">
             <div class="rating-header">
                 <a href="{{ route('shop.reviews.create', $product->url_key) }}" class="btn btn-lg btn-primary">
-                    {{ __('hiraloa::app.products.write-review-btn') }}
+                    {{ __('shop::app.products.write-review-btn') }}
                 </a>
             </div>
         </div>

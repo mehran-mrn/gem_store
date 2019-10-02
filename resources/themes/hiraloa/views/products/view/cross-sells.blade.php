@@ -14,7 +14,7 @@
     <div class="attached-products-wrapper mt-50">
 
         <div class="title">
-            {{ __('hiraloa::app.products.cross-sell-title') }}
+            {{ __('shop::app.products.cross-sell-title') }}
              <span class="border-bottom"></span>
         </div>
 

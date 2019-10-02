@@ -58,7 +58,7 @@
 
                         </label>
 
-                        <span v-if="! attribute.options.length" class="no-options">{{ __('hiraloa::app.products.select-above-options') }}</span>
+                        <span v-if="! attribute.options.length" class="no-options">{{ __('shop::app.products.select-above-options') }}</span>
                     </span>
 
                     <span class="control-error" v-if="errors.has('super_attribute[' + attribute.id + ']')">

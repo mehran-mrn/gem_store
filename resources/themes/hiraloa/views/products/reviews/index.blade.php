@@ -1,7 +1,7 @@
 @extends('hiraloa::layouts.master')
 
 @section('page_title')
-    {{ __('hiraloa::app.reviews.product-review-page-title') }} - {{ $product->name }}
+    {{ __('shop::app.reviews.product-review-page-title') }} - {{ $product->name }}
 @endsection
 
 @section('content-wrapper')
@@ -44,11 +44,11 @@
 
             <div class="review-form">
                 <div class="heading mt-10">
-                    <span> {{ __('hiraloa::app.reviews.rating-reviews') }} </span>
+                    <span> {{ __('shop::app.reviews.rating-reviews') }} </span>
 
                     @if (core()->getConfigData('catalog.products.review.guest_review') || auth()->guard('customer')->check())
                         <a href="{{ route('shop.reviews.create', $product->url_key) }}" class="btn btn-lg btn-primary right">
-                            {{ __('hiraloa::app.products.write-review-btn') }}
+                            {{ __('shop::app.products.write-review-btn') }}
                         </a>
                     @endif
                 </div>
@@ -68,7 +68,7 @@
                         </span>
 
                         <div class="total-reviews mt-5">
-                            {{ __('hiraloa::app.reviews.ratingreviews', [
+                            {{ __('shop::app.reviews.ratingreviews', [
                                 'rating' => $reviewHelper->getTotalRating($product),
                                 'review' => $reviewHelper->getTotalReviews($product)])
                             }}
@@ -79,14 +79,14 @@
 
                         @foreach ($reviewHelper->getPercentageRating($product) as $key => $count)
                             <div class="rater 5star">
-                                <div class="rate-number" id={{ $key }}{{ __('hiraloa::app.reviews.id-star')  }}></div>
-                                <div class="star-name">{{ __('hiraloa::app.reviews.star') }}</div>
+                                <div class="rate-number" id={{ $key }}{{ __('shop::app.reviews.id-star')  }}></div>
+                                <div class="star-name">{{ __('shop::app.reviews.star') }}</div>
                                 <div class="line-bar">
                                     <div class="line-value" id="{{ $key }}"></div>
                                 </div>
                                 <div class="percentage">
                                     <span>
-                                        {{ __('hiraloa::app.reviews.percentage', ['percentage' => $count]) }}
+                                        {{ __('shop::app.reviews.percentage', ['percentage' => $count]) }}
                                     </span>
                                 </div>
                             </div>
@@ -119,7 +119,7 @@
 
                                 <div class="reviewer-details">
                                     <span class="by">
-                                        {{ __('hiraloa::app.products.by', ['name' => $review->name]) }},
+                                        {{ __('shop::app.products.by', ['name' => $review->name]) }},
                                     </span>
 
                                     <span class="when">
