@@ -60,5 +60,72 @@
         </div>
     </div>
 </div>
+{{--<div class="list-slide_item">--}}
+{{--    <div class="single_product">--}}
+{{--        <div class="product-img">--}}
+{{--            <a href="{{ route('shop.products.index', $product->url_key) }}" title="{{ $product->name }}">--}}
+{{--                <img class="primary-img" src="{{ $productBaseImage['medium_image_url'] }}"--}}
+{{--                     alt="Hiraola's Product Image"--}}
+{{--                     onerror="this.src='{{ asset('vendor/webkul/ui/assets/images/product/meduim-product-placeholder.png') }}'"--}}
+{{--                >--}}
+{{--            </a>--}}
+{{--        </div>--}}
+{{--        <div class="hiraola-product_content">--}}
+{{--            <div class="product-desc_info">--}}
+{{--                <h6><a class="product-name" href="single-product.html">{{ $product->name }}</a></h6>--}}
+{{--                <div class="rating-box">--}}
+{{--                    <ul>--}}
+{{--                        <li><i class="fa fa-star"></i></li>--}}
+{{--                        <li><i class="fa fa-star"></i></li>--}}
+{{--                        <li><i class="fa fa-star"></i></li>--}}
+{{--                        <li><i class="fa fa-star"></i></li>--}}
+{{--                        <li class="silver-color"><i class="fa fa-star"></i></li>--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
+{{--                @include ('shop::products.price', ['product' => $product])--}}
 
+{{--                <div class="product-short_desc">--}}
+{{--                    <p>{!! $product->short_description !!}</p>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="add-actions">--}}
+{{--                <ul>--}}
+
+
+
+
+
+
+
+{{--                    <li>--}}
+{{--                        @if ($product->type == "configurable")--}}
+{{--                            <a class="btn li-btn hiraola-add_cart" href="{{ route('cart.add.configurable', $product->url_key) }}"--}}
+{{--                               data-toggle="tooltip" data-placement="top" title="{{ __('shop::app.products.add-to-cart') }}">{{ __('shop::app.products.add-to-cart') }}</a>--}}
+{{--                        @else--}}
+{{--                            <form action="{{ route('cart.add', $product->product_id) }}" method="POST">--}}
+{{--                                @csrf--}}
+{{--                                <input type="hidden" name="product" value="{{ $product->product_id }}">--}}
+{{--                                <input type="hidden" name="quantity" value="1">--}}
+{{--                                <input type="hidden" value="false" name="is_configurable">--}}
+{{--                                <a class="btn li-btn hiraola-add_cart" data-toggle="tooltip" data-placement="top" title="Add To Cart">--}}
+{{--                                    {{ __('shop::app.products.add-to-cart') }}--}}
+{{--                                </a>--}}
+
+{{--                            </form>--}}
+
+{{--                        @endif--}}
+
+{{--                    </li>--}}
+{{--                    <li><a class="hiraola-add_compare" href="compare.html" data-toggle="tooltip" data-placement="top" title="Compare This Product"><i--}}
+{{--                                    class="ion-ios-shuffle-strong"></i></a></li>--}}
+{{--                    <li class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><a href="{{ route('shop.products.index', $product->url_key) }}" data-toggle="tooltip" data-placement="top" title="Quick View"><i--}}
+{{--                                    class="ion-eye"></i></a></li>--}}
+{{--                    <li>--}}
+{{--                        @include('hiraloa::products.wishlist')--}}
+{{--                    </li>--}}
+{{--                </ul>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</div>--}}
 {!! view_render_event('bagisto.shop.products.list.card.after', ['product' => $product]) !!}
