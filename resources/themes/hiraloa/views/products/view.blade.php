@@ -90,7 +90,8 @@
                                 <li><a class="active" data-toggle="tab" href="#description"><span>{{ __('shop::app.products.description') }}</span></a>
                                 </li>
                                 <li><a data-toggle="tab" href="#specification"><span>Specification</span></a></li>
-                                <li><a data-toggle="tab" href="#reviews"><span>Reviews (1)</span></a></li>
+                                @inject ('reviewHelper', 'Webkul\Product\Helpers\Review')
+                                <li><a data-toggle="tab" href="#reviews"><span>Reviews ({{$reviewHelper->getTotalReviews($product)}})</span></a></li>
                             </ul>
                         </div>
                         <div class="tab-content hiraola-tab_content">
@@ -118,50 +119,10 @@
     </div>
     <!-- Hiraola's Single Product Tab Area End Here -->
 
+    @include ('hiraloa::products.view.related-products')
 
-    <section class="product-detail">
-        <div class="layouter">
-            <product-view>
-                <div class="form-container">
-                    <div class="details">
+    @include ('hiraloa::products.view.up-sells')
 
-
-
-====================================
-
-
-
-
-
-
-
-                        {!! view_render_event('bagisto.shop.products.view.description.before', ['product' => $product]) !!}
-
-                        <accordian :title="'{{ __('shop::app.products.description') }}'" :active="true">
-                            <div slot="header">
-
-                                <i class="icon expand-icon right"></i>
-                            </div>
-
-                            <div slot="body">
-                                <div class="full-description">
-
-                                </div>
-                            </div>
-                        </accordian>
-
-
-
-                    </div>
-                </div>
-            </product-view>
-        </div>
-
-        @include ('hiraloa::products.view.related-products')
-
-        @include ('hiraloa::products.view.up-sells')
-
-    </section>
 
     {!! view_render_event('bagisto.shop.products.view.after', ['product' => $product]) !!}
 @endsection

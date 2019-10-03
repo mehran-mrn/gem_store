@@ -9,7 +9,7 @@
         @endfor
         @if($i<=5)
             @for ($i ; $i <= 5; $i++)
-                <li class="silver-color"><i class="fa fa-star-of-david"></i></li>
+                <li class="silver-color"><i class="fa fa-star"></i></li>
             @endfor
         @endif
         <li>
