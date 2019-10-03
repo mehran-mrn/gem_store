@@ -1,7 +1,9 @@
 @if ($product->type == 'configurable')
 
     @inject ('configurableOptionHelper', 'Webkul\Product\Helpers\ConfigurableOption')
-
+    <div class="color-list_heading">
+        <h4>Available Options</h4>
+    </div>
     {!! view_render_event('bagisto.shop.products.view.configurable-options.before', ['product' => $product]) !!}
 
     <product-options></product-options>

@@ -91,7 +91,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'fa',
+    'fallback_locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
@@ -224,7 +224,6 @@ return [
         Konekt\Concord\ConcordServiceProvider::class,
         Flynsarmy\DbBladeCompiler\DbBladeCompilerServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
-        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
         //Webkul packages
         Webkul\Theme\Providers\ThemeServiceProvider::class,

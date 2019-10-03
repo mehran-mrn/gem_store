@@ -41,7 +41,7 @@
 
     <!-- Main Style CSS (Please use minify version for better website load performance) -->
 {{--    <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/style.css')}}">--}}
-    <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/styleRTL.css')}}">
+    <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/styleRTL.css')}}?i=1">
     <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/fonts.css')}}">
     <!--<link rel="stylesheet" href="assets/css/style.min.css">-->
     <!-- Vendor & Plugins CSS (Please remove the comment from below vendor.min.css & plugins.min.css for better website load performance and remove css files from the above) -->
@@ -81,25 +81,25 @@
 {{--        </div>--}}
         <!-- Loading Area End Here -->
         <!-- Begin Hiraola's Newsletter Popup Area -->
-        <div class="popup_wrapper">
-            <div class="test">
-                <span class="popup_off"><i class="ion-android-close"></i></span>
-                <div class="subscribe_area text-center">
-                    <h2>Sign up for send newsletter?</h2>
-                    <p>Subscribe to our newsletters now and stay up-to-date with new collections, the latest lookbooks and exclusive offers.</p>
-                    <div class="subscribe-form-group">
-                        <form action="#">
-                            <input autocomplete="off" type="text" name="message" id="message" placeholder="Enter your email address">
-                            <button type="submit">subscribe</button>
-                        </form>
-                    </div>
-                    <div class="subscribe-bottom">
-                        <input type="checkbox" id="newsletter-permission">
-                        <label for="newsletter-permission">Don't show this popup again</label>
-                    </div>
-                </div>
-            </div>
-        </div>
+{{--        <div class="popup_wrapper">--}}
+{{--            <div class="test">--}}
+{{--                <span class="popup_off"><i class="ion-android-close"></i></span>--}}
+{{--                <div class="subscribe_area text-center">--}}
+{{--                    <h2>Sign up for send newsletter?</h2>--}}
+{{--                    <p>Subscribe to our newsletters now and stay up-to-date with new collections, the latest lookbooks and exclusive offers.</p>--}}
+{{--                    <div class="subscribe-form-group">--}}
+{{--                        <form action="#">--}}
+{{--                            <input autocomplete="off" type="text" name="message" id="message" placeholder="Enter your email address">--}}
+{{--                            <button type="submit">subscribe</button>--}}
+{{--                        </form>--}}
+{{--                    </div>--}}
+{{--                    <div class="subscribe-bottom">--}}
+{{--                        <input type="checkbox" id="newsletter-permission">--}}
+{{--                        <label for="newsletter-permission">Don't show this popup again</label>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
         <!-- Hiraola's Newsletter Popup Area Here -->
 
 

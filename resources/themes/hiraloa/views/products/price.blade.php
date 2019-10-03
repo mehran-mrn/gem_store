@@ -10,7 +10,7 @@
     @else
         @if ($priceHelper->haveSpecialPrice($product))
 
-            <span class="old-price text-muted">{{ core()->currency($product->price) }}</span>
+            <span class="old-price text-muted ml-2 mr-2">{{ core()->currency($product->price) }}</span>
 
             <span class="new-price text-bold">{{ core()->currency($priceHelper->getSpecialPrice($product)) }}</span>
         @else

@@ -2,6 +2,80 @@
 
 {!! view_render_event('bagisto.shop.products.view.reviews.after', ['product' => $product]) !!}
 
+<form class="form-horizontal" id="form-review">
+    <div id="review">
+        <table class="table table-striped table-bordered">
+            <tbody>
+            <tr>
+                <td style="width: 50%;"><strong>Customer</strong></td>
+                <td class="text-right">25/04/2019</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p>Good product! Thank you very much</p>
+                    <div class="rating-box">
+                        <ul>
+                            <li><i class="fa fa-star-of-david"></i></li>
+                            <li><i class="fa fa-star-of-david"></i></li>
+                            <li><i class="fa fa-star-of-david"></i></li>
+                            <li><i class="fa fa-star-of-david"></i></li>
+                            <li><i class="fa fa-star-of-david"></i></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Write a review</h2>
+    <div class="form-group required">
+        <div class="col-sm-12 p-0">
+            <label>Your Email <span class="required">*</span></label>
+            <input class="review-input" type="email" name="con_email" id="con_email" required>
+        </div>
+    </div>
+    <div class="form-group required second-child">
+        <div class="col-sm-12 p-0">
+            <label class="control-label">Share your opinion</label>
+            <textarea class="review-textarea" name="con_message" id="con_message"></textarea>
+            <div class="help-block"><span class="text-danger">Note:</span> HTML is not
+                translated!</div>
+        </div>
+    </div>
+    <div class="form-group last-child required">
+        <div class="col-sm-12 p-0">
+            <div class="your-opinion">
+                <label>Your Rating</label>
+                <span>
+                                                        <select class="star-rating">
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                        </select>
+                                                    </span>
+            </div>
+        </div>
+        <div class="hiraola-btn-ps_right">
+            <a href="javascript:void(0)" class="hiraola-btn hiraola-btn_dark">Continue</a>
+        </div>
+    </div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
 @if ($total = $reviewHelper->getTotalReviews($product))
     <div class="rating-reviews">
         <div class="rating-header">

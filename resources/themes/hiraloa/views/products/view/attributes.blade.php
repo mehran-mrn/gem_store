@@ -2,6 +2,7 @@
 
 {!! view_render_event('bagisto.shop.products.view.attributes.before', ['product' => $product]) !!}
 
+
 @if ($customAttributeValues = $productViewHelper->getAdditionalData($product))
     <accordian :title="'{{ __('shop::app.products.specification') }}'" :active="false">
         <div slot="header">
@@ -10,7 +11,7 @@
         </div>
 
         <div slot="body">
-            <table class="full-specifications">
+            <table class="table table-bordered specification-inner_stuff">
 
                 @foreach ($customAttributeValues as $attribute)
                     <tr>

@@ -708,13 +708,13 @@ button {
 
 .quantity .cart-plus-minus > .qtybutton.dec {
   bottom: 0;
-  right: 0;
+  left: 0;
 }
 
 .quantity .cart-plus-minus > .qtybutton.inc {
   border-bottom: none;
   top: 0;
-  right: 0;
+  left: 0;
 }
 
 /* ---Hiraola's  Nice Select Customization--- */
@@ -3709,7 +3709,7 @@ button.li-btn:hover {
   background: #e5e5e5;
   display: block;
   top: 50%;
-  right: 10px;
+  left: 10px;
   position: absolute;
 }
 
@@ -4658,7 +4658,12 @@ button.li-btn:hover {
   font-size: 14px;
   margin-left: 10px;
 }
-
+.old-price{
+  color: #bababa;
+  text-decoration: line-through;
+  font-size: 14px;
+  margin-left: 10px;
+}
 .hiraola-product_slider .slide-item .single_product .hiraola-product_content .product-desc_info .additional-add_action,
 .hiraola-product_slider-3 .slide-item .single_product .hiraola-product_content .product-desc_info .additional-add_action,
 .hiraola-trending-product_slider .slide-item .single_product .hiraola-product_content .product-desc_info .additional-add_action,
@@ -4935,7 +4940,7 @@ button.li-btn:hover {
   content: "";
   position: absolute;
   top: 50%;
-  right: -9px;
+  left: -9px;
   height: 2px;
   width: 18px;
 }
