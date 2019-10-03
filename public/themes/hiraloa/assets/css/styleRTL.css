@@ -4315,12 +4315,13 @@ button.li-btn:hover {
 }
 
 .static-banner_area .static-banner-content {
-  padding-right: 75px;
+  padding-left: 75px;
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
           transform: translateY(-50%);
+  left: 0;
 }
 
 @media (max-width: 575px) {

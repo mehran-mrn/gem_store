@@ -48,7 +48,6 @@
       style="scroll-behavior: smooth;direction: {{core()->getCurrentLocale()->direction}}">
 {!! view_render_event('bagisto.shop.layout.body.before') !!}
 <div class="main-wrapper" id="app">
-    <!-- Begin Loading Area -->
 {{--        <div class="loading">--}}
 {{--            <div class="text-center middle">--}}
 {{--                <div class="lds-ellipsis">--}}
@@ -59,8 +58,8 @@
 {{--                </div>--}}
 {{--            </div>--}}
 {{--        </div>--}}
-<!-- Loading Area End Here -->
-    <!-- Begin Hiraola's Newsletter Popup Area -->
+
+
 {{--        <div class="popup_wrapper">--}}
 {{--            <div class="test">--}}
 {{--                <span class="popup_off"><i class="ion-android-close"></i></span>--}}
@@ -80,8 +79,6 @@
 {{--                </div>--}}
 {{--            </div>--}}
 {{--        </div>--}}
-<!-- Hiraola's Newsletter Popup Area Here -->
-
 
     {!! view_render_event('bagisto.shop.layout.header.before') !!}
 

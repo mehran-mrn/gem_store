@@ -79,15 +79,15 @@
                 <div class="col-lg-12">
                     <div class="static-banner-image"></div>
                     <div class="static-banner-content">
-                        <p><span>-25% Off</span>This Week</p>
-                        <h2>Featured Product</h2>
-                        <h3>Meito Accessories 2019</h3>
+                        <p><span>-25% تخفیف </span> فقط این هفته</p>
+                        <h2>محصولات ویژه</h2>
+                        <h3>بهترین های 2019</h3>
                         <p class="schedule">
-                            Starting at
-                            <span> £1209.00</span>
+                            شروع از
+                            <span>129000 تومان</span>
                         </p>
                         <div class="hiraola-btn-ps_left">
-                            <a href="shop-left-sidebar.html" class="hiraola-btn">Shopping Now</a>
+                            <a href="" class="hiraola-btn">خرید</a>
                         </div>
                     </div>
                 </div>
