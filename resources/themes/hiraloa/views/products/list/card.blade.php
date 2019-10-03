@@ -1,7 +1,6 @@
 {!! view_render_event('bagisto.shop.products.list.card.before', ['product' => $product]) !!}
 
 <div class="shop-product-wrap grid gridview-4 row">
-
     <div class="col-lg-3">
         <div class="slide-item">
             <div class="single_product">
@@ -27,18 +26,27 @@
                         <ul>
                             <li><a class="hiraola-add_cart" href="cart.html" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="ion-bag"></i></a>
                             </li>
-                            <li><a class="hiraola-add_compare" href="compare.html" data-toggle="tooltip" data-placement="top" title="Compare This Product"><i
-                                            class="ion-ios-shuffle-strong"></i></a>
+                            <li>
+                                <a class="hiraola-add_compare"
+                                   href="compare.html"
+                                   data-toggle="tooltip"
+                                   data-placement="top"
+                                   title="Compare This Product">
+                                    <i class="ion-ios-shuffle-strong"></i>
+                                </a>
                             </li>
-                            <li class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Quick View"><i
-                                            class="ion-eye"></i></a></li>
+                            <li class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter">
+                                <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Quick View">
+                                    <i class="ion-eye"></i></a>
+                            </li>
                         </ul>
                     </div>
 
                 </div>
                 <div class="hiraola-product_content">
                     <div class="product-desc_info">
-                        <h6><a class="product-name" href="{{ url()->to('/').'/products/' . $product->url_key }}" title="{{ $product->name }}">
+                        <h6><a class="product-name"
+                               href="{{ url()->to('/').'/products/' . $product->url_key }}" title="{{ $product->name }}">
                                 {{ $product->name }}</a></h6>
                         @include ('shop::products.price', ['product' => $product])
 
@@ -46,7 +54,6 @@
                             <ul>
                                 <li>
                                     @include('hiraloa::products.wishlist')
-
                                 </li>
                             </ul>
                         </div>
@@ -69,8 +76,7 @@
                     <a href="{{ route('shop.products.index', $product->url_key) }}" title="{{ $product->name }}">
                         <img class="primary-img" src="{{ $productBaseImage['medium_image_url'] }}"
                              alt="Hiraola's Product Image"
-                             onerror="this.src='{{ asset('vendor/webkul/ui/assets/images/product/meduim-product-placeholder.png') }}'"
-                        >
+                             onerror="this.src='{{ asset('vendor/webkul/ui/assets/images/product/meduim-product-placeholder.png') }}'">
                     </a>
                 </div>
                 <div class="hiraola-product_content">
@@ -93,13 +99,6 @@
                     </div>
                     <div class="add-actions">
                         <ul>
-
-
-
-
-
-
-
                             <li>
                                 @if ($product->type == "configurable")
                                     <a class="btn li-btn hiraola-add_cart" href="{{ route('cart.add.configurable', $product->url_key) }}"

@@ -672,6 +672,7 @@
         speed: 2000,
         slidesToShow: 5,
         slidesToScroll: 1,
+        rtl:true,
         prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-back"></i></button>',
         nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-forward"></i></button>',
         responsive: [

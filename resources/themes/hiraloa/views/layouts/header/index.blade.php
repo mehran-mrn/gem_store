@@ -1,4 +1,3 @@
-<!-- Begin Hiraola's Header Main Area -->
 <header class="header-main_area">
     <div class="header-middle_area d-none d-lg-block">
         <div class="container">
@@ -17,9 +16,7 @@
                 </div>
                 <div class="col-lg-9">
                     <div class="hm-form_area">
-
                         <form role="search" action="{{ route('shop.search.index') }}" method="GET" class="hm-searchbox">
-
                             <input type="text" required name="term"
                                    placeholder="{{ __('shop::app.header.search-text') }}">
                             <button class="li-btn" type="submit"><i class="fa fa-search"></i></button>
@@ -40,11 +37,7 @@
         </div>
     </div>
     @include('shop::layouts.header.nav-menu.navmenu')
-
 </header>
-<!-- Hiraola's Header Main Area End Here -->
-
-
 
 @push('scripts')
     <script>
