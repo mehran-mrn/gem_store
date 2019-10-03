@@ -1,17 +1,10 @@
-
-
-
 {!! view_render_event('bagisto.shop.layout.header.category.before') !!}
-
 <?php
-
 $categories = [];
-
 foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCategoryTree(core()->getCurrentChannel()->root_category_id) as $category) {
     if ($category->slug)
         array_push($categories, $category);
 }
-
 ?>
 
 
@@ -21,7 +14,7 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
         <div class="row">
             <div class="col-md-4 col-sm-4 d-lg-none d-block">
                 <div class="header-logo">
-                    <a href="index.html">
+                    <a href="/">
                         <img src="{{asset('/public/themes/hiraloa/assets/images/menu/logo/2.png')}}" alt="Hiraola's Header Logo">
                     </a>
                 </div>
@@ -45,7 +38,6 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
             <div class="col-lg-3 col-md-8 col-sm-8">
                 <div class="header-right_area">
                     <ul>
-
                         <li>
                             <a href="#mobileMenu"
                                class="mobile-menu_btn toolbar-btn color--white d-lg-none d-block">
@@ -174,15 +166,9 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
         </div>
     </div>
 </div>
-
-
 {!! view_render_event('bagisto.shop.layout.header.category.after') !!}
 
-
-
 @push('scripts')
-
-
 <script type="text/x-template" id="category-nav-template">
 
     <ul class="nav">
@@ -196,7 +182,6 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
     </ul>
 
 </script>
-
 <script>
     Vue.component('category-nav', {
 
@@ -227,7 +212,6 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
         },
     });
 </script>
-
 <script type="text/x-template" id="category-item-template">
     <li>
         <a :href="url+'/categories/'+this.item['translations'][0].slug">
@@ -248,7 +232,6 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
         </ul>
     </li>
 </script>
-
 <script>
     Vue.component('category-item', {
 
@@ -296,6 +279,4 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
         }
     });
 </script>
-
-
 @endpush

@@ -39,8 +39,12 @@
 
 @section('content-wrapper')
     {!! view_render_event('bagisto.shop.home.content.before') !!}
+    {{--    {!! DbView::make($channel)->field('home_page_content')->with(['sliderData' => $sliderData])->render() !!}--}}
 
-    {!! DbView::make($channel)->field('home_page_content')->with(['sliderData' => $sliderData])->render() !!}
+    {!!  $__env->make("shop::home.slider", array_except(get_defined_vars(), array('__data', '__path')))->render() !!}
+    {!!  $__env->make("shop::home.featured-products", array_except(get_defined_vars(), array('__data', '__path')))->render() !!}
+    {!! $__env->make("shop::home.new-products", array_except(get_defined_vars(), array('__data', '__path')))->render()  !!}
+
 
     {{ view_render_event('bagisto.shop.home.content.after') }}
 

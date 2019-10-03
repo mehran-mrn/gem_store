@@ -8,14 +8,12 @@
                     </div>
                     <div id="cate-toggle" class="category-menu-list">
                         <?php
-
                         $categories = [];
                         foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCategoryTree(core()->getCurrentChannel()->root_category_id) as $category) {
                             if ($category->slug)
                                 array_push($categories, $category);
                         }
                         ?>
-
                         <ul>
                             @foreach($categories as $category)
                                 @if(count($category->children)>1)
@@ -89,31 +87,15 @@
             </div>
             <div class="col grid-half grid-md_half order-md-2 order-lg-3">
                 <div class="banner-item img-hover_effect">
-                    <a href="shop-left-sidebar.html">
-                        <img class="img-full" src="assets/images/banner/1_1.jpg" alt="Hiraola's Banner">
+                    <a href="{{ route('shop.home.index') }}">
+                        @if ($logo = core()->getCurrentChannel()->logo_url)
+                            <img class="logo" src="{{ $logo }}"/>
+                        @else
+                            <img class="img-full" src="{{ bagisto_asset('images/logo.svg') }}"/>
+                        @endif
                     </a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-{{--<?php--}}
-{{--$productUpSells = $product->up_sells()->get();--}}
-{{--?>--}}
-{{--<div class="hiraola-banner_area">--}}
-{{--    <div class="container-fluid">--}}
-{{--        <div class="row">--}}
-{{--            @foreach ($productUpSells as $up_sell_product)--}}
-{{--                {{dd($up_sell_product)}}--}}
-{{--                <div class="col-lg-4">--}}
-{{--                    <div class="banner-item img-hover_effect">--}}
-{{--                        <a href="shop-left-sidebar.html">--}}
-{{--                            <img class="img-full" src="assets/images/banner/1_2.jpg" alt="Hiraola's Banner">--}}
-{{--                        </a>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            @endforeach--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</div>--}}
