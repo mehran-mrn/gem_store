@@ -51,12 +51,12 @@
                                         <div class="col-lg-12 order-1 order-lg-1">
                                             @include ('hiraloa::products.list.toolbar')
                                             @foreach ($products as $productFlat)
-
+                                                <div class="shop-product-wrap grid gridview-4 row">
+                                                    <div class="col-lg-3">
                                                 @include ('hiraloa::products.list.card', ['product' => $productFlat])
-
+                                                    </div>
+                                                </div>
                                             @endforeach
-
-
 
                                         </div>
                                     </div>

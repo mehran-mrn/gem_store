@@ -63,7 +63,7 @@
         </div>
     </div>
 </form>
-
+{!! view_render_event('bagisto.shop.products.view.reviews.after', ['product' => $product]) !!}
 
 
 
@@ -161,4 +161,3 @@
     @endif
 @endif
 
-{!! view_render_event('bagisto.shop.products.view.reviews.after', ['product' => $product]) !!}
