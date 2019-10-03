@@ -49,8 +49,8 @@
         slidesToShow: 1,
         slidesToScroll: 1,
         rtl: true,
-        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-back"></i></button>',
-        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-forward"></i></button>'
+        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-forward"></i></button>',
+        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-back"></i></button>'
     });
 
     /*----------------------------------------*/
@@ -192,10 +192,11 @@
         arrows: true,
         dots: false,
         speed: 2000,
+        rtl:true,
         slidesToShow: 5,
         slidesToScroll: 1,
-        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-back"></i></button>',
-        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-forward"></i></button>',
+        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-forward"></i></button>',
+        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-back"></i></button>',
         responsive: [
             {
                 breakpoint: 1501,
@@ -236,11 +237,12 @@
         infinite: true,
         arrows: true,
         dots: false,
+        rtl:true,
         speed: 2000,
         slidesToShow: 3,
         slidesToScroll: 1,
-        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-back"></i></button>',
-        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-forward"></i></button>',
+        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-forward"></i></button>',
+        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-back"></i></button>',
         responsive: [
             {
                 breakpoint: 1501,
@@ -281,11 +283,12 @@
         infinite: true,
         arrows: true,
         dots: false,
+        rtl:true,
         speed: 2000,
         slidesToShow: 4,
         slidesToScroll: 1,
-        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-back"></i></button>',
-        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-forward"></i></button>',
+        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-forward"></i></button>',
+        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-back"></i></button>',
         responsive: [
             {
                 breakpoint: 1501,
@@ -326,11 +329,12 @@
         infinite: true,
         arrows: true,
         dots: false,
+        rtl:true,
         speed: 2000,
         slidesToShow: 1,
         slidesToScroll: 1,
-        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-back"></i></button>',
-        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-forward"></i></button>',
+        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-forward"></i></button>',
+        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-back"></i></button>',
         responsive: [
             {
                 breakpoint: 1501,
@@ -372,10 +376,11 @@
         arrows: false,
         dots: false,
         speed: 2000,
+        rtl:true,
         slidesToShow: 3,
         slidesToScroll: 1,
-        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-back"></i></button>',
-        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-forward"></i></button>',
+        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-forward"></i></button>',
+        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-back"></i></button>',
         responsive: [
             {
                 breakpoint: 1501,
@@ -417,10 +422,11 @@
         arrows: false,
         dots: false,
         speed: 2000,
+        rtl:true,
         slidesToShow: 3,
         slidesToScroll: 1,
-        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-back"></i></button>',
-        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-forward"></i></button>',
+        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-forward"></i></button>',
+        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-back"></i></button>',
         responsive: [
             {
                 breakpoint: 1501,
@@ -465,8 +471,9 @@
         slidesToShow: 1,
         slidesToScroll: 1,
         fade: true,
-        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-back"></i></button>',
-        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-forward"></i></button>',
+        rtl:true,
+        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-forward"></i></button>',
+        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-back"></i></button>',
         responsive: [
             {
                 breakpoint: 1501,
@@ -511,10 +518,11 @@
         slidesToShow: 1,
         slidesToScroll: 1,
         centerMode: true,
+        rtl:true,
         centerPadding: '450px',
         focusOnSelect: true,
-        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-back"></i></button>',
-        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-forward"></i></button>',
+        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-forward"></i></button>',
+        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-back"></i></button>',
         responsive: [
             {
                 breakpoint: 1501,
@@ -560,12 +568,13 @@
         infinite: true,
         arrows: false,
         dots: false,
+        rtl:true,
         centerMode: true,
         focusOnSelect: true,
         centerPadding: '170px',
         asNavFor: '.testimonial-content_slider',
-        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-back"></i></button>',
-        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-forward"></i></button>',
+        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-forward"></i></button>',
+        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-back"></i></button>',
         responsive: [
             {
                 breakpoint: 1501,
@@ -613,6 +622,7 @@
     $('.testimonial-content_slider').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
+        rtl:true,
         asNavFor: '.testimonial-img_slider',
         arrows: false,
         fade: true,
@@ -626,10 +636,11 @@
         arrows: false,
         dots: false,
         speed: 2000,
+        rtl:true,
         slidesToShow: 4,
         slidesToScroll: 1,
-        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-back"></i></button>',
-        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-forward"></i></button>',
+        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-forward"></i></button>',
+        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-back"></i></button>',
         responsive: [
             {
                 breakpoint: 1501,
@@ -673,8 +684,8 @@
         slidesToShow: 5,
         slidesToScroll: 1,
         rtl:true,
-        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-back"></i></button>',
-        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-forward"></i></button>',
+        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-forward"></i></button>',
+        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-back"></i></button>',
         responsive: [
             {
                 breakpoint: 1501,
@@ -715,11 +726,12 @@
         infinite: true,
         arrows: true,
         dots: false,
+        rtl:true,
         speed: 2000,
         slidesToShow: 4,
         slidesToScroll: 1,
-        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-back"></i></button>',
-        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-forward"></i></button>',
+        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-forward"></i></button>',
+        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-back"></i></button>',
         responsive: [
             {
                 breakpoint: 1501,
@@ -761,11 +773,12 @@
         arrows: false,
         dots: false,
         speed: 2000,
+        rtl:true,
         slidesToShow: 1,
         slidesToScroll: 1,
         rows: 3,
-        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-back"></i></button>',
-        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-forward"></i></button>',
+        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-forward"></i></button>',
+        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-back"></i></button>',
         responsive: [
             {
                 breakpoint: 1501,
@@ -817,11 +830,12 @@
         infinite: true,
         arrows: true,
         dots: false,
+        rtl:true,
         speed: 2000,
         slidesToShow: 6,
         slidesToScroll: 1,
-        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-back"></i></button>',
-        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-forward"></i></button>',
+        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-forward"></i></button>',
+        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-back"></i></button>',
         responsive: [
             {
                 breakpoint: 1501,
@@ -1290,8 +1304,8 @@
         infinite: true,
         slidesToShow: 4,
         slidesToScroll: 1,
-        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-back"></i></button>',
-        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-forward"></i></button>',
+        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-forward"></i></button>',
+        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-back"></i></button>',
         responsive: [
             {
                 breakpoint: 1199,
@@ -1415,8 +1429,8 @@
         slidesToScroll: 1,
         arrows: true,
         dots: false,
-        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-back"></i></button>',
-        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-forward"></i></button>',
+        prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-forward"></i></button>',
+        nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-back"></i></button>',
         responsive: [
             {
                 breakpoint: 1199,

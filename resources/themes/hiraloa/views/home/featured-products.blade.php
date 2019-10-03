@@ -1,27 +1,56 @@
 @if (app('Webkul\Product\Repositories\ProductRepository')->getFeaturedProducts()->count())
-    <div class="hiraola-product-tab_area-4">
+    <?php
+    $categories = [];
+    $i = 1;
+    foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCategoryTree(core()->getCurrentChannel()->root_category_id) as $category) {
+        if ($i < 5)
+            if ($category->slug)
+                array_push($categories, $category);
+        $i++;
+    }
+
+    ?>
+
+    <div class="hiraola-product-tab_area-3">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="product-tab">
-                        <div class="hiraola-tab_title">
-                            <h4>{{ __('shop::app.home.featured-products') }}</h4>
-                        </div>
                         <ul class="nav product-menu">
-                            <li><a class="active" data-toggle="tab" href="#necklaces-2"><span>Necklaces</span></a></li>
-                            <li><a data-toggle="tab" href="#earrings-2"><span>Earrings</span></a></li>
-                            <li><a data-toggle="tab" href="#bracelet-2"><span>Bracelet</span></a></li>
-                            <li><a data-toggle="tab" href="#anklet-2"><span>Anklet</span></a></li>
+                            <?php
+                            $active = 'active';
+                            $x = 1;
+                            ?>
+                            @foreach($categories as $category)
+                                <li>
+                                    <a class="{{$active}}" data-toggle="tab"
+                                       href="#cat_{{$x}}"><span>{{$category->translations->where('locale',core()->getCurrentLocale()->code)->first()->name}}</span></a>
+                                </li>
+                                <?php
+                                $active = '';
+                                $x++;
+                                ?>
+                            @endforeach
                         </ul>
                     </div>
                     <div class="tab-content hiraola-tab_content">
-                        <div id="necklaces-2" class="tab-pane active show" role="tabpanel">
-                            <div class="hiraola-product-tab_slider-2">
-                                @foreach (app('Webkul\Product\Repositories\ProductRepository')->getFeaturedProducts() as $productFlat)
-                                    @include ('shop::products.list.card', ['product' => $productFlat])
-                                @endforeach
+                        <?php
+                        $active = array('active', 'show');
+                        $x = 1;
+                        ?>
+                        @foreach($categories as $category)
+                            <div id="cat_{{$x}}" class="tab-pane {{$active[0]}} {{$active[1]}}" role="tabpanel">
+                                <div class="hiraola-product-tab_slider-3">
+                                    @foreach (app('Webkul\Product\Repositories\ProductRepository',['featured'=>1])->getAll($category->id) as $productFlat)
+                                        @include ('shop::products.list.card', ['product' => $productFlat])
+                                    @endforeach
+                                </div>
                             </div>
-                        </div>
+                            <?php
+                            $active = array('', '');
+                            $x++;
+                            ?>
+                        @endforeach
                     </div>
                 </div>
             </div>

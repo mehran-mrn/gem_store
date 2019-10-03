@@ -4305,7 +4305,7 @@ button.li-btn:hover {
 }
 
 .static-banner_area .static-banner-image {
-  background-image: url("../images/banner/static-banner.png");
+  background-image: url("/themes/hiraloa/assets/images/banner/static-banner.png");
   background-size: cover;
   min-height: 345px;
   background-repeat: no-repeat;

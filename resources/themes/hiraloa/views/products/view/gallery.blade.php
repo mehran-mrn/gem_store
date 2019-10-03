@@ -12,14 +12,14 @@
 <div class="sp-img_area">
     <div class="zoompro-border">
         <img class="zoompro"
-             src="{{url('theme/hiraloa/assets/images/single-product/small-size/1.jpg')}}"
-             data-zoom-image="{{url('theme/hiraloa/assets/images/single-product/small-size/1.jpg')}}"
+             src="{{asset(url('/themes/hiraloa/assets/images/single-product/small-size/1.jpg'))}}"
+             data-zoom-image="{{asset(url('/themes/hiraloa/assets/images/single-product/small-size/1.jpg'))}}"
              alt="Hiraola's Product Image"/>
     </div>
     <div id="gallery" class="sp-img_slider">
-        <a class="active" data-image="assets/images/single-product/large-size/1.jpg"
-           data-zoom-image="assets/images/single-product/large-size/1.jpg">
-            <img src="{{url('theme/hiraloa/assets/images/single-product/small-size/1.jpg')}}"
+        <a class="active" data-image="{{asset(url('/themes/hiraloa/assets/images/single-product/large-size/1.jpg'))}}"
+           data-zoom-image="{{asset(url('/themes/hiraloa/assets/images/single-product/large-size/1.jpg'))}}">
+            <img src="{{asset(url('/themes/hiraloa/assets/images/single-product/small-size/1.jpg'))}}"
                  alt="Hiraola's Product Image">
         </a>
     </div>

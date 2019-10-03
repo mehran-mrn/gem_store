@@ -6,9 +6,6 @@
                 <div class="col-lg-6">
                     <div class="footer-widgets_info row">
                         {!! DbView::make(core()->getCurrentChannel())->field('footer_content')->render() !!}
-
-
-
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -118,16 +115,16 @@
                                                         "asNavFor": ".sp-img_slider-nav"
                                                         }'>
                                 <div class="single-slide red">
-                                    <img src="assets/images/single-product/large-size/1.jpg" alt="Hiraola's Product Image">
+                                    <img src="{{asset(url('/themes/hiraloa/assets/images/single-product/large-size/1.jpg'))}}" alt="Hiraola's Product Image">
                                 </div>
                                 <div class="single-slide orange">
-                                    <img src="assets/images/single-product/large-size/2.jpg" alt="Hiraola's Product Image">
+                                    <img src="{{asset(url('/themes/hiraloa/assets/images/single-product/large-size/2.jpg'))}}" alt="Hiraola's Product Image">
                                 </div>
                                 <div class="single-slide brown">
-                                    <img src="assets/images/single-product/large-size/3.jpg" alt="Hiraola's Product Image">
+                                    <img src="{{asset(url('/themes/hiraloa/assets/images/single-product/large-size/3.jpg'))}}" alt="Hiraola's Product Image">
                                 </div>
                                 <div class="single-slide umber">
-                                    <img src="assets/images/single-product/large-size/4.jpg" alt="Hiraola's Product Image">
+                                    <img src="{{asset(url('/themes/hiraloa/assets/images/single-product/large-size/4.jpg'))}}" alt="Hiraola's Product Image">
                                 </div>
                             </div>
                             <div class="sp-img_slider-nav slick-slider-nav hiraola-slick-slider arrow-type-two" data-slick-options='{
@@ -141,16 +138,16 @@
                                                         {"breakpoint":321, "settings": {"slidesToShow": 2}}
                                                     ]'>
                                 <div class="single-slide red">
-                                    <img src="{{asset('public/themes/hiraloa/assets/images/single-product/small-size/1.jpg')}}" alt="Hiraola's Product Thumnail">
+                                    <img src="{{asset(url('/themes/hiraloa/assets/images/single-product/small-size/1.jpg'))}}" alt="Hiraola's Product Thumnail">
                                 </div>
                                 <div class="single-slide orange">
-                                    <img src="assets/images/single-product/small-size/2.jpg" alt="Hiraola's Product Thumnail">
+                                    <img src="{{asset(url('/themes/hiraloa/assets/images/single-product/small-size/2.jpg'))}}" alt="Hiraola's Product Thumnail">
                                 </div>
                                 <div class="single-slide brown">
-                                    <img src="assets/images/single-product/small-size/3.jpg" alt="Hiraola's Product Thumnail">
+                                    <img src="{{asset(url('/themes/hiraloa/assets/images/single-product/small-size/3.jpg'))}}" alt="Hiraola's Product Thumnail">
                                 </div>
                                 <div class="single-slide umber">
-                                    <img src="assets/images/single-product/small-size/4.jpg" alt="Hiraola's Product Thumnail">
+                                    <img src="{{asset(url('/themes/hiraloa/assets/images/single-product/small-size/4.jpg'))}}" alt="Hiraola's Product Thumnail">
                                 </div>
                             </div>
                         </div>

@@ -26,7 +26,9 @@
                                         @endif
                                     </li>
                                 @else
-                                    <li><a href="{{ route('shop.categories.index', $category->slug) }}">{{$category->translations->where('locale',core()->getCurrentLocale()->code)->first()->name}}</a></li>
+                                    <li>
+                                        <a href="{{ route('shop.categories.index', $category->slug) }}">{{$category->translations->where('locale',core()->getCurrentLocale()->code)->first()->name}}</a>
+                                    </li>
                                 @endif
 
                             @endforeach
@@ -88,11 +90,7 @@
             <div class="col grid-half grid-md_half order-md-2 order-lg-3">
                 <div class="banner-item img-hover_effect">
                     <a href="{{ route('shop.home.index') }}">
-                        @if ($logo = core()->getCurrentChannel()->logo_url)
-                            <img class="logo" src="{{ $logo }}"/>
-                        @else
-                            <img class="img-full" src="{{ bagisto_asset('images/logo.svg') }}"/>
-                        @endif
+                        <img class="img-full" src="{{asset(url('/themes/hiraloa/assets/images/banner/1_1.jpg'))}}"/>
                     </a>
                 </div>
             </div>
