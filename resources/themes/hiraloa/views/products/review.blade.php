@@ -3,22 +3,25 @@
 {!! view_render_event('bagisto.shop.products.review.before', ['product' => $product]) !!}
 
 @if ($total = $reviewHelper->getTotalReviews($product))
-    <div class="product-ratings mb-10">
-        <span class="stars">
-            @for ($i = 1; $i <= round($reviewHelper->getAverageRating($product)); $i++)
-                <span class="icon star-icon"></span>
+    <ul>
+        @for ($i = 1; $i <= round($reviewHelper->getAverageRating($product)); $i++)
+            <li><i class="fa fa-star"></i></li>
+        @endfor
+        @if($i<=5)
+            @for ($i ; $i <= 5; $i++)
+                <li class="silver-color"><i class="fa fa-star-of-david"></i></li>
             @endfor
-        </span>
-
-        <div class="total-reviews">
-            {{ 
-                __('shop::app.products.total-rating', [
-                        'total_rating' => $reviewHelper->getTotalRating($product),
-                        'total_reviews' => $total,
-                    ]) 
+        @endif
+        <li>
+            {{
+    __('shop::app.products.total-rating', [
+            'total_rating' => $reviewHelper->getTotalRating($product),
+            'total_reviews' => $total,
+        ])
             }}
-        </div>
-    </div>
+        </li>
+    </ul>
+
 @endif
 
 {!! view_render_event('bagisto.shop.products.review.after', ['product' => $product]) !!}

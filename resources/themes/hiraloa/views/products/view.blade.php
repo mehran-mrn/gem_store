@@ -12,84 +12,146 @@
 @section('content-wrapper')
 
     {!! view_render_event('bagisto.shop.products.view.before', ['product' => $product]) !!}
-
-    <section class="product-detail">
-
-        <div class="layouter">
-            <product-view>
-                <div class="form-container">
+    <!-- Begin Hiraola's Single Product Area -->
+    <div class="sp-area">
+        <div class="container">
+            <div class="sp-nav">
+                <div class="row">
                     @csrf()
 
                     <input type="hidden" name="product" value="{{ $product->product_id }}">
 
-                    @include ('hiraloa::products.view.gallery')
+                    {{--    <product-gallery></product-gallery>--}}
+                    <div class="col-lg-5 col-md-5">
+                        @include ('hiraloa::products.view.gallery')
 
-                    <div class="details">
-
-                        <div class="product-heading">
-                            <span>{{ $product->name }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7">
+                        <div class="sp-heading">
+                            <h5>{{ $product->name }}</h5>
                         </div>
-
-                        @include ('hiraloa::products.review', ['product' => $product])
-
-                        @include ('hiraloa::products.price', ['product' => $product])
-
-                        @include ('hiraloa::products.view.stock', ['product' => $product])
 
                         {!! view_render_event('bagisto.shop.products.view.short_description.before', ['product' => $product]) !!}
-
-                        <div class="description">
-                            {!! $product->short_description !!}
-                        </div>
-
+                        <span class="reference">{!! $product->short_description !!}</span>
                         {!! view_render_event('bagisto.shop.products.view.short_description.after', ['product' => $product]) !!}
 
+                        <div class="rating-box">
+                            @include ('hiraloa::products.review', ['product' => $product])
 
-                        {!! view_render_event('bagisto.shop.products.view.quantity.before', ['product' => $product]) !!}
-
-                        <div class="quantity control-group" :class="[errors.has('quantity') ? 'has-error' : '']">
+                        </div>
+                        <div class="sp-essential_stuff">
+                            <ul>
+                                <li>@include ('hiraloa::products.price', ['product' => $product])</li>
+                                <li>@include ('hiraloa::products.view.stock', ['product' => $product])</li>
+                            </ul>
+                        </div>
+                        <div class="quantity" :class="[errors.has('quantity') ? 'has-error' : '']">
+                            {!! view_render_event('bagisto.shop.products.view.quantity.before', ['product' => $product]) !!}
 
                             <label class="required">{{ __('shop::app.products.quantity') }}</label>
+                            <div class="cart-plus-minus">
+                                <input name="quantity" id="quantity" class="cart-plus-minus-box" value="1" v-validate="'required|numeric|min_value:1'" data-vv-as="&quot;{{ __('shop::app.products.quantity') }}&quot;" type="text">
+                                <div class="dec qtybutton" onclick="updateQunatity('remove')"><i class="fa fa-angle-down"></i></div>
+                                <div class="inc qtybutton" onclick=updateQunatity('add')><i class="fa fa-angle-up"></i></div>
+                            </div>
 
-                            <input class="control quantity-change" value="-" style="width: 35px; border-radius: 3px 0px 0px 3px;" onclick="updateQunatity('remove')" readonly>
+                            {!! view_render_event('bagisto.shop.products.view.quantity.after', ['product' => $product]) !!}
 
-                            <input name="quantity" id="quantity" class="control quantity-change" value="1" v-validate="'required|numeric|min_value:1'" style="width: 60px; position: relative; margin-left: -4px; margin-right: -4px; border-right: none;border-left: none; border-radius: 0px;" data-vv-as="&quot;{{ __('shop::app.products.quantity') }}&quot;" readonly>
-
-                            <input class="control quantity-change" value="+" style="width: 35px; padding: 0 12px; border-radius: 0px 3px 3px 0px;" onclick=updateQunatity('add') readonly>
-
-                            <span class="control-error" v-if="errors.has('quantity')">@{{ errors.first('quantity') }}</span>
                         </div>
-
-                        {!! view_render_event('bagisto.shop.products.view.quantity.after', ['product' => $product]) !!}
-
                         @if ($product->type == 'configurable')
                             <input type="hidden" value="true" name="is_configurable">
+                            <div class="color-list_area">
+                                @include ('hiraloa::products.view.configurable-options')
+                            </div>
                         @else
                             <input type="hidden" value="false" name="is_configurable">
                         @endif
 
-                        @include ('hiraloa::products.view.configurable-options')
+                        <div class="sp-content">
+                            @include ('hiraloa::products.view.product-add')
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hiraola's Single Product Area End Here -->
+
+
+    <!-- Begin Hiraola's Single Product Tab Area -->
+    <div class="hiraola-product-tab_area-2 sp-product-tab_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="sp-product-tab_nav ">
+                        <div class="product-tab">
+                            <ul class="nav product-menu">
+                                <li><a class="active" data-toggle="tab" href="#description"><span>{{ __('shop::app.products.description') }}</span></a>
+                                </li>
+                                <li><a data-toggle="tab" href="#specification"><span>Specification</span></a></li>
+                                <li><a data-toggle="tab" href="#reviews"><span>Reviews (1)</span></a></li>
+                            </ul>
+                        </div>
+                        <div class="tab-content hiraola-tab_content">
+                            <div id="description" class="tab-pane active show" role="tabpanel">
+                                <div class="product-description">
+                                    {!! view_render_event('bagisto.shop.products.view.description.before', ['product' => $product]) !!}
+                                    {!! $product->description !!}
+                                    {!! view_render_event('bagisto.shop.products.view.description.before', ['product' => $product]) !!}
+                                </div>
+                            </div>
+                            <div id="specification" class="tab-pane" role="tabpanel">
+                                @include ('hiraloa::products.view.attributes')
+                            </div>
+                            <div id="reviews" class="tab-pane" role="tabpanel">
+                                <div class="tab-pane active" id="tab-review">
+
+                                @include ('hiraloa::products.view.reviews')
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hiraola's Single Product Tab Area End Here -->
+
+
+    <section class="product-detail">
+        <div class="layouter">
+            <product-view>
+                <div class="form-container">
+                    <div class="details">
+
+
+
+====================================
+
+
+
+
+
+
 
                         {!! view_render_event('bagisto.shop.products.view.description.before', ['product' => $product]) !!}
 
                         <accordian :title="'{{ __('shop::app.products.description') }}'" :active="true">
                             <div slot="header">
-                                {{ __('shop::app.products.description') }}
+
                                 <i class="icon expand-icon right"></i>
                             </div>
 
                             <div slot="body">
                                 <div class="full-description">
-                                    {!! $product->description !!}
+
                                 </div>
                             </div>
                         </accordian>
 
-                        {!! view_render_event('bagisto.shop.products.view.description.before', ['product' => $product]) !!}
 
-                        @include ('hiraloa::products.view.attributes')
 
-                        @include ('hiraloa::products.view.reviews')
                     </div>
                 </div>
             </product-view>
