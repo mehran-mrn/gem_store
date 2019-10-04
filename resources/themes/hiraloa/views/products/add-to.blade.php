@@ -1,3 +1,4 @@
+//
 {!! view_render_event('bagisto.shop.products.add_to.before', ['product' => $product]) !!}
 
 <div class="cart-fav-seg">

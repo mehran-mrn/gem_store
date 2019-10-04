@@ -47,16 +47,19 @@
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-lg-3 order-2 order-lg-2">
+                                            @include ('hiraloa::products.list.layered-navigation')
+
                                         </div>
                                         <div class="col-lg-12 order-1 order-lg-1">
                                             @include ('hiraloa::products.list.toolbar')
+                                            <div class="shop-product-wrap grid gridview-4 row">
+
                                             @foreach ($products as $productFlat)
-                                                <div class="shop-product-wrap grid gridview-4 row">
                                                     <div class="col-lg-3">
                                                 @include ('hiraloa::products.list.card', ['product' => $productFlat])
                                                     </div>
-                                                </div>
                                             @endforeach
+                                            </div>
 
                                         </div>
                                     </div>
