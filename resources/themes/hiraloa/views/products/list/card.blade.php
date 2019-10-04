@@ -14,7 +14,7 @@
                 >
             </a>
             @if ($product->featured)
-                <span class="sticker-2">Sale</span>
+                <span class="sticker-2">{{__('shop::app.products.sale')}}</span>
             @endif
             @if ($product->new)
                 <span class="sticker">{{__('shop::app.products.new')}}</span>
