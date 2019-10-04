@@ -2,9 +2,11 @@
     <div class="header-middle_area d-none d-lg-block">
         <div class="container">
             <div class="row">
+
                 <div class="col-lg-3">
                     <div class="header-logo">
                         <a href="{{ route('shop.home.index') }}">
+
                             @if ($logo = core()->getCurrentChannel()->logo_url)
                                 <img class="logo" src="{{ $logo }}"/>
                             @else

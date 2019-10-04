@@ -1519,8 +1519,17 @@ button, .global-overlay, .quantity .cart-plus-minus > .qtybutton, .popup_wrapper
   color: #ffffff;
   border: 0;
 }
-
+.template-color-1 .sp-area .sp-nav .sp-content .qty-btn_area > ul li > button.qty-cart_btn {
+  background-color: #333333;
+  color: #ffffff;
+  border: 0;
+  padding: 10px 15px;
+}
 .template-color-1 .sp-area .sp-nav .sp-content .qty-btn_area > ul li > a.qty-cart_btn:hover {
+  background-color: #cda557;
+  color: #ffffff !important;
+}
+.template-color-1 .sp-area .sp-nav .sp-content .qty-btn_area > ul li > button.qty-cart_btn:hover {
   background-color: #cda557;
   color: #ffffff !important;
 }

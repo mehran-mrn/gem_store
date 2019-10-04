@@ -4,6 +4,7 @@
             <ul class="logo-container">
                 <li>
                     <a href="{{ route('shop.home.index') }}">
+
                         @if ($logo = core()->getCurrentChannel()->logo_url)
                             <img class="logo" src="{{ $logo }}" />
                         @else

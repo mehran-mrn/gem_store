@@ -27,8 +27,8 @@
                     <li><a class="hiraola-add_compare" href="compare.html" data-toggle="tooltip" data-placement="top" title="Compare This Product"><i
                                     class="ion-ios-shuffle-strong"></i></a>
                     </li>
-                    <li class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Quick View"><i
-                                    class="ion-eye"></i></a></li>
+{{--                    <li class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Quick View"><i--}}
+{{--                                    class="ion-eye"></i></a></li>--}}
                 </ul>
             </div>
 
