@@ -4,6 +4,9 @@
     {{ __('admin::app.error.404.page-title') }}
 @stop
 @section('content-wrapper')
+
+
+
     <div class="breadcrumb-area">
         <div class="container">
             <div class="breadcrumb-content">

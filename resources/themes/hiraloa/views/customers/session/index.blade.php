@@ -8,18 +8,15 @@
     <div class="breadcrumb-area">
         <div class="container">
             <div class="breadcrumb-content">
-                <h2>{{ __('shop::app.customer.signup-text.account_exists') }} - <a
-                            href="{{ route('customer.session.index') }}">{{ __('shop::app.customer.signup-text.title') }}</a>
-                </h2>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li class="active">Login & Register</li>
-                </ul>
+
+
             </div>
         </div>
     </div>
     <div class="hiraola-login-register_area">
         <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-xs-12 col-centered col-lg-6 ">
             {!! view_render_event('bagisto.shop.customers.login.before') !!}
             <form method="POST" action="{{ route('customer.session.create') }}" @submit.prevent="onSubmit">
                 {{ csrf_field() }}
@@ -55,7 +52,12 @@
                                     @endif
                                 @endif
                             </div>
+                            <div class="forgotton-password_info">
+                                <a href="{{ route('customer.register.index') }}"> {{ __('shop::app.customer.login-text.no_account') }} {{ __('shop::app.customer.login-text.title') }}</a>
+
+                            </div>
                         </div>
+
                         <div class="col-lg-12">
                             @if($errors->any())
                                 <div class="alert alert-danger">
@@ -77,6 +79,8 @@
                 </div>
             </form>
             {!! view_render_event('bagisto.shop.customers.login.after') !!}
+        </div>
+        </div>
         </div>
     </div>
 @endsection

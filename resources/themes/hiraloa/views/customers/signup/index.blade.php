@@ -1,4 +1,5 @@
-@extends('shop::layouts.master')
+//ok
+@extends('hiraloa::layouts.master')
 @section('page_title')
     {{ __('shop::app.customer.signup-form.page-title') }}
 @endsection
@@ -7,63 +8,14 @@
     <div class="breadcrumb-area">
         <div class="container">
             <div class="breadcrumb-content">
-                <h2>{{ __('shop::app.customer.signup-text.account_exists') }} - <a
-                            href="{{ route('customer.session.index') }}">{{ __('shop::app.customer.signup-text.title') }}</a>
-                </h2>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li class="active">Login & Register</li>
-                </ul>
+
             </div>
         </div>
     </div>
     <div class="hiraola-login-register_area">
         <div class="container">
             <div class="row">
-                <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6">
-                    {!! view_render_event('bagisto.shop.customers.login.before') !!}
-                    <form method="POST" action="{{ route('customer.session.create') }}" @submit.prevent="onSubmit">
-                        {{ csrf_field() }}
-                        <div class="login-form">
-                            <h4 class="login-title">{{ __('shop::app.customer.login-form.title') }}</h4>
-                            {!! view_render_event('bagisto.shop.customers.login_form_controls.before') !!}
-                            <div class="row">
-                                <div class="col-md-12 col-12">
-                                    <label for="email" class="required">{{ __('shop::app.customer.login-form.email') }}</label>
-                                    <input type="text" class="control" name="email" v-validate="'required|email'" value="{{ old('email') }}" data-vv-as="&quot;{{ __('shop::app.customer.login-form.email') }}&quot;">
-                                </div>
-                                <div class="col-12 mb--20">
-                                    <label for="password" class="required">{{ __('shop::app.customer.login-form.password') }}</label>
-                                    <input type="password" class="control" name="password" v-validate="'required'" value="{{ old('password') }}" data-vv-as="&quot;{{ __('shop::app.customer.login-form.password') }}&quot;">
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="check-box">
-{{--                                        <input type="checkbox" id="remember_me">--}}
-{{--                                        <label for="remember_me">{{ __('shop::app.customer.login-form.remember_me') }}</label>--}}
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="forgotton-password_info">
-                                        <a href="{{ route('customer.forgot-password.create') }}"> {{ __('shop::app.customer.login-form.forgot_pass') }}</a>
-                                        @if (Cookie::has('enable-resend'))
-                                            @if (Cookie::get('enable-resend') == true)
-                                                <a href="{{ route('customer.resend.verification-email', Cookie::get('email-for-resend')) }}">{{ __('shop::app.customer.login-form.resend-verification') }}</a>
-                                            @endif
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <button type="submit" class="hiraola-login_btn">
-                                        {{ __('shop::app.customer.login-form.button_title') }}
-                                    </button>
-                                </div>
-                            </div>
-                            {!! view_render_event('bagisto.shop.customers.login_form_controls.after') !!}
-                        </div>
-                    </form>
-                    {!! view_render_event('bagisto.shop.customers.login.after') !!}
-                </div>
-                <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
+                <div class="col-sm-12 col-md-12 col-lg-7 col-centered col-xs-12">
                     {!! view_render_event('bagisto.shop.customers.signup.before') !!}
                     <form method="post" action="{{ route('customer.register.create') }}" @submit.prevent="onSubmit">
                         {{ csrf_field() }}
@@ -106,6 +58,15 @@
                                            v-validate="'required|min:6|confirmed:password'"
                                            data-vv-as="&quot;{{ __('shop::app.customer.signup-form.confirm_pass') }}&quot;">
                                 </div>
+                                <div class="col-md-6"></div>
+                                <div class="col-md-6">
+                                    <div class="forgotton-password_info">
+                                        <a href="{{ route('customer.session.index') }}"> {{ __('shop::app.customer.signup-text.account_exists') }} {{ __('shop::app.customer.signup-text.title') }}</a>
+
+                                    </div>
+                                </div>
+
+
                                 <div class="col-lg-12">
                                     @if($errors->any())
                                         <div class="alert alert-danger">

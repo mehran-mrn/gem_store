@@ -5,34 +5,42 @@
 @stop
 
 @section('content-wrapper')
-
-    <div class="error-container" style="width: 100%; display: flex; justify-content: center;">
-
-        <div class="wrapper" style="display: flex; height: 60vh; width: 100%;
-            justify-content: start; align-items: center;">
-
-            <div class="error-box"  style="width: 50%">
-
-                <div class="error-title" style="font-size: 100px;color: #5E5E5E">  {{ __('admin::app.error.401.name') }}  </div>
-
-                <div class="error-messgae" style="font-size: 24px;color: #5E5E5E; margin-top: 40px;">
-                    {{ __('admin::app.error.401.title') }}
-                </div>
-
-                <div class="error-description" style="margin-top: 20px;margin-bottom: 20px;color: #242424">
-                    {{ __('admin::app.error.401.message') }}
-                </div>
-
-                <a href="{{ route('shop.home.index') }}">
-                    {{ __('admin::app.error.go-to-home') }}
-                </a>
+    <!-- Begin Hiraola's Breadcrumb Area -->
+    <div class="breadcrumb-area">
+        <div class="container">
+            <div class="breadcrumb-content">
 
             </div>
-
-            <div class="error-graphic icon-404" style="margin-left: 10% ;"></div>
-
         </div>
-
     </div>
+    <!-- Hiraola's Breadcrumb Area End Here -->
+
+    <!-- Begin Hiraola's Error 404 Page Area -->
+    <div class="error404-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 ml-auto mr-auto text-center">
+                    <div class="search-error-wrapper">
+                        <h1>{{ __('admin::app.error.401.name') }}</h1>
+                        <h2>{{ __('admin::app.error.401.title') }}</h2>
+                        <p class="short_desc">{{ __('admin::app.error.401.message') }}</p>
+                        <form action="javascript:void(0)" class="error-form">
+                            <div class="inner-error_form">
+                                <input type="text" placeholder="Search..." class="error-input-text">
+                                <button type="submit" class="error-search_btn"><i class="fa fa-search"></i></button>
+                            </div>
+                        </form>
+                        <div class="hiraola-btn-ps_center"></div>
+                        <a href="{{ route('shop.home.index') }}" class="hiraola-error_btn">{{ __('admin::app.error.go-to-home') }}</a>
+                        <div class="error-graphic icon-404" style="margin-left: 10% ;"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hiraola's Error 404 Page End Here -->
+
+
 
 @endsection

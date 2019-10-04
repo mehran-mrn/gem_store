@@ -4311,7 +4311,10 @@ button.li-btn:hover {
     padding-bottom: 30px;
   }
 }
-
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
 .static-banner_area {
   padding-top: 80px;
 }
