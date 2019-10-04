@@ -1,72 +1,89 @@
 @extends('shop::layouts.master')
 
 @section('content-wrapper')
-
-<div class="account-content">
-    @inject ('productImageHelper', 'Webkul\Product\Helpers\ProductImage')
-
-    @include('shop::customers.account.partials.sidemenu')
-
-    <div class="account-layout">
-
-        <div class="account-head mb-15">
-            <span class="account-heading">{{ __('shop::app.wishlist.title') }}</span>
-
-            @if (count($items))
-            <div class="account-action">
-                <a href="{{ route('customer.wishlist.removeall') }}">{{ __('shop::app.wishlist.deleteall') }}</a>
+    <div class="breadcrumb-area">
+        <div class="container">
+            <div class="breadcrumb-content">
+                <h2>Other</h2>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active">My Account</li>
+                </ul>
             </div>
-            @endif
-            <div class="horizontal-rule"></div>
         </div>
+    </div>
+    <main class="page-content">
+        @inject ('productImageHelper', 'Webkul\Product\Helpers\ProductImage')
+        <div class="account-page-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        @include('shop::customers.account.partials.sidemenu')
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="tab-content myaccount-tab-content" id="account-page-tab-content">
+                            <div class="tab-pane fade show active" id="account-dashboard" role="tabpanel"
+                                 aria-labelledby="account-dashboard-tab">
+                                <div class="myaccount-details">
+                                    <div class="account-head mb-10">
+                                        <span class="account-heading">{{ __('shop::app.wishlist.title') }}</span>
 
-        {!! view_render_event('bagisto.shop.customers.account.wishlist.list.before', ['wishlist' => $items]) !!}
+                                        @if (count($items))
+                                            <div class="account-action">
+                                                <a href="{{ route('customer.wishlist.removeall') }}">{{ __('shop::app.wishlist.deleteall') }}</a>
+                                            </div>
+                                        @endif
+                                        <div class="horizontal-rule"></div>
+                                    </div>
+                                    {!! view_render_event('bagisto.shop.customers.account.wishlist.list.before', ['wishlist' => $items]) !!}
+                                    <div class="account-items-list">
+                                        @if ($items->count())
+                                            @foreach ($items as $item)
+                                                <div class="account-item-card mt-15 mb-15">
+                                                    <div class="media-info">
+                                                        @php
+                                                            $image = $productImageHelper->getProductBaseImage($item->product);
+                                                        @endphp
 
-        <div class="account-items-list">
+                                                        <img class="media" src="{{ $image['small_image_url'] }}" />
 
-            @if ($items->count())
-            @foreach ($items as $item)
-                <div class="account-item-card mt-15 mb-15">
-                    <div class="media-info">
-                        @php
-                            $image = $productImageHelper->getProductBaseImage($item->product);
-                        @endphp
+                                                        <div class="info">
+                                                            <div class="product-name">
+                                                                {{$item->product->name}}
+                                                            </div>
 
-                        <img class="media" src="{{ $image['small_image_url'] }}" />
+                                                            @inject ('reviewHelper', 'Webkul\Product\Helpers\Review')
 
-                        <div class="info">
-                            <div class="product-name">
-                                {{$item->product->name}}
-                            </div>
-
-                            @inject ('reviewHelper', 'Webkul\Product\Helpers\Review')
-
-                            <span class="stars" style="display: inline">
+                                                            <span class="stars" style="display: inline">
                                 @for($i=1;$i<=$reviewHelper->getAverageRating($item->product);$i++)
-                                    <span class="icon star-icon"></span>
-                                @endfor
+                                                                    <span class="icon star-icon"></span>
+                                                                @endfor
                             </span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="operations">
+                                                        <a class="mb-50" href="{{ route('customer.wishlist.remove', $item->id) }}"><span class="icon trash-icon"></span></a>
+
+                                                        <a href="{{ route('customer.wishlist.move', $item->id) }}" class="btn btn-primary btn-md">{{ __('shop::app.wishlist.move-to-cart') }}</a>
+                                                    </div>
+                                                </div>
+                                                <div class="horizontal-rule mb-10 mt-10"></div>
+                                            @endforeach
+
+                                        @else
+                                            <div class="empty">
+                                                {{ __('customer::app.wishlist.empty') }}
+                                            </div>
+                                        @endif
+                                    </div>
+                                    {!! view_render_event('bagisto.shop.customers.account.wishlist.list.after', ['wishlist' => $items]) !!}
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="operations">
-                        <a class="mb-50" href="{{ route('customer.wishlist.remove', $item->id) }}"><span class="icon trash-icon"></span></a>
-
-                        <a href="{{ route('customer.wishlist.move', $item->id) }}" class="btn btn-primary btn-md">{{ __('shop::app.wishlist.move-to-cart') }}</a>
-                    </div>
                 </div>
-                <div class="horizontal-rule mb-10 mt-10"></div>
-            @endforeach
-
-            @else
-                <div class="empty">
-                    {{ __('customer::app.wishlist.empty') }}
-                </div>
-            @endif
+            </div>
         </div>
-
-        {!! view_render_event('bagisto.shop.customers.account.wishlist.list.after', ['wishlist' => $items]) !!}
-
-    </div>
-</div>
+    </main>
 @endsection
