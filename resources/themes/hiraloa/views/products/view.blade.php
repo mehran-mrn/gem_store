@@ -13,20 +13,23 @@
 
     {!! view_render_event('bagisto.shop.products.view.before', ['product' => $product]) !!}
     <!-- Begin Hiraola's Single Product Area -->
+    <section class="product-detail">
     <div class="sp-area">
         <div class="container">
             <div class="sp-nav">
-                <div class="row">
+                <form method="POST" id="product-form" action="{{ route('cart.add', $product->product_id) }}" @click="onSubmit($event)">
+                <div class="form-container row">
+
                     @csrf()
 
                     <input type="hidden" name="product" value="{{ $product->product_id }}">
 
                     {{--    <product-gallery></product-gallery>--}}
-                    <div class="col-lg-5 col-md-5">
+                    <div class="col-lg-6 col-md-6">
                         @include ('hiraloa::products.view.gallery')
 
                     </div>
-                    <div class="col-lg-7 col-md-7">
+                    <div class="col-lg-6 col-md-6">
                         <div class="sp-heading">
                             <h5>{{ $product->name }}</h5>
                         </div>
@@ -73,9 +76,11 @@
 
                     </div>
                 </div>
+                </form>
             </div>
         </div>
     </div>
+    </section>
     <!-- Hiraola's Single Product Area End Here -->
 
 

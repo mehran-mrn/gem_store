@@ -139,8 +139,7 @@
 
 <script src="{{url('themes/hiraloa/assets/js/main.js')}}"></script>
 
-<script type="text/javascript" src="{{ bagisto_asset('js/shop.js') }}"></script>
-<script type="text/javascript" src="{{ asset('vendor/webkul/ui/assets/js/ui.js') }}"></script>
+{{--<script type="text/javascript" src="{{ asset('vendor/webkul/ui/assets/js/ui.js') }}"></script>--}}
 <script src="{{ url('themes/hiraloa/assets/js/plugins/pnotify/PNotify.js') }}"></script>
 <script>
     $(document).ready(function () {

@@ -1303,6 +1303,7 @@
     $('.sp-img_slider').slick({
         infinite: true,
         slidesToShow: 4,
+        rtl: true,
         slidesToScroll: 1,
         prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-forward"></i></button>',
         nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-back"></i></button>',

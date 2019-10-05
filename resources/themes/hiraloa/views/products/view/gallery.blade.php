@@ -9,63 +9,59 @@
 
 {{--    <div class="cp-spinner cp-round" id="loader">--}}
 {{--    </div>--}}
+
 <div class="sp-img_area">
     <div class="zoompro-border">
-        <img class="zoompro"
-             src="{{asset(url('/themes/hiraloa/assets/images/single-product/small-size/1.jpg'))}}"
-             data-zoom-image="{{asset(url('/themes/hiraloa/assets/images/single-product/small-size/1.jpg'))}}"
-             alt="Hiraola's Product Image"/>
+        <img class="zoompro" src="{{$images[0]['large_image_url']}}" data-zoom-image="{{$images[0]['original_image_url']}}" alt="Hiraola's Product Image" />
     </div>
     <div id="gallery" class="sp-img_slider">
-        <a class="active" data-image="{{asset(url('/themes/hiraloa/assets/images/single-product/large-size/1.jpg'))}}"
-           data-zoom-image="{{asset(url('/themes/hiraloa/assets/images/single-product/large-size/1.jpg'))}}">
-            <img src="{{asset(url('/themes/hiraloa/assets/images/single-product/small-size/1.jpg'))}}"
-                 alt="Hiraola's Product Image">
+        @foreach($images as $image)
+        <a class="active" data-image="{{$image['large_image_url']}}" data-zoom-image="{{$image['original_image_url']}}">
+            <img src="{{$image['small_image_url']}}" alt="Hiraola's Product Image">
         </a>
+        @endforeach
     </div>
 </div>
 
+
+    <div class="cp-spinner cp-round" id="loader">
+    </div>
+
+    <product-gallery></product-gallery>
 
 
 {!! view_render_event('bagisto.shop.products.view.gallery.after', ['product' => $product]) !!}
 
 @push('scripts')
 
-    <script type="text/x-template" id="product-gallery-template">
-        <div>
 
-            <ul class="thumb-list">
-                <li class="gallery-control top" @click="moveThumbs('top')"
-                    v-if="(thumbs.length > 4) && this.is_move.up">
-                    <span class="overlay"></span>
-                    <i class="icon arrow-up-white-icon"></i>
-                </li>
 
-                <li class="thumb-frame" v-for='(thumb, index) in thumbs' @mouseover="changeImage(thumb)"
-                    :class="[thumb.large_image_url == currentLargeImageUrl ? 'active' : '']" id="thumb-frame">
-                    <img :src="thumb.small_image_url"/>
-                </li>
+{{--    <script type="text/x-template" id="product-gallery-template">--}}
+{{--        <div class="sp-img_area">--}}
+{{--            <div class="zoompro-border">--}}
+{{--                <img class="zoompro"--}}
+{{--                     :src="currentLargeImageUrl"--}}
+{{--                     :data-image="currentOriginalImageUrl"--}}
+{{--                     :data-zoom-image="currentOriginalImageUrl"--}}
+{{--                     alt="Hiraola's Product Image" />--}}
+{{--                @auth('customer')--}}
+{{--                    <a @if ($wishListHelper->getWishlistProduct($product)) class="add-to-wishlist already" @else class="add-to-wishlist" @endif href="{{ route('customer.wishlist.add', $product->product_id) }}">--}}
+{{--                    </a>--}}
+{{--                @endauth--}}
+{{--            </div>--}}
+{{--            <div id="gallery" class="sp-img_slider">--}}
+{{--                <a  class="active" :class="[thumb.large_image_url == currentLargeImageUrl ? 'active' : '']"--}}
+{{--                    v-for='(thumb, index) in thumbs'--}}
+{{--                    @mouseover="changeImage(thumb)"--}}
+{{--                    data-image="assets/images/single-product/large-size/1.jpg" data-zoom-image="assets/images/single-product/large-size/1.jpg">--}}
+{{--                    <img :src="thumb.small_image_url" alt="Hiraola's Product Image">--}}
+{{--                </a>--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
-                <li class="gallery-control bottom" @click="moveThumbs('bottom')"
-                    v-if="(thumbs.length > 4) && this.is_move.down">
-                    <span class="overlay"></span>
-                    <i class="icon arrow-down-white-icon"></i>
-                </li>
-            </ul>
 
-            <div class="product-hero-image" id="product-hero-image">
-                <img :src="currentLargeImageUrl" id="pro-img" :data-image="currentOriginalImageUrl"/>
+{{--    </script>--}}
 
-                @auth('customer')
-                    <a @if ($wishListHelper->getWishlistProduct($product)) class="add-to-wishlist already"
-                       @else class="add-to-wishlist"
-                       @endif href="{{ route('customer.wishlist.add', $product->product_id) }}">
-                    </a>
-                @endauth
-            </div>
-
-        </div>
-    </script>
 
     <script>
         var galleryImages = @json($images);
