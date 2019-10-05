@@ -127,7 +127,6 @@ class CartController extends Controller
 
         } catch(\Exception $e) {
             session()->flash('error', trans($e->getMessage()));
-
             return redirect()->back();
         }
     }
