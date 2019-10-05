@@ -12,12 +12,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-
                     <div class="hiraola-section_title">
                         <h4>{{ __('shop::app.products.up-sell-title') }}</h4>
                     </div>
-
-
                 </div>
                 <div class="col-lg-12">
                     <div class="hiraola-product_slider-3">
