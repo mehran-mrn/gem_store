@@ -1413,15 +1413,16 @@
             }
         ]
     });
-
     /*--------------------------
         Hiraola's Product Zoom
     ---------------------------- */
     $('.zoompro').elevateZoom({
         gallery: 'gallery',
         galleryActiveClass: 'active',
+        zoomType: 'lens',
+        lensShape: 'round',
+        lensSize: 200
     });
-
     /*----------------------------------------*/
     /*  Single Product Slider
  /*----------------------------------------*/

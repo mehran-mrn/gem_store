@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/plugins/jquery-ui.min.css')}}">
     <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/plugins/lightgallery.min.css')}}">
     <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/plugins/nice-select.css')}}">
+    <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/plugins/pnotify/PNotifyBrightTheme.css')}}">
     {{--    <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/style.css')}}">--}}
     <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/styleRTL.css')}}">
     <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/fonts.css')}}">
@@ -108,6 +109,7 @@
 
 </div>
 
+
 <script src="{{url('themes/hiraloa/assets/js/vendor/jquery-1.12.4.min.js')}}"></script>
 {{--    <script src="{{url('themes/hiraloa/assets/js/vendor/jquery-3.3.1.slim.min.js')}}"></script>--}}
 <script src="{{url('themes/hiraloa/assets/js/vendor/modernizr-2.8.3.min.js')}}"></script>
@@ -129,11 +131,43 @@
 <script src="{{url('themes/hiraloa/assets/js/plugins/waypoints.min.js')}}"></script>
 <script src="{{url('themes/hiraloa/assets/js/plugins/instafeed.min.js')}}"></script>
 <script src="{{url('themes/hiraloa/assets/js/plugins/jquery.elevateZoom-3.0.8.min.js')}}"></script>
-
-{{--<script src="{{url('themes/hiraloa/assets/js/vendor/vendor.min.js')}}"></script>--}}
-{{--<script src="{{url('themes/hiraloa/assets/js/plugins/plugins.min.js')}}"></script>--}}
-
+<!--
+<script src="assets/js/vendor/vendor.min.js"></script>
+<script src="assets/js/plugins/plugins.min.js"></script>
+-->
 <script src="{{url('themes/hiraloa/assets/js/main.js')}}"></script>
+
+<script type="text/javascript" src="{{ bagisto_asset('js/shop.js') }}"></script>
+<script type="text/javascript" src="{{ asset('vendor/webkul/ui/assets/js/ui.js') }}"></script>
+<script src="{{ url('themes/hiraloa/assets/js/plugins/pnotify/PNotify.js') }}"></script>
+<script>
+    $(document).ready(function () {
+        @if(!$errors->isEmpty())
+        @foreach ($errors->all() as $key => $error)
+        PNotify.error({
+            title: '{{$key}}',
+            text: '{{ $error }}',
+            delay: 5000,
+        });
+        @endforeach
+        @endif
+        @if ($message = Session::get('success'))
+        PNotify.success({
+            text: '{{$message}}',
+            delay: 3000,
+        });
+        @endif
+        {{Session::forget('success')}}
+        @if ($message = Session::get('warning'))
+        PNotify.error({
+            text: '{{$message}}',
+            delay: 3000,
+        });
+        @endif
+        {{Session::forget('warning')}}
+    });
+</script>
+
 
 <script type="text/javascript">
     window.flashMessages = [];
@@ -157,7 +191,6 @@
     @endif
     @endif
 </script>
-
 @stack('scripts')
 {!! view_render_event('bagisto.shop.layout.body.after') !!}
 </body>
