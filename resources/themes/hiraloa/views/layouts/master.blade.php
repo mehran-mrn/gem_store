@@ -108,7 +108,6 @@
 
 </div>
 
-
 <script src="{{url('themes/hiraloa/assets/js/vendor/jquery-1.12.4.min.js')}}"></script>
 {{--    <script src="{{url('themes/hiraloa/assets/js/vendor/jquery-3.3.1.slim.min.js')}}"></script>--}}
 <script src="{{url('themes/hiraloa/assets/js/vendor/modernizr-2.8.3.min.js')}}"></script>
@@ -130,10 +129,10 @@
 <script src="{{url('themes/hiraloa/assets/js/plugins/waypoints.min.js')}}"></script>
 <script src="{{url('themes/hiraloa/assets/js/plugins/instafeed.min.js')}}"></script>
 <script src="{{url('themes/hiraloa/assets/js/plugins/jquery.elevateZoom-3.0.8.min.js')}}"></script>
-<!--
-<script src="assets/js/vendor/vendor.min.js"></script>
-<script src="assets/js/plugins/plugins.min.js"></script>
--->
+
+{{--<script src="{{url('themes/hiraloa/assets/js/vendor/vendor.min.js')}}"></script>--}}
+{{--<script src="{{url('themes/hiraloa/assets/js/plugins/plugins.min.js')}}"></script>--}}
+
 <script src="{{url('themes/hiraloa/assets/js/main.js')}}"></script>
 
 <script type="text/javascript">
@@ -158,6 +157,7 @@
     @endif
     @endif
 </script>
+
 @stack('scripts')
 {!! view_render_event('bagisto.shop.layout.body.after') !!}
 </body>
