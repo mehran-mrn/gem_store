@@ -16,6 +16,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="product-tab">
+
                         <ul class="nav product-menu">
                             <?php
                             $active = 'active';
@@ -40,7 +41,7 @@
                         ?>
                         @foreach($categories as $category)
                             <div id="cat_{{$x}}" class="tab-pane {{$active[0]}} {{$active[1]}}" role="tabpanel">
-                                <div class="hiraola-product-tab_slider-3">
+                                <div class="hiraola-product-tab_slider-3 hiraola-product_slider">
                                     @foreach (app('Webkul\Product\Repositories\ProductRepository',['featured'=>1])->getAll($category->id) as $productFlat)
                                         @include ('shop::products.list.card', ['product' => $productFlat])
                                     @endforeach

@@ -16,8 +16,11 @@
                         <h4>{{ __('shop::app.products.up-sell-title') }}</h4>
                     </div>
                 </div>
+
+
+
                 <div class="col-lg-12">
-                    <div class="hiraola-product_slider-3">
+                    <div class="hiraola-product_slider-3 ">
                     @foreach ($productUpSells as $up_sell_product)
 
                         <!-- Begin Hiraola's Slide Item Area -->

@@ -14,6 +14,7 @@
     {!! view_render_event('bagisto.shop.products.view.before', ['product' => $product]) !!}
     <!-- Begin Hiraola's Single Product Area -->
     <section class="product-detail">
+
     <div class="sp-area">
         <div class="container">
             <div class="sp-nav">

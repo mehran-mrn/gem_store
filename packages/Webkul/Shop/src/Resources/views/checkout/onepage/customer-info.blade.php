@@ -8,7 +8,7 @@
             </a>
         </div>
         <div class="address-holder">
-            <div class="address-card" v-for='(addresses, index) in this.allAddress'>
+            <div class="address-card hiraola-sidebar_categories" v-for='(addresses, index) in this.allAddress'>
                 <div class="checkout-address-content" style="display: flex; flex-direction: row; justify-content: space-between; width: 100%;">
                     <label class="radio-container" style="float: right; width: 10%;">
                         <input type="radio" v-validate="'required'" id="billing[address_id]" name="billing[address_id]" :value="addresses.id" v-model="address.billing.address_id" data-vv-as="&quot;{{ __('shop::app.checkout.onepage.billing-address') }}&quot;">

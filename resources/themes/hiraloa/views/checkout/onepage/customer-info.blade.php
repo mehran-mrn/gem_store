@@ -76,62 +76,49 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
     @endguest
 
 </div>
-<div class="row">
-    @auth('customer')
-        @if(count(auth('customer')->user()->addresses))
-            <a class="btn btn-lg btn-primary" @click=backToSavedBillingAddress()>
-                {{ __('shop::app.checkout.onepage.back') }}
-            </a>
-        @endif
-    @endauth
-</div>
+
 
 <form data-vv-scope="address-form">
 
     <div class="form-container" v-if="!this.new_billing_address">
-        <div class="form-header mb-30">
-            <span class="checkout-step-heading">{{ __('shop::app.checkout.onepage.billing-address') }}</span>
+        <span class="checkout-step-heading">{{ __('shop::app.checkout.onepage.billing-address') }}</span>
 
-            <a class="btn btn-lg btn-primary" @click=newBillingAddress()>
-                {{ __('shop::app.checkout.onepage.new-address') }}
-            </a>
-        </div>
-        <div class="address-holder">
+        <div class="address-holder ">
             <div class="address-card" v-for='(addresses, index) in this.allAddress'>
+                <label class="radio-container" style="float: right; width: 10%;">
+                    <input type="radio" v-validate="'required'" id="billing[address_id]" name="billing[address_id]"
+                           :value="addresses.id" v-model="address.billing.address_id"
+                           data-vv-as="&quot;{{ __('shop::app.checkout.onepage.billing-address') }}&quot;">
+                    <span class="checkmark"></span>
+                </label>
+<hr>
+
                 <div class="checkout-address-content"
                      style="display: flex; flex-direction: row; justify-content: space-between; width: 100%;">
-                    <label class="radio-container" style="float: right; width: 10%;">
-                        <input type="radio" v-validate="'required'" id="billing[address_id]" name="billing[address_id]"
-                               :value="addresses.id" v-model="address.billing.address_id"
-                               data-vv-as="&quot;{{ __('shop::app.checkout.onepage.billing-address') }}&quot;">
-                        <span class="checkmark"></span>
-                    </label>
 
-                    <ul class="address-card-list" style="float: right; width: 85%;">
-                        <li class="mb-10">
+
+                    <div class="address-box">
+                    <ul class="address-card-list " style="float: right; width: 100%;">
+                        <li class="mb-1">
                             <b>@{{ allAddress.first_name }} @{{ allAddress.last_name }},</b>
                         </li>
 
-                        <li class="mb-5">
+                        <li class="mb-1">
                             @{{ addresses.address1 }},
                         </li>
 
-                        <li class="mb-5">
+                        <li class="mb-1">
                             @{{ addresses.city }},
                         </li>
-
-                        <li class="mb-5">
+                        <li class="mb-1">
                             @{{ addresses.state }},
                         </li>
-
-                        <li class="mb-15">
+                        <li class="mb-1">
                             @{{ addresses.country }}.
                         </li>
 
@@ -139,6 +126,7 @@
                             <b>{{ __('shop::app.customer.account.address.index.contact') }}</b> : @{{ addresses.phone }}
                         </li>
                     </ul>
+                    </div>
                 </div>
             </div>
             <div class="control-group" :class="[errors.has('address-form.billing[address_id]') ? 'has-error' : '']">
@@ -147,17 +135,27 @@
                 </span>
             </div>
         </div>
-        <div class="control-group mt-5">
-            <span class="checkbox">
-                <input type="checkbox" id="billing[use_for_shipping]" name="billing[use_for_shipping]"
-                       v-model="address.billing.use_for_shipping"/>
-                    <label class="checkbox-view" for="billing[use_for_shipping]"></label>
-                    {{ __('shop::app.checkout.onepage.use_for_shipping') }}
-            </span>
 
+        <div class="form-header mb-15">
+
+            <a class="mb-30 btn btn-lg btn-primary float-right" @click=newBillingAddress()>
+                {{ __('shop::app.checkout.onepage.new-address') }}
+            </a>
         </div>
     </div>
     <div class="form-container checkbox-form " v-if="this.new_billing_address">
+
+        <div class="row">
+
+
+        @auth('customer')
+                @if(count(auth('customer')->user()->addresses))
+                    <a class="btn btn-lg btn-primary" @click=backToSavedBillingAddress()>
+                        {{ __('shop::app.checkout.onepage.back') }}
+                    </a>
+                @endif
+            @endauth
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="country-select clearfix"
@@ -323,11 +321,17 @@
                 @endauth
             </div>
             <div class="control-group">
-            <span class="checkbox">
+                @auth(!'customer')
+                    @if(!count(auth('customer')->user()->addresses))
+                        <span class="checkbox">
                 <input type="checkbox" id="billing[use_for_shipping]" name="billing[use_for_shipping]" v-model="address.billing.use_for_shipping"/>
                 <label class="checkbox-view" for="billing[use_for_shipping]"></label>
                 {{ __('shop::app.checkout.onepage.use_for_shipping') }}
             </span>
+                    @endif
+                @endauth
+
+
 
             </div>
 
@@ -354,23 +358,23 @@
                     </label>
 
                     <ul class="address-card-list" style="float: right; width: 85%;">
-                        <li class="mb-10">
+                        <li class="mb-2">
                             <b>@{{ allAddress.first_name }} @{{ allAddress.last_name }},</b>
                         </li>
 
-                        <li class="mb-5">
+                        <li class="mb-1">
                             @{{ addresses.address1 }},
                         </li>
 
-                        <li class="mb-5">
+                        <li class="mb-1">
                             @{{ addresses.city }},
                         </li>
 
-                        <li class="mb-5">
+                        <li class="mb-1">
                             @{{ addresses.state }},
                         </li>
 
-                        <li class="mb-15">
+                        <li class="mb-2">
                             @{{ addresses.country }}.
                         </li>
 

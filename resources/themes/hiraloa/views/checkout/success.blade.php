@@ -6,6 +6,7 @@
 
 @section('content-wrapper')
 
+
     <div class="order-success-content" style="min-height: 300px;">
         <h1>{{ __('shop::app.checkout.success.thanks') }}</h1>
 
