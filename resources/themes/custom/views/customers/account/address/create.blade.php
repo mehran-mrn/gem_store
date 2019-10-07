@@ -40,7 +40,7 @@
                         </div>
                     @endif
 
-                    @include ('shop::customers.account.address.country-state', ['countryCode' => old('country'), 'stateCode' => old('state')])
+                    @include ('custom::customers.account.address.country-state', ['countryCode' => old('country'), 'stateCode' => old('state')])
 
                     <div class="control-group" :class="[errors.has('city') ? 'has-error' : '']">
                         <label for="city" class="required">{{ __('shop::app.customer.account.address.create.city') }}</label>

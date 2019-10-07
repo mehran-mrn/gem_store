@@ -1,7 +1,7 @@
 @component('shop::emails.layouts.master')
     <div style="text-align: center;">
         <a href="{{ config('app.url') }}">
-            @include ('shop::emails.layouts.logo')
+            @include ('custom::emails.layouts.logo')
         </a>
     </div>
 

@@ -7,7 +7,7 @@
     <?php $productBaseImage = $productImageHelper->getProductBaseImage($product); ?>
 
     @if ($product->new)
-        <div class="sticker new">
+        <div class="sticker sticker-left new">
             {{ __('shop::app.products.new') }}
         </div>
     @endif
@@ -28,7 +28,7 @@
             </a>
         </div>
 
-        @include ('shop::products.price', ['product' => $product])
+        @include ('custom::products.price', ['product' => $product])
 
         @include('shop::products.add-buttons', ['product' => $product])
     </div>
