@@ -1,11 +1,11 @@
-@extends('shop::layouts.master')
+@extends('hiraloa::layouts.master')
 
 @section('content-wrapper')
 
 <div class="account-content">
     @inject ('productImageHelper', 'Webkul\Product\Helpers\ProductImage')
 
-    @include('shop::customers.account.partials.sidemenu')
+    @include('hiraloa::customers.account.partials.sidemenu')
 
     <div class="account-layout">
 

@@ -1,4 +1,4 @@
-@extends('shop::layouts.master')
+@extends('hiraloa::layouts.master')
 
 @section('page_title')
     {{ __('shop::app.customer.account.order.view.page-tile', ['order_id' => $order->increment_id]) }}
@@ -7,7 +7,7 @@
 @section('content-wrapper')
 
     <div class="account-content">
-        @include('shop::customers.account.partials.sidemenu')
+        @include('hiraloa::customers.account.partials.sidemenu')
 
         <div class="account-layout">
 

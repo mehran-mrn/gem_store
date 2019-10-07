@@ -13,7 +13,6 @@
 
     <link rel="stylesheet" href="{{ bagisto_asset('css/shop.css') }}">
     <link rel="stylesheet" href="{{ asset('themes/custom/ui/assets/css/ui.css') }}">
-    <link rel="stylesheet" href="{{ asset('themes/custom/assets/css/style.css') }}">
 
     @if ($favicon = core()->getCurrentChannel()->favicon_url)
         <link rel="icon" sizes="16x16" href="{{ $favicon }}" />
