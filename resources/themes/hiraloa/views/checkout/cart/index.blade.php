@@ -6,187 +6,214 @@
 
 @section('content-wrapper')
     @inject ('productImageHelper', 'Webkul\Product\Helpers\ProductImage')
-    <section class="cart">
-        @if ($cart)
-            <div class="title">
-                {{ __('shop::app.checkout.cart.title') }}
+    <!-- Begin Hiraola's Breadcrumb Area -->
+    <div class="breadcrumb-area">
+        <div class="container">
+            <div class="breadcrumb-content">
+                <h2>{{ __('shop::app.checkout.cart.title') }}</h2>
+
             </div>
-
-            <div class="cart-content">
-                <div class="left-side">
-                    <form action="{{ route('shop.checkout.cart.update') }}" method="POST" @submit.prevent="onSubmit">
-
-                        <div class="cart-item-list" style="margin-top: 0">
-                            @csrf
-                            @foreach ($cart->items as $key => $item)
-                                <?php
-                                    if ($item->type == "configurable")
-                                        $productBaseImage = $productImageHelper->getProductBaseImage($item->child->product);
-                                    else
-                                        $productBaseImage = $productImageHelper->getProductBaseImage($item->product);
-                                ?>
-
-                                <div class="item mt-5">
-                                    <div class="item-image" style="margin-right: 15px;">
-                                        <a href="{{ url()->to('/').'/products/'.$item->product->url_key }}"><img src="{{ $productBaseImage['medium_image_url'] }}" /></a>
-                                    </div>
-
-                                    <div class="item-details">
-
-                                        {!! view_render_event('bagisto.shop.checkout.cart.item.name.before', ['item' => $item]) !!}
-
-                                        <div class="item-title">
-                                            <a href="{{ url()->to('/').'/products/'.$item->product->url_key }}">
-                                                {{ $item->product->name }}
-                                            </a>
-                                        </div>
-
-                                        {!! view_render_event('bagisto.shop.checkout.cart.item.name.after', ['item' => $item]) !!}
-
-
-                                        {!! view_render_event('bagisto.shop.checkout.cart.item.price.before', ['item' => $item]) !!}
-
-                                        <div class="price">
-                                            {{ core()->currency($item->base_price) }}
-                                        </div>
-
-                                        {!! view_render_event('bagisto.shop.checkout.cart.item.price.after', ['item' => $item]) !!}
-
-
-                                        {!! view_render_event('bagisto.shop.checkout.cart.item.options.before', ['item' => $item]) !!}
-
-                                        @if ($item->type == 'configurable')
-
-                                            <div class="summary">
-
+        </div>
+    </div>
+    <!-- Hiraola's Breadcrumb Area End Here -->
+    <!-- Begin Hiraola's Cart Area -->
+    <div class="hiraola-cart-area">
+        @if ($cart)
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <form action="{{ route('shop.checkout.cart.update') }}" method="POST"
+                              @submit.prevent="onSubmit">
+                            <div class="table-content table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th class="hiraola-product-remove">remove</th>
+                                        <th class="hiraola-product-thumbnail">images</th>
+                                        <th class="cart-product-name">Product</th>
+                                        <th class="hiraola-product-quantity">Quantity</th>
+                                        <th class="hiraola-product-subtotal">unit price</th>
+                                        <th class="hiraola-product-subtotal">Total</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @csrf
+                                    @foreach ($cart->items as $key => $item)
+                                        <?php
+                                        if ($item->type == "configurable")
+                                            $productBaseImage = $productImageHelper->getProductBaseImage($item->child->product);
+                                        else
+                                            $productBaseImage = $productImageHelper->getProductBaseImage($item->product);
+                                        ?>
+                                        <tr>
+                                            <td class="hiraola-product-remove">
+                                                <a href="{{ route('shop.checkout.cart.remove', $item->id) }}"
+                                                   onclick="removeLink('{{ __('shop::app.checkout.cart.cart-remove-action') }}')">
+                                                    {{ __('shop::app.checkout.cart.remove-link') }}
+                                                </a></span>
+                                            <td class="hiraola-product-thumbnail">
+                                                <a href="{{ url()->to('/').'/products/'.$item->product->url_key }}">
+                                                    <img src="{{ $productBaseImage['small_image_url'] }}">
+                                                </a>
+                                            </td>
+                                            <td class="hiraola-product-name">
+                                                {!! view_render_event('bagisto.shop.checkout.cart.item.name.before', ['item' => $item]) !!}
+                                                <a href="{{ url()->to('/').'/products/'.$item->product->url_key }}">{{ $item->product->name }}</a>
+                                                {!! view_render_event('bagisto.shop.checkout.cart.item.name.after', ['item' => $item]) !!}
+                                                {!! view_render_event('bagisto.shop.checkout.cart.item.options.before', ['item' => $item]) !!}
+                                                @if ($item->type == 'configurable')
+                                                    <span class="text-muted summary">
                                                 {{ Cart::getProductAttributeOptionDetails($item->child->product)['html'] }}
+                                            </span>
+                                                @endif
+                                                @if (! cart()->isItemHaveQuantity($item))
+                                                    <div class="error-message mt-15">
+                                                        * {{ __('shop::app.checkout.cart.quantity-error') }}
+                                                    </div>
+                                                @endif
 
-                                            </div>
-                                        @endif
+                                                {!! view_render_event('bagisto.shop.checkout.cart.item.options.after', ['item' => $item]) !!}
 
-                                        {!! view_render_event('bagisto.shop.checkout.cart.item.options.after', ['item' => $item]) !!}
+                                            </td>
+                                            <td class="quantity">
+                                                {!! view_render_event('bagisto.shop.checkout.cart.item.quantity.before', ['item' => $item]) !!}
 
-
-                                        {!! view_render_event('bagisto.shop.checkout.cart.item.quantity.before', ['item' => $item]) !!}
-
-                                        <div class="misc">
-                                            <div class="control-group" :class="[errors.has('qty[{{$item->id}}]') ? 'has-error' : '']">
-                                                <div class="wrap">
-                                                    <label for="qty[{{$item->id}}]">{{ __('shop::app.checkout.cart.quantity.quantity') }}</label>
-
-                                                    <input class="control quantity-change" value="-" style="width: 35px; border-radius: 3px 0px 0px 3px;" onclick="updateCartQunatity('remove', {{$key}})" readonly>
-
-                                                    <input type="text" class="control quantity-change" id="cart-quantity{{ $key
-                                                    }}" v-validate="'required|numeric|min_value:1'" name="qty[{{$item->id}}]" value="{{ $item->quantity }}" data-vv-as="&quot;{{ __('shop::app.checkout.cart.quantity.quantity') }}&quot;" style="border-right: none; border-left: none; border-radius: 0px;" readonly>
-
-                                                    <input class="control quantity-change" value="+" style="width: 35px; padding: 0 12px; border-radius: 0px 3px 3px 0px;" onclick="updateCartQunatity('add', {{$key}})" readonly>
+                                                <label>{{ __('shop::app.checkout.cart.quantity.quantity') }}</label>
+                                                <div class="cart-plus-minus">
+                                                    <input name="qty[{{$item->id}}]" value="{{ $item->quantity }}"
+                                                           class="cart-plus-minus-box" type="text">
+                                                    <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
+                                                    <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                                                 </div>
-
-                                                <span class="control-error" v-if="errors.has('qty[{{$item->id}}]')">@{{ errors.first('qty[{!!$item->id!!}]') }}</span>
-                                            </div>
-
-                                            <span class="remove">
-                                                <a href="{{ route('shop.checkout.cart.remove', $item->id) }}" onclick="removeLink('{{ __('shop::app.checkout.cart.cart-remove-action') }}')">{{ __('shop::app.checkout.cart.remove-link') }}</a></span>
-
-                                            @auth('customer')
-                                                <span class="towishlist">
+                                                @auth('customer')
+                                                    <span class="towishlist">
                                                     @if ($item->parent_id != 'null' ||$item->parent_id != null)
-                                                        <a href="{{ route('shop.movetowishlist', $item->id) }}" onclick="removeLink('{{ __('shop::app.checkout.cart.cart-remove-action') }}')">{{ __('shop::app.checkout.cart.move-to-wishlist') }}</a>
-                                                    @else
-                                                        <a href="{{ route('shop.movetowishlist', $item->child->id) }}" onclick="removeLink('{{ __('shop::app.checkout.cart.cart-remove-action') }}')">{{ __('shop::app.checkout.cart.move-to-wishlist') }}</a>
-                                                    @endif
+                                                            <a href="{{ route('shop.movetowishlist', $item->id) }}"
+                                                               onclick="removeLink('{{ __('shop::app.checkout.cart.cart-remove-action') }}')">{{ __('shop::app.checkout.cart.move-to-wishlist') }}</a>
+                                                        @else
+                                                            <a href="{{ route('shop.movetowishlist', $item->child->id) }}"
+                                                               onclick="removeLink('{{ __('shop::app.checkout.cart.cart-remove-action') }}')">{{ __('shop::app.checkout.cart.move-to-wishlist') }}</a>
+                                                        @endif
                                                 </span>
-                                            @endauth
+                                                @endauth
+
+                                                {!! view_render_event('bagisto.shop.checkout.cart.item.quantity.after', ['item' => $item]) !!}
+
+                                            </td>
+                                            <td class="hiraola-product-price"><span class="amount">
+                                            {!! view_render_event('bagisto.shop.checkout.cart.item.price.before', ['item' => $item]) !!}
+                                                    {{ core()->currency($item->base_price) }}
+                                                    {!! view_render_event('bagisto.shop.checkout.cart.item.price.after', ['item' => $item]) !!}
+                                        </span></td>
+                                            <td class="hiraola-product-price"><span class="amount">
+                                            {!! view_render_event('bagisto.shop.checkout.cart.item.price.before', ['item' => $item]) !!}
+                                                    {{ core()->currency($item->total) }}
+                                                    {!! view_render_event('bagisto.shop.checkout.cart.item.price.after', ['item' => $item]) !!}
+                                        </span></td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                {!! view_render_event('bagisto.shop.checkout.cart.controls.after', ['cart' => $cart]) !!}
+
+                                <div class="col-12">
+                                    <div class="coupon-all">
+                                        <div class="coupon">
+                                            <input id="coupon_code" class="input-text" name="coupon_code" value=""
+                                                   placeholder="Coupon code" type="text">
+                                            <input class="button" name="apply_coupon" value="Apply coupon"
+                                                   type="submit">
+                                        </div>
+                                        <div class="coupon2 ml-2">
+                                            <input class="button" name="update_cart"
+                                                   value="{{ __('shop::app.checkout.cart.update-cart') }}"
+                                                   type="submit">
                                         </div>
 
-                                        {!! view_render_event('bagisto.shop.checkout.cart.item.quantity.after', ['item' => $item]) !!}
 
-                                        @if (! cart()->isItemHaveQuantity($item))
-                                            <div class="error-message mt-15">
-                                                * {{ __('shop::app.checkout.cart.quantity-error') }}
-                                            </div>
-                                        @endif
                                     </div>
 
                                 </div>
-                            @endforeach
-                        </div>
+                                {!! view_render_event('bagisto.shop.checkout.cart.controls.after', ['cart' => $cart]) !!}
 
-                        {!! view_render_event('bagisto.shop.checkout.cart.controls.after', ['cart' => $cart]) !!}
+                            </div>
+                        </form>
 
-                        <div class="misc-controls">
-                            <a href="{{ route('shop.home.index') }}" class="link">{{ __('shop::app.checkout.cart.continue-shopping') }}</a>
+                        <div class="row">
+                            <div class="col-md-5 ml-auto">
+                                <div class="cart-page-total">
+                                    {!! view_render_event('bagisto.shop.checkout.cart.summary.after', ['cart' => $cart]) !!}
 
-                            <div>
-                                <button type="submit" class="btn btn-lg btn-primary">
-                                    {{ __('shop::app.checkout.cart.update-cart') }}
-                                </button>
+                                    @include('shop::checkout.total.summary', ['cart' => $cart])
 
-                                @if (! cart()->hasError())
-                                    <a href="{{ route('shop.checkout.onepage.index') }}" class="btn btn-lg btn-primary">
-                                        {{ __('shop::app.checkout.cart.proceed-to-checkout') }}
+                                    {!! view_render_event('bagisto.shop.checkout.cart.summary.after', ['cart' => $cart]) !!}
+
+
+                                    @if (! cart()->hasError())
+                                        <a href="{{ route('shop.checkout.onepage.index') }}">
+                                            {{ __('shop::app.checkout.cart.proceed-to-checkout') }}
+                                        </a>
+                                    @endif
+                                    <a href="{{ route('shop.home.index') }}">
+                                        {{ __('shop::app.checkout.cart.continue-shopping') }}
                                     </a>
-                                @endif
+
+                                </div>
                             </div>
                         </div>
-
-                        {!! view_render_event('bagisto.shop.checkout.cart.controls.after', ['cart' => $cart]) !!}
-                    </form>
-                </div>
-
-                <div class="right-side">
-                    {!! view_render_event('bagisto.shop.checkout.cart.summary.after', ['cart' => $cart]) !!}
-
-                    @include('shop::checkout.total.summary', ['cart' => $cart])
-
-                    {!! view_render_event('bagisto.shop.checkout.cart.summary.after', ['cart' => $cart]) !!}
+                        </form>
+                    </div>
                 </div>
             </div>
-
             @include ('shop::products.view.cross-sells')
 
         @else
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-xs-12 col-centered col-lg-6 ">
+                    <div class="title text-center">
+                        {{ __('shop::app.checkout.cart.empty') }}
+                        <div class="cart-page-total">
+                            <a href="{{ route('shop.home.index') }}">
+                                {{ __('shop::app.checkout.cart.continue-shopping') }}
+                            </a>
+                        </div>
+                    </div>
 
-            <div class="title">
-                {{ __('shop::app.checkout.cart.title') }}
+                </div>
             </div>
 
-            <div class="cart-content">
-                <p>
-                    {{ __('shop::app.checkout.cart.empty') }}
-                </p>
 
-                <p style="display: inline-block;">
-                    <a style="display: inline-block;" href="{{ route('shop.home.index') }}" class="btn btn-lg btn-primary">{{ __('shop::app.checkout.cart.continue-shopping') }}</a>
-                </p>
-            </div>
+
 
         @endif
-    </section>
+    <!-- Hiraola's Cart Area End Here -->
 
-@endsection
 
-@push('scripts')
-    <script>
-        function removeLink(message) {
-            if (!confirm(message))
-            event.preventDefault();
-        }
+        @endsection
 
-        function updateCartQunatity(operation, index) {
-            var quantity = document.getElementById('cart-quantity'+index).value;
-
-            if (operation == 'add') {
-                quantity = parseInt(quantity) + 1;
-            } else if (operation == 'remove') {
-                if (quantity > 1) {
-                    quantity = parseInt(quantity) - 1;
-                } else {
-                    alert('{{ __('shop::app.products.less-quantity') }}');
+        @push('scripts')
+            <script>
+                function removeLink(message) {
+                    if (!confirm(message))
+                        event.preventDefault();
                 }
-            }
-            document.getElementById('cart-quantity'+index).value = quantity;
-            event.preventDefault();
-        }
-    </script>
-@endpush
+
+                function updateCartQunatity(operation, index) {
+                    var quantity = document.getElementById('cart-quantity' + index).value;
+
+                    if (operation == 'add') {
+                        quantity = parseInt(quantity) + 1;
+                    } else if (operation == 'remove') {
+                        if (quantity > 1) {
+                            quantity = parseInt(quantity) - 1;
+                        } else {
+                            alert('{{ __('shop::app.products.less-quantity') }}');
+                        }
+                    }
+                    document.getElementById('cart-quantity' + index).value = quantity;
+                    event.preventDefault();
+                }
+            </script>
+    @endpush

@@ -17,9 +17,7 @@
 
         <div class="category-container">
 
-            @if (in_array($category->display_mode, [null, 'products_only', 'products_and_description']))
-                @include ('hiraloa::products.list.layered-navigation')
-            @endif
+
 
             <div class="category-block" @if ($category->display_mode == 'description_only') style="width: 100%" @endif>
                 <div class="hero-image mb-35">
@@ -46,11 +44,8 @@
                             <div class="hiraola-content_wrapper">
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-lg-3 order-2 order-lg-2">
-                                            @include ('hiraloa::products.list.layered-navigation')
 
-                                        </div>
-                                        <div class="col-lg-12 order-1 order-lg-1">
+                                        <div class="col-lg-9 order-2 order-lg-2">
                                             @include ('hiraloa::products.list.toolbar')
                                             <div class="shop-product-wrap grid gridview-4 row">
 
@@ -61,6 +56,11 @@
                                             @endforeach
                                             </div>
 
+                                        </div>
+                                        <div class="col-lg-3 order-1 order-lg-1">
+                                            @if (in_array($category->display_mode, [null, 'products_only', 'products_and_description']))
+                                                @include ('hiraloa::products.list.layered-navigation')
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -123,6 +123,7 @@
 @stop
 
 @push('scripts')
+
     <script>
         $(document).ready(function() {
             $('.responsive-layred-filter').css('display','none');

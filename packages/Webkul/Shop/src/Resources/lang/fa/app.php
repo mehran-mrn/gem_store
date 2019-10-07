@@ -41,7 +41,7 @@ return [
 
     'minicart' => [
         'view-cart' => 'مشاهده سبد خرید',
-        'checkout' => 'بررسی',
+        'checkout' => 'خرید خود را نهایی کنید',
         'cart' => 'سبد خرید',
         'zero' => '0'
     ],
@@ -299,7 +299,7 @@ return [
     ],
 
     'products' => [
-        'layered-nav-title' => 'خرید بوسیله ی',
+        'layered-nav-title' => 'فیلتر محصولات',
         'price-label' => 'به اندازه کم',
         'remove-filter-link-title' => 'همه را پاک کن',
         'sort-by' => 'مرتب سازی بر اساس',
@@ -376,8 +376,8 @@ return [
             'update-cart' => 'به روز رسانی سبد خرید',
             'continue-shopping' => 'ادامه خرید',
             'proceed-to-checkout' => 'ادامه به پرداخت',
-            'remove' => 'برداشتن',
-            'remove-link' => 'برداشتن',
+            'remove' => 'حذف',
+            'remove-link' => 'حذف',
             'move-to-wishlist' => 'انتقال به لیست دلخواه',
             'move-to-wishlist-success' => 'مورد به لیست دلخواه منتقل شد',
             'move-to-wishlist-error' => 'نمی توان مورد را به لیست علاقه مندی ها انتقال داد ، لطفا بعداً دوباره امتحان کنید',

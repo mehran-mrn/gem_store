@@ -43,11 +43,12 @@
 </div>
 
 @push('scripts')
+    <script type="text/javascript" src="{{ url('/themes/default/assets/js/shop.js') }}"></script>
+
     <script type="text/x-template" id="layered-navigation-template">
         <div>
 
             <div class="filter-title">
-                {{ __('shop::app.products.layered-nav-title') }}
             </div>
 
             <div class="filter-content">
@@ -62,11 +63,13 @@
         </div>
     </script>
 
-    <script type="text/x-template" id="filter-attribute-item-template">
-        <div class="filter-attributes-item" :class="[active ? 'active' : '']">
+    <script type="text/x-template"  id="filter-attribute-item-template">
+        <div class="hiraola-sidebar-catagories_area">
 
-            <div class="filter-attributes-title" @click="active = !active">
-                @{{ attribute.name ? attribute.name : attribute.admin_name }}
+        <div class="filter-attributes-item hiraola-sidebar_categories" :class="[active ? 'active' : '']">
+
+            <div class="filter-attributes-title hiraola-categories_title" @click="active = !active">
+                <h5>@{{ attribute.name ? attribute.name : attribute.admin_name }}</h5>
 
                 <div class="pull-right">
                     <span class="remove-filter-link" v-if="appliedFilters.length" @click.stop="clearFilters()">
@@ -77,9 +80,9 @@
                 </div>
             </div>
 
-            <div class="filter-attributes-content">
+            <div class="filter-attributes-content price-filter">
 
-                <ol class="items" v-if="attribute.type != 'price'">
+                <ol class="items" id="slider-range" v-if="attribute.type != 'price'">
                     <li class="item" v-for='(option, index) in attribute.options'>
 
                         <span class="checkbox">
@@ -105,6 +108,7 @@
 
             </div>
 
+        </div>
         </div>
     </script>
 

@@ -1,4 +1,4 @@
-@extends('shop::layouts.master')
+@extends('hiraloa::layouts.master')
 
 @section('content-wrapper')
     <div class="breadcrumb-area">
@@ -21,66 +21,85 @@
                         @include('shop::customers.account.partials.sidemenu')
                     </div>
                     <div class="col-lg-9">
-                        <div class="tab-content myaccount-tab-content" id="account-page-tab-content">
-                            <div class="tab-pane fade show active" id="account-dashboard" role="tabpanel"
-                                 aria-labelledby="account-dashboard-tab">
-                                <div class="myaccount-details">
-                                    <div class="account-head mb-10">
-                                        <span class="account-heading">{{ __('shop::app.wishlist.title') }}</span>
+                        <div class="account-items-list">
 
-                                        @if (count($items))
-                                            <div class="account-action">
-                                                <a href="{{ route('customer.wishlist.removeall') }}">{{ __('shop::app.wishlist.deleteall') }}</a>
-                                            </div>
-                                        @endif
-                                        <div class="horizontal-rule"></div>
-                                    </div>
-                                    {!! view_render_event('bagisto.shop.customers.account.wishlist.list.before', ['wishlist' => $items]) !!}
-                                    <div class="account-items-list">
-                                        @if ($items->count())
-                                            @foreach ($items as $item)
-                                                <div class="account-item-card mt-15 mb-15">
-                                                    <div class="media-info">
-                                                        @php
-                                                            $image = $productImageHelper->getProductBaseImage($item->product);
-                                                        @endphp
+                        @if (count($items))
+                            <div class="account-action">
+                                <a href="{{ route('customer.wishlist.removeall') }}">{{ __('shop::app.wishlist.deleteall') }}</a>
+                            </div>
+                    @endif
+                    <!--Begin Hiraola's Wishlist Area -->
+                        <div class="hiraola-wishlist_area">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <form action="javascript:void(0)">
+                                            <div class="table-content table-responsive">
+                                                {!! view_render_event('bagisto.shop.customers.account.wishlist.list.before', ['wishlist' => $items]) !!}
+                                                @if ($items->count())
 
-                                                        <img class="media" src="{{ $image['small_image_url'] }}" />
 
-                                                        <div class="info">
-                                                            <div class="product-name">
-                                                                {{$item->product->name}}
-                                                            </div>
+
+
+                                                    <table class="table">
+                                                        <thead>
+                                                        <tr>
+                                                            <th class="hiraola-product_remove">remove</th>
+                                                            <th class="hiraola-product-thumbnail">images</th>
+                                                            <th class="cart-product-name">Product</th>
+                                                            <th class="hiraola-cart_btn">add to cart</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        @foreach ($items as $item)
+                                                            @php
+                                                                $image = $productImageHelper->getProductBaseImage($item->product);
+                                                            @endphp
 
                                                             @inject ('reviewHelper', 'Webkul\Product\Helpers\Review')
 
-                                                            <span class="stars" style="display: inline">
-                                @for($i=1;$i<=$reviewHelper->getAverageRating($item->product);$i++)
-                                                                    <span class="icon star-icon"></span>
-                                                                @endfor
-                            </span>
-                                                        </div>
+                                                            <tr>
+                                                                <td class="hiraola-product_remove"><a
+                                                                            href="{{ route('customer.wishlist.remove', $item->id) }}"><i
+                                                                                class="fa fa-trash"
+                                                                                title="Remove"></i></a></td>
+                                                                <td class="hiraola-product-thumbnail"><a
+                                                                            href="javascript:void(0)"><img
+                                                                                src="{{ $image['small_image_url'] }}"
+                                                                                alt="Hiraola's Wishlist Thumbnail"></a>
+                                                                </td>
+                                                                <td class="hiraola-product-name"><a
+                                                                            href="javascript:void(0)">
+                                                                        {{$item->product->name}}
+                                                                        @for($i=1;$i<=$reviewHelper->getAverageRating($item->product);$i++)
+                                                                            <span class="icon star-icon"></span>
+                                                                        @endfor
+                                                                    </a></td>
+
+                                                                <td class="hiraola-cart_btn"><a
+                                                                            href="{{ route('customer.wishlist.move', $item->id) }}">{{ __('shop::app.wishlist.move-to-cart') }}</a>
+                                                                </td>
+                                                            </tr>
+
+                                                        @endforeach
+
+                                                        </tbody>
+                                                    </table>
+                                                    {!! view_render_event('bagisto.shop.customers.account.wishlist.list.after', ['wishlist' => $items]) !!}
+                                                @else
+                                                    <div class="empty">
+                                                        {{ __('shop::app.wishlist.empty') }}
                                                     </div>
-
-                                                    <div class="operations">
-                                                        <a class="mb-50" href="{{ route('customer.wishlist.remove', $item->id) }}"><span class="icon trash-icon"></span></a>
-
-                                                        <a href="{{ route('customer.wishlist.move', $item->id) }}" class="btn btn-primary btn-md">{{ __('shop::app.wishlist.move-to-cart') }}</a>
-                                                    </div>
-                                                </div>
-                                                <div class="horizontal-rule mb-10 mt-10"></div>
-                                            @endforeach
-
-                                        @else
-                                            <div class="empty">
-                                                {{ __('customer::app.wishlist.empty') }}
+                                                @endif
                                             </div>
-                                        @endif
+                                        </form>
                                     </div>
-                                    {!! view_render_event('bagisto.shop.customers.account.wishlist.list.after', ['wishlist' => $items]) !!}
                                 </div>
                             </div>
                         </div>
+                        <!-- Hiraola's Wishlist Area End Here -->
+                        </div>
+
                     </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-@extends('shop::layouts.master')
+@extends('hiraloa::layouts.master')
 
 @section('page_title')
     {{ __('shop::app.customer.account.address.index.page-title') }}
@@ -37,8 +37,9 @@
                                         <span class="account-heading">{{ __('shop::app.customer.account.address.index.title') }}</span>
 
                                         @if (! $addresses->isEmpty())
-                                            <span class="account-action">
-                                                <a href="{{ route('customer.address.create') }}">{{ __('shop::app.customer.account.address.index.add') }}</a>
+                                            <span class="cart-page-total">
+
+                                                <a  href="{{ route('customer.address.create') }}">{{ __('shop::app.customer.account.address.index.add') }}</a>
                                             </span>
                                         @else
                                             <span></span>
@@ -50,8 +51,11 @@
                                         @if ($addresses->isEmpty())
                                             <div>{{ __('shop::app.customer.account.address.index.empty') }}</div>
                                             <br/>
+                                            <span class="cart-page-total">
+
                                             <a href="{{ route('customer.address.create') }}">{{ __('shop::app.customer.account.address.index.add') }}</a>
-                                        @else
+
+                                                @else
                                             <div class="address-holder">
                                                 @foreach ($addresses as $address)
                                                     <div class="address-card">

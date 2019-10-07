@@ -2,229 +2,82 @@
 
 @section('page_title')
     {{ __('shop::app.checkout.onepage.title') }}
+
 @stop
 
 @section('content-wrapper')
+    <script type="text/javascript" src="{{ url('/themes/default/assets/js/shop.js') }}"></script>
+
     <checkout></checkout>
 
-    <!-- Begin Hiraola's Checkout Area -->
-    <div class="checkout-area">
-        <div class="container">
-            <div class="row">
-                @guest('customer')
-
-                    <div class="col-12">
-                        <div class="coupon-accordion">
-                            <h3>Returning customer? <span id="showlogin">Click here to login</span></h3>
-                            <div id="checkout-login" class="coupon-content">
-                                <div class="coupon-info">
-                                    <div class="col-sm-12 col-md-12 col-xs-12 col-centered col-lg-6 ">
-                                        {!! view_render_event('bagisto.shop.customers.login.before') !!}
-                                        <form method="POST" action="{{ route('customer.session.create') }}"
-                                              @submit.prevent="onSubmit">
-                                            {{ csrf_field() }}
-                                            <div class="login-form">
-                                                <h4 class="login-title">{{ __('shop::app.customer.login-form.title') }}</h4>
-                                                {!! view_render_event('bagisto.shop.customers.login_form_controls.before') !!}
-                                                <div class="row">
-                                                    <div class="col-md-12 col-12">
-                                                        <label for="email"
-                                                               class="required">{{ __('shop::app.customer.login-form.email') }}</label>
-                                                        <input type="text" class="control" name="email"
-                                                               v-validate="'required|email'"
-                                                               value="{{ old('email') }}"
-                                                               data-vv-as="&quot;{{ __('shop::app.customer.login-form.email') }}&quot;">
-                                                    </div>
-                                                    <div class="col-12 mb--20">
-                                                        <label for="password"
-                                                               class="required">{{ __('shop::app.customer.login-form.password') }}</label>
-                                                        <input type="password" class="control" name="password"
-                                                               v-validate="'required'"
-                                                               value="{{ old('password') }}"
-                                                               data-vv-as="&quot;{{ __('shop::app.customer.login-form.password') }}&quot;">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="check-box">
-                                                            {{--                                        <input type="checkbox" id="remember_me">--}}
-                                                            {{--                                        <label for="remember_me">{{ __('shop::app.customer.login-form.remember_me') }}</label>--}}
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="forgotton-password_info">
-                                                            <a href="{{ route('customer.forgot-password.create') }}"> {{ __('shop::app.customer.login-form.forgot_pass') }}</a>
-                                                            @if (Cookie::has('enable-resend'))
-                                                                @if (Cookie::get('enable-resend') == true)
-                                                                    <a href="{{ route('customer.resend.verification-email', Cookie::get('email-for-resend')) }}">{{ __('shop::app.customer.login-form.resend-verification') }}</a>
-                                                                @endif
-                                                            @endif
-                                                        </div>
-                                                        <div class="forgotton-password_info">
-                                                            <a href="{{ route('customer.register.index') }}"> {{ __('shop::app.customer.login-text.no_account') }} {{ __('shop::app.customer.login-text.title') }}</a>
-
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-lg-12">
-                                                        @if($errors->any())
-                                                            <div class="alert alert-danger">
-                                                                <ul>
-                                                                    @foreach($errors->all() as $error)
-                                                                        <li>{{$error}}</li>
-                                                                    @endforeach
-                                                                </ul>
-                                                            </div>
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <button type="submit" class="hiraola-login_btn">
-                                                            {{ __('shop::app.customer.login-form.button_title') }}
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                {!! view_render_event('bagisto.shop.customers.login_form_controls.after') !!}
-                                            </div>
-                                        </form>
-                                        {!! view_render_event('bagisto.shop.customers.login.after') !!}
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
-                @endguest
-
-            </div>
-            <div class="row">
-                @auth('customer')
-                    @if(count(auth('customer')->user()->addresses))
-                        <a class="btn btn-lg btn-primary" @click=backToSavedBillingAddress()>
-                            {{ __('shop::app.checkout.onepage.back') }}
-                        </a>
-                    @endif
-                @endauth
-            </div>
-            <form method="post" action="{{url('checkout/save-address')}}">
-@csrf
-            <div class="row">
-                    <div class="col-lg-6 col-12">
-
-                        @include('hiraloa::checkout.onepage.customer-info')
-                    </div>
-                    <div class="col-lg-6 col-12">
-                        @include('hiraloa::checkout.total.summary')
-                        <div class="order-button-payment">
-                            <input value="Place order" type="submit">
-                        </div>
-                    </div>
-            </div>
-            </form>
-
-        </div>
-    </div>
-    <!-- Hiraola's Checkout Area End Here -->
 
 @endsection
 
 @push('scripts')
+
     <script type="text/x-template" id="checkout-template">
-        <div id="checkout" class="checkout-process">
-            <div class="col-main">
-                <ul class="checkout-steps">
-                    <li class="active"
-                        :class="[completedStep >= 0 ? 'active' : '', completedStep > 0 ? 'completed' : '']"
-                        @click="navigateToStep(1)">
-                        <div class="decorator address-info"></div>
-                        <span>{{ __('shop::app.checkout.onepage.information') }}</span>
-                    </li>
-
-                    <div class="line mb-25"></div>
-
-                    <li :class="[currentStep == 2 || completedStep > 1 ? 'active' : '', completedStep > 1 ? 'completed' : '']"
-                        @click="navigateToStep(2)">
-                        <div class="decorator shipping"></div>
-                        <span>{{ __('shop::app.checkout.onepage.shipping') }}</span>
-                    </li>
-
-                    <div class="line mb-25"></div>
-
-                    <li :class="[currentStep == 3 || completedStep > 2 ? 'active' : '', completedStep > 2 ? 'completed' : '']"
-                        @click="navigateToStep(3)">
-                        <div class="decorator payment"></div>
-                        <span>{{ __('shop::app.checkout.onepage.payment') }}</span>
-                    </li>
-
-                    <div class="line mb-25"></div>
-
-                    <li :class="[currentStep == 4 ? 'active' : '']">
-                        <div class="decorator review"></div>
-                        <span>{{ __('shop::app.checkout.onepage.complete') }}</span>
-                    </li>
-                </ul>
-
-                <div class="step-content information" v-show="currentStep == 1" id="address-section">
-                    @include('shop::checkout.onepage.customer-info')
-
-                    <div class="button-group">
-                        <button type="button" class="btn btn-lg btn-primary" @click="validateForm('address-form')"
-                                :disabled="disable_button" id="checkout-address-continue-button">
-                            {{ __('shop::app.checkout.onepage.continue') }}
-                        </button>
-                    </div>
-                </div>
-
-                <div class="step-content shipping" v-show="currentStep == 2" id="shipping-section">
-                    <shipping-section v-if="currentStep == 2"
-                                      @onShippingMethodSelected="shippingMethodSelected($event)"></shipping-section>
-
-                    <div class="button-group">
-                        <button type="button" class="btn btn-lg btn-primary" @click="validateForm('shipping-form')"
-                                :disabled="disable_button" id="checkout-shipping-continue-button">
-                            {{ __('shop::app.checkout.onepage.continue') }}
-                        </button>
+        <div id="checkout" class="checkout-area">
+            <div class="container">
+                <div class="row">
+                    <div id="address-section" class="step-content information col-lg-6 col-12"
+                         v-show="currentStep == 1">
+                        @include('hiraloa::checkout.onepage.customer-info')
 
                     </div>
-                </div>
+                    <div id="shipping-section" class="step-content shipping col-lg-6 col-12" v-show="currentStep == 2">
+                        <shipping-section v-if="currentStep == 2"
+                                          @onShippingMethodSelected="shippingMethodSelected($event)"></shipping-section>
 
-                <div class="step-content payment" v-show="currentStep == 3" id="payment-section">
-                    <payment-section v-if="currentStep == 3"
-                                     @onPaymentMethodSelected="paymentMethodSelected($event)"></payment-section>
-
-                    <div class="button-group">
-                        <button type="button" class="btn btn-lg btn-primary" @click="validateForm('payment-form')"
-                                :disabled="disable_button" id="checkout-payment-continue-button">
-                            {{ __('shop::app.checkout.onepage.continue') }}
-                        </button>
                     </div>
-                </div>
+                    <div class="step-content payment" v-show="currentStep == 3" id="payment-section">
+                        <payment-section v-if="currentStep == 3"
+                                         @onPaymentMethodSelected="paymentMethodSelected($event)"></payment-section>
 
-                <div class="step-content review" v-show="currentStep == 4" id="summary-section">
-                    <review-section v-if="currentStep == 4" :key="reviewComponentKey">
-                        <div slot="summary-section">
-                            <summary-section
-                                    discount="1"
-                                    :key="summeryComponentKey"
-                                    @onApplyCoupon="getOrderSummary"
-                                    @onRemoveCoupon="getOrderSummary"
-                            ></summary-section>
+
+                    </div>
+                    <div class="step-content review" v-show="currentStep == 4" id="summary-section">
+                        <review-section v-if="currentStep == 4" :key="reviewComponentKey">
+                            <div slot="summary-section">
+                                <summary-section
+                                        discount="1"
+                                        :key="summeryComponentKey"
+                                        @onApplyCoupon="getOrderSummary"
+                                        @onRemoveCoupon="getOrderSummary"
+                                ></summary-section>
+                            </div>
+                        </review-section>
+
+                    </div>
+
+                    <div class="col-lg-6 col-12" v-show="currentStep != 4">
+                        <summary-section :key="summeryComponentKey"></summary-section>
+                        <div class="order-button-payment">
+
+                            <button v-if="currentStep == 1" type="button" class="btn btn-success btn-lg btn-block " @click="validateForm('address-form')"
+                                    :disabled="disable_button" id="checkout-address-continue-button">
+                                {{ __('shop::app.checkout.onepage.continue') }}
+                            </button>
+                            <button v-if="currentStep == 2" type="button" class="btn btn-success btn-lg btn-block " @click="validateForm('shipping-form')"
+                                    :disabled="disable_button" id="checkout-shipping-continue-button">
+                                {{ __('shop::app.checkout.onepage.continue') }}
+                            </button>
+                            <button v-if="currentStep == 3" type="button" class="btn btn-success btn-lg btn-block " @click="validateForm('payment-form')"
+                                    :disabled="disable_button" id="checkout-payment-continue-button">
+                                {{ __('shop::app.checkout.onepage.continue') }}
+                            </button>
+                            <button v-if="currentStep == 4" type="button" class="btn btn-success btn-lg btn-block " @click="placeOrder()"
+                                    :disabled="disable_button" id="checkout-place-order-button">
+                                {{ __('shop::app.checkout.onepage.place-order') }}
+                            </button>
                         </div>
-                    </review-section>
-
-                    <div class="button-group">
-                        <button type="button" class="btn btn-lg btn-primary" @click="placeOrder()"
-                                :disabled="disable_button" id="checkout-place-order-button">
-                            {{ __('shop::app.checkout.onepage.place-order') }}
-                        </button>
+                    </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-right" v-show="currentStep != 4">
-                <summary-section :key="summeryComponentKey"></summary-section>
             </div>
         </div>
-    </script>
 
+    </script>
     <script>
         var shippingHtml = '';
         var paymentHtml = '';
@@ -236,11 +89,11 @@
 
         @auth('customer')
                 @if(auth('customer')->user()->addresses)
-            customerAddress = @json(auth('customer')->user()->addresses);
-        customerAddress.email = "{{ auth('customer')->user()->email }}";
-        customerAddress.first_name = "{{ auth('customer')->user()->first_name }}";
-        customerAddress.last_name = "{{ auth('customer')->user()->last_name }}";
-        @endif
+                    customerAddress = @json(auth('customer')->user()->addresses);
+                    customerAddress.email = "{{ auth('customer')->user()->email }}";
+                    customerAddress.first_name = "{{ auth('customer')->user()->first_name }}";
+                    customerAddress.last_name = "{{ auth('customer')->user()->last_name }}";
+                @endif
         @endauth
 
         Vue.component('checkout', {

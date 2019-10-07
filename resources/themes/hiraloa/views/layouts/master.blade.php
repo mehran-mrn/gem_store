@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/plugins/nice-select.css')}}">
     <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/plugins/pnotify/PNotifyBrightTheme.css')}}">
     {{--    <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/style.css')}}">--}}
-    <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/styleRTL.css')}}">
+    <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/styleRTL.css')}}?i=1">
     <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/fonts.css')}}">
     <!--<link rel="stylesheet" href="assets/css/style.min.css">-->
     <!--
@@ -131,6 +131,7 @@
 <script src="{{url('themes/hiraloa/assets/js/plugins/waypoints.min.js')}}"></script>
 <script src="{{url('themes/hiraloa/assets/js/plugins/instafeed.min.js')}}"></script>
 <script src="{{url('themes/hiraloa/assets/js/plugins/jquery.elevateZoom-3.0.8.min.js')}}"></script>
+
 <!--
 <script src="assets/js/vendor/vendor.min.js"></script>
 <script src="assets/js/plugins/plugins.min.js"></script>
@@ -190,6 +191,10 @@
     @endif
     @endif
 </script>
+
+{{--<script src="https://unpkg.com/vue" ></script>--}}
+{{--<script type="text/javascript" src="{{ url('/themes/default/assets/js/shop.js') }}"></script>--}}
+
 @stack('scripts')
 {!! view_render_event('bagisto.shop.layout.body.after') !!}
 </body>

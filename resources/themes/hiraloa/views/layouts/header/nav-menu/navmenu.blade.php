@@ -45,13 +45,20 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
                             </a>
                         </li>
                         <li>
-                            <a href="#accountCart" class="minicart-btn toolbar-btn">
+                            <a href="#" onclick="open_mini_cart('accountCart')" class="minicart-btn toolbar-btn">
                                 <i class="ion-ios-person-outline"></i>
                             </a>
                         </li>
 
                         <li>
-                            <a href="#miniCart" class="minicart-btn toolbar-btn">
+                            <a href="#" onclick="open_mini_cart('miniCart')" class="minicart-btn toolbar-btn">
+                                @inject ('productImageHelper', 'Webkul\Product\Helpers\ProductImage')
+
+                                <?php $cart = cart()->getCart(); ?>
+
+                            @if($cart and $cart->items)
+                                    <span class="badge badge-danger ">{{ $cart->items->count() }}</span>
+                                @endif
                                 <i class="ion-bag"></i>
                             </a>
                         </li>
@@ -92,7 +99,7 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
 
 
     <div class="offcanvas-menu-inner">
-        <a href="#" class="btn-close"><i class="ion-android-close"></i></a>
+        <a href="#" class="btn-close" onclick="close_mini_cart('accountCart')"><i class="ion-android-close"></i></a>
         {!! view_render_event('bagisto.shop.layout.header.account-item.before') !!}
         <div class="minicart-heading">
             <h4>My Account</h4>
@@ -134,41 +141,36 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
 
     </div>
 </div>
+
 <div class="offcanvas-minicart_wrapper" id="miniCart">
 
     <div class="offcanvas-menu-inner">
-        <a href="#" class="btn-close"><i class="ion-android-close"></i></a>
-        <div class="minicart-content">
-            <div class="minicart-heading">
-                <h4>Shopping Cart</h4>
-            </div>
-            {!! view_render_event('bagisto.shop.layout.header.cart-item.before') !!}
 
-            <ul class="minicart-list">
-                <li class="minicart-product">
-                    @include('shop::checkout.cart.mini-cart')
+        <a href="#" class="btn-close" onclick="close_mini_cart('miniCart')"><i class="ion-android-close"></i></a>
+        {!! view_render_event('bagisto.shop.layout.header.cart-item.before') !!}
+        @include('hiraloa::checkout.cart.mini-cart')
+        {!! view_render_event('bagisto.shop.layout.header.cart-item.after') !!}
 
-                </li>
 
-            </ul>
-            {!! view_render_event('bagisto.shop.layout.header.cart-item.after') !!}
-
-        </div>
-        <div class="minicart-item_total">
-            <span>Subtotal</span>
-            <span class="ammount">$360.00</span>
-        </div>
-        <div class="minicart-btn_area">
-            <a href="cart.html" class="hiraola-btn hiraola-btn_dark hiraola-btn_fullwidth">Minicart</a>
-        </div>
-        <div class="minicart-btn_area">
-            <a href="checkout.html" class="hiraola-btn hiraola-btn_dark hiraola-btn_fullwidth">Checkout</a>
-        </div>
     </div>
 </div>
 {!! view_render_event('bagisto.shop.layout.header.category.after') !!}
 
 @push('scripts')
+    <script >
+        function open_mini_cart(id) {
+            var element = document.getElementById(id);
+            $('.offcanvas-minicart_wrapper').removeClass('open');
+            element.classList.add("open");
+
+        }
+        function close_mini_cart(id) {
+            var element = document.getElementById(id);
+            $('.offcanvas-minicart_wrapper').removeClass('open');
+            element.classList.remove("open");
+
+        }
+    </script>
 <script type="text/x-template" id="category-nav-template">
 
     <ul class="nav">
