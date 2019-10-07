@@ -72,7 +72,7 @@
                                                     </div>
                                                     <div class="col-12">
                                                         <a href="{{ route('customer.profile.edit') }}"
-                                                           class="hiraola-btn float-right">{{ __('shop::app.customer.account.profile.index.edit') }}</a>
+                                                           class="hiraola-btn hiraola-btn_sm col-2 float-right">{{ __('shop::app.customer.account.profile.index.edit') }}</a>
                                                     </div>
                                                 </div>
                                             </div>

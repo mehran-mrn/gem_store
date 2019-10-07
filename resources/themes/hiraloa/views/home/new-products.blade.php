@@ -7,7 +7,6 @@
                         <h4>{{ __('shop::app.home.new-products') }}</h4>
                     </div>
                 </div>
-
                 <div class="col-lg-12">
                     <div class="hiraola-product_slider">
                         @forelse (app('Webkul\Product\Repositories\ProductRepository')->getNewProducts(10) as $productFlat)

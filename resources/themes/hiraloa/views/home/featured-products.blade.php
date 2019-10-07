@@ -8,15 +8,12 @@
                 array_push($categories, $category);
         $i++;
     }
-
     ?>
-
     <div class="hiraola-product-tab_area-3">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="product-tab">
-
                         <ul class="nav product-menu">
                             <?php
                             $active = 'active';
@@ -58,3 +55,6 @@
         </div>
     </div>
 @endif
+
+
+
