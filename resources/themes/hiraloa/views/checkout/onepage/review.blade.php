@@ -1,163 +1,139 @@
 <div class="form-container">
     <div class="address-summary row">
-        @if ($billingAddress = $cart->billing_address)
-            <div class="billing-address col-md-6">
-                <div class="card-title mb-20">
-                    <b>{{ __('shop::app.checkout.onepage.billing-address') }}</b>
+        <div class="row">
+            @if ($billingAddress = $cart->billing_address)
+                <div class="col-6 col-xs-12">
+                    <div class="card billing-address">
+                        <div class="card-header">
+                            <strong class="card-title">{{ __('shop::app.checkout.onepage.billing-address') }}</strong>
+                            <strong class="float-right">{{ $billingAddress->name }}</strong>
+                        </div>
+                        <div class="card-body">
+                            <ul class="address-card-list ">
+                                <li class="mb-1">
+                                    {{--                            <strong><span>کشور: </span> {{ core()->country_name($billingAddress->country) }}</strong>--}}
+                                    <span><strong>استان: </strong> {{ $billingAddress->state }}</span>
+                                    <span class="float-right"><strong>شهر: </strong> {{ $billingAddress->city }}</span>
+                                </li>
+                                <li class="mb-1">
+                                    <span><strong>محله: </strong> {{ $billingAddress->address1 }}</span>
+                                </li>
+                                <span class="horizontal-rule mb-2 mt-2"></span>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <h6><span>کد پستی: </span>{{ $billingAddress->postcode }}</h6>
+                            <h6><span>شماره تماس: </span>{{ $billingAddress->phone }}</h6>
+                        </div>
+                    </div>
                 </div>
+            @endif
+            @if ($shippingAddress = $cart->shipping_address)
 
-                <div class="card-content ">
-                    <ul class="address-card-list ">
-                        <li class="mb-2">
-                            {{ $billingAddress->name }}
-                        </li>
-                        <li class="mb-1">
-                            {{ $billingAddress->address1 }},<br/> {{ $billingAddress->state }}
-                        </li>
-                        <li class="mb-1">
-                            {{ core()->country_name($billingAddress->country) }} {{ $billingAddress->postcode }}
-                        </li>
-
-                        <span class="horizontal-rule mb-2 mt-2"></span>
-
-                        <li class="mb-2">
-                            {{ __('shop::app.checkout.onepage.contact') }} : {{ $billingAddress->phone }}
-                        </li>
-                    </ul>
+                <div class="col-6 col-xs-12">
+                    <div class="card billing-address">
+                        <div class="card-header">
+                            <strong class="card-title">{{ __('shop::app.checkout.onepage.shipping-address') }}</strong>
+                            <strong class="float-right">{{ $shippingAddress->name }}</strong>
+                        </div>
+                        <div class="card-body">
+                            <ul class="address-card-list ">
+                                <li class="mb-1">
+                                    {{--                            <strong><span>کشور: </span> {{ core()->country_name($billingAddress->country) }}</strong>--}}
+                                    <span><strong>استان: </strong> {{ $shippingAddress->state }}</span>
+                                    <span class="float-right"><strong>شهر: </strong> {{ $shippingAddress->city }}</span>
+                                </li>
+                                <li class="mb-1">
+                                    <span><strong>محله: </strong> {{ $shippingAddress->address1 }}</span>
+                                </li>
+                                <span class="horizontal-rule mb-2 mt-2"></span>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <h6><span>کد پستی: </span>{{ $shippingAddress->postcode }}</h6>
+                            <h6><span>شماره تماس: </span>{{ $shippingAddress->phone }}</h6>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        @endif
-
-        @if ($shippingAddress = $cart->shipping_address)
-            <div class="shipping-address  col-md-6">
-                <div class="card-title mb-20">
-                    <b>{{ __('shop::app.checkout.onepage.shipping-address') }}</b>
-                </div>
-
-                <div class="card-content address-box">
-                    <ul>
-                        <li class="mb-2">
-                            {{ $shippingAddress->name }}
-                        </li>
-                        <li class="mb-1">
-                            {{ $shippingAddress->address1 }},<br/> {{ $shippingAddress->state }}
-                        </li>
-                        <li class="mb-1">
-                            {{ core()->country_name($shippingAddress->country) }} {{ $shippingAddress->postcode }}
-                        </li>
-
-                        <span class="horizontal-rule mb-15 mt-15"></span>
-
-                        <li class="mb-1">
-                            {{ __('shop::app.checkout.onepage.contact') }} : {{ $shippingAddress->phone }}
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        @endif
-
+            @endif
+        </div>
     </div>
 
     @inject ('productImageHelper', 'Webkul\Product\Helpers\ProductImage')
-
-    <div class=" bg mt-20">
-
+    <div class="row pt-2">
         @foreach ($cart->items as $item)
+            <div class="col-6 col-xs-12">
+                <div class="card">
+                    <div class="card-img-top">
+                        <?php
+                        $product = $item->product;
+                        if ($product->type == "configurable")
+                            $productBaseImage = $productImageHelper->getProductBaseImage($item->child->product);
+                        else
+                            $productBaseImage = $productImageHelper->getProductBaseImage($item->product);
+                        ?>
+                        <img class="img-full" src="{{ $productBaseImage['small_image_url'] }}"/>
 
-            <?php
-                $product = $item->product;
-
-                if ($product->type == "configurable")
-                    $productBaseImage = $productImageHelper->getProductBaseImage($item->child->product);
-                else
-                    $productBaseImage = $productImageHelper->getProductBaseImage($item->product);
-            ?>
-
-
-            <div class="panel border-b row" style="margin-bottom: 5px;">
-                <div class=" col-md-4">
-                    <img src="{{ $productBaseImage['small_image_url'] }}" />
-                </div>
-
-                <div class=" col-md-6">
-
-                    {!! view_render_event('bagisto.shop.checkout.name.before', ['item' => $item]) !!}
-
-                    <div class="item-title">
-                        {{ $product->name }}
                     </div>
-
-                    {!! view_render_event('bagisto.shop.checkout.name.after', ['item' => $item]) !!}
-                    {!! view_render_event('bagisto.shop.checkout.price.before', ['item' => $item]) !!}
-
-                    <div class="row">
-                        <span class="title">
-                            {{ __('shop::app.checkout.onepage.price') }}
-                        </span>
-                        <span class="value">
-                            {{ core()->currency($item->base_price) }}
-                        </span>
-                    </div>
-
-                    {!! view_render_event('bagisto.shop.checkout.price.after', ['item' => $item]) !!}
-                    {!! view_render_event('bagisto.shop.checkout.quantity.before', ['item' => $item]) !!}
-
-                    <div class="row">
-                        <span class="title">
-                            {{ __('shop::app.checkout.onepage.quantity') }}
-                        </span>
-                        <span class="value">
-                            {{ $item->quantity }}
-                        </span>
-                    </div>
-
-                    {!! view_render_event('bagisto.shop.checkout.quantity.after', ['item' => $item]) !!}
-
-                    @if ($product->type == 'configurable')
-                        {!! view_render_event('bagisto.shop.checkout.options.after', ['item' => $item]) !!}
-
-                        <div class="summary" >
-                            {{ Cart::getProductAttributeOptionDetails($item->child->product)['html'] }}
+                    <div class="card-body">
+                        {!! view_render_event('bagisto.shop.checkout.name.before', ['item' => $item]) !!}
+                        <div class="row">
+                            <div class="col-12 text-center"><strong>{{ $product->name }}</strong></div>
+                            {!! view_render_event('bagisto.shop.checkout.name.after', ['item' => $item]) !!}
+                            {!! view_render_event('bagisto.shop.checkout.price.before', ['item' => $item]) !!}
                         </div>
+                        <div class="row text-center">
+                            <div class="col-6">
+                                <span class="title">قیمت:</span>
+                            </div>
+                            <div class="col-6">
+                                <span class="value">{{ core()->currency($item->base_price) }}</span>
+                            </div>
+                        </div>
+                        {!! view_render_event('bagisto.shop.checkout.price.after', ['item' => $item]) !!}
+                        {!! view_render_event('bagisto.shop.checkout.quantity.before', ['item' => $item]) !!}
 
-                        {!! view_render_event('bagisto.shop.checkout.options.after', ['item' => $item]) !!}
-                    @endif
+                        <div class="row text-center">
+                            <div class="col-6">
+                                <span class="title">تعداد:</span>
+                            </div>
+                            <div class="col-6">
+                                <span class="value">{{ $item->quantity }}</span>
+                            </div>
+                        </div>
+                        {!! view_render_event('bagisto.shop.checkout.quantity.after', ['item' => $item]) !!}
+
+                        @if ($product->type == 'configurable')
+                            {!! view_render_event('bagisto.shop.checkout.options.after', ['item' => $item]) !!}
+                            <div class="summary">
+                                {{ Cart::getProductAttributeOptionDetails($item->child->product)['html'] }}
+                            </div>
+                            {!! view_render_event('bagisto.shop.checkout.options.after', ['item' => $item]) !!}
+                        @endif
+                    </div>
                 </div>
-
             </div>
         @endforeach
     </div>
 
-    <div class="panel order-description mt-20">
-        <div class="pull-left" >
-            <div class="shipping">
-                <div class="decorator">
-                    <i class="icon shipping-icon"></i>
+    <div class="card order-description mt-3">
+        <div class="card-bod">
+            <div class="shipping pt-2">
+                <div class="decorator text-center">
+                    <i class="fa fa-shipping-fast fa-3x"></i>
                 </div>
-
-                <div class="text">
-                    {{ core()->currency($cart->selected_shipping_rate->base_price) }}
-
-                    <div class="info">
-                        {{ $cart->selected_shipping_rate->method_title }}
-                    </div>
+                <div class="text-center">
+                    <strong>{{ core()->currency($cart->selected_shipping_rate->base_price) }}</strong>
+                    <span class="info">{{ $cart->selected_shipping_rate->method_title }}</span>
                 </div>
             </div>
-
-            <div class="payment">
-                <div class="decorator">
-                    <i class="icon payment-icon"></i>
-                </div>
-
-                <div class="text">
-                    {{ core()->getConfigData('sales.paymentmethods.' . $cart->payment->method . '.title') }}
-                </div>
+            <div class="payment pt-2 text-center">
+                <div class="decorator text-center"><i class="fa fa-wallet"></i></div>
+                <div class="text">{{ core()->getConfigData('sales.paymentmethods.' . $cart->payment->method . '.title') }}</div>
             </div>
-
-        </div>
-
-        <div class="pull-right" style="width: 40%; float: left;">
-            <slot name="summary-section"></slot>
+            <div class="pull-right" style="width: 40%; float: left;">
+                <slot name="summary-section"></slot>
+            </div>
         </div>
     </div>
 </div>
