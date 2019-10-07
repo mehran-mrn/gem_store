@@ -63,7 +63,7 @@ class ShopServiceProvider extends ServiceProvider
      */
     protected function composeView()
     {
-        view()->composer('shop::customers.account.partials.sidemenu', function ($view) {
+        view()->composer(['shop::customers.account.partials.sidemenu','shop::customers.account.index'], function ($view) {
             $tree = Tree::create();
 
             foreach (config('menu.customer') as $item) {

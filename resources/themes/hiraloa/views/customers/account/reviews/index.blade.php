@@ -10,10 +10,10 @@
     <div class="breadcrumb-area">
         <div class="container">
             <div class="breadcrumb-content">
-                <h2>Other</h2>
+                <h2>{{ __('shop::app.customer.account.review.index.title') }}</h2>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li class="active">My Account</li>
+                    <li><a href="{{ route('customer.account.index') }}">مشخصات من</a></li>
+                    <li><a href="/">خانه</a></li>
                 </ul>
             </div>
         </div>
@@ -31,10 +31,6 @@
                                  aria-labelledby="account-dashboard-tab">
                                 <div class="myaccount-details">
                                     <div class="account-head mb-10">
-                                        <span class="back-icon"><a href="{{ route('customer.account.index') }}"><i class="icon icon-menu-back"></i></a></span>
-
-                                        <span class="account-heading">{{ __('shop::app.customer.account.review.index.title') }}</span>
-
                                         @if (count($reviews) > 1)
                                             <div class="account-action">
                                                 <a href="{{ route('customer.review.deleteall') }}">{{ __('shop::app.wishlist.deleteall') }}</a>
@@ -48,35 +44,66 @@
                                     <div class="account-items-list">
                                         @if (! $reviews->isEmpty())
                                             @foreach ($reviews as $review)
-                                                <div class="account-item-card mt-15 mb-15">
-                                                    <div class="media-info">
-                                                        <?php $image = $productImageHelper->getProductBaseImage($review->product); ?>
-
-                                                        <a href="{{ url()->to('/').'/products/'.$review->product->url_key }}" title="{{ $review->product->name }}">
-                                                            <img class="media" src="{{ $image['small_image_url'] }}"/>
-                                                        </a>
-
-                                                        <div class="info">
-                                                            <div class="product-name">
-                                                                <a href="{{ url()->to('/').'/products/'.$review->product->url_key }}" title="{{ $review->product->name }}">
-                                                                    {{$review->product->name}}
-                                                                </a>
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <div class="row">
+                                                            <div class="col-3 p-0">
+                                                                <div class="card-img">
+                                                                    <?php $image = $productImageHelper->getProductBaseImage($review->product); ?>
+                                                                    <a href="{{ url()->to('/').'/products/'.$review->product->url_key }}"
+                                                                       title="{{ $review->product->name }}"
+                                                                       class="text-center">
+                                                                        <img class="img-full"
+                                                                             src="{{ $image['small_image_url'] }}"/>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="text-center">
+                                                                    <a href="{{ url()->to('/').'/products/'.$review->product->url_key }}"
+                                                                       title="{{ $review->product->name }}">
+                                                                        {{$review->product->name}}
+                                                                    </a>
+                                                                </div>
                                                             </div>
-
-                                                            <div class="stars mt-10">
-                                                                @for($i=0 ; $i < $review->rating ; $i++)
-                                                                    <span class="icon star-icon"></span>
-                                                                @endfor
-                                                            </div>
-
-                                                            <div class="mt-10">
-                                                                {{ $review->comment }}
+                                                            <div class="col-9 p-0">
+                                                                <div class="card-header bg--white">
+                                                                    <h6>
+                                                                        <strong class="card-title">{{$review->title}}</strong>
+                                                                        @if($review['status']=='approved')
+                                                                            <span class="badge badge-success float-right">{{$review->status}}</span>
+                                                                    </h6>
+                                                                    @elseif($review['status']=='pending')
+                                                                        <span class="badge badge-warning float-right">{{$review->status}}</span></h6>
+                                                                    @endif
+                                                                </div>
+                                                                <div class="description m-3">
+                                                                    {{ $review->comment }}
+                                                                </div>
                                                             </div>
                                                         </div>
+                                                        <div class="card-footer">
+                                                            <div class="row">
+                                                                <div class="col-10">
+                                                                    <div class="stars mt-2">
+                                                                        @for($i=0 ; $i < $review->rating ; $i++)
+                                                                            <span class="fa fa-star"></span>
+                                                                        @endfor
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-2">
+                                                                    <a class="hiraola-btn hiraola-btn_sm  float-right"
+                                                                       href="{{ route('customer.review.delete', $review->id) }}"><span
+                                                                                class="fa fa-trash"></span></a>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
                                                     </div>
+                                                </div>
+                                                <div class="account-item-card mt-15 mb-15">
+
 
                                                     <div class="operations">
-                                                        <a class="mb-50" href="{{ route('customer.review.delete', $review->id) }}"><span class="icon trash-icon"></span></a>
+
                                                     </div>
                                                 </div>
                                                 <div class="horizontal-rule mb-10 mt-10"></div>

@@ -23,9 +23,7 @@
 
                 <div class="account-table-content">
                     @csrf
-
                     {!! view_render_event('bagisto.shop.customers.account.address.create_form_controls.before') !!}
-
                     <div class="control-group" :class="[errors.has('address1[]') ? 'has-error' : '']">
                         <label for="address_0" class="required">{{ __('shop::app.customer.account.address.create.street-address') }}</label>
                         <input type="text" class="control" name="address1[]" id="address_0" v-validate="'required'" data-vv-as="&quot;{{ __('shop::app.customer.account.address.create.street-address') }}&quot;">

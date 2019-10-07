@@ -1,18 +1,21 @@
 <country-state></country-state>
 
 @push('scripts')
-
+    <script src="{{ asset('themes/default/assets/js/shop.js') }}" type="text/javascript"></script>
     <script type="text/x-template" id="country-state-template">
         <div>
-            <div class="control-group" :class="[errors.has('country') ? 'has-error' : '']">
+            <div class="single-input" :class="[errors.has('country') ? 'has-error' : '']">
                 <label for="country" class="required">
                     {{ __('shop::app.customer.account.address.create.country') }}
                 </label>
 
-                <select type="text" v-validate="'required'" class="control" id="country" name="country" v-model="country" data-vv-as="&quot;{{ __('shop::app.customer.account.address.create.country') }}&quot;">
-                    <option value=""></option>
+                <select type="text" v-validate="'required'"  class="control" id="country" name="country"
+                        v-model="country"
+                        data-vv-as="&quot;{{ __('shop::app.customer.account.address.create.country') }}&quot;">
                     @foreach (core()->countries() as $country)
-                        <option value="{{ $country->code }}">{{ $country->name }}</option>
+                        @if($country['code']=="IR")
+                            <option value="{{ $country->code }}">{{ $country->name }}</option>
+                        @endif
                     @endforeach
                 </select>
 
@@ -21,13 +24,17 @@
                 </span>
             </div>
 
-            <div class="control-group" :class="[errors.has('state') ? 'has-error' : '']">
+            <div class="single-input" :class="[errors.has('state') ? 'has-error' : '']">
                 <label for="state" class="required">
                     {{ __('shop::app.customer.account.address.create.state') }}
                 </label>
 
-                <input type="text" v-validate="'required'" class="control" id="state" name="state" v-model="state" v-if="!haveStates()" data-vv-as="&quot;{{ __('shop::app.customer.account.address.create.state') }}&quot;"/>
-                <select v-validate="'required'" class="control" id="state" name="state" v-model="state" v-if="haveStates()" data-vv-as="&quot;{{ __('shop::app.customer.account.address.create.state') }}&quot;">
+                <input type="text" v-validate="'required'" class="control" id="state" name="state" v-model="state"
+                       v-if="!haveStates()"
+                       data-vv-as="&quot;{{ __('shop::app.customer.account.address.create.state') }}&quot;"/>
+                <select v-validate="'required'" class="control" id="state" name="state" v-model="state"
+                        v-if="haveStates()"
+                        data-vv-as="&quot;{{ __('shop::app.customer.account.address.create.state') }}&quot;">
 
                     <option value="">{{ __('shop::app.customer.account.address.create.select-state') }}</option>
 

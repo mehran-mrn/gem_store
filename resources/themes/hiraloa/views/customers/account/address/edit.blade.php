@@ -6,7 +6,6 @@
 
 @section('content-wrapper')
 
-
     <div class="breadcrumb-area">
         <div class="container">
             <div class="breadcrumb-content">
@@ -36,7 +35,7 @@
                                         <span></span>
                                     </div>
                                     {!! view_render_event('bagisto.shop.customers.account.address.edit.before', ['address' => $address]) !!}
-                                    <form method="post" action="{{ route('customer.address.edit', $address->id) }}" @submit.prevent="onSubmit" class="hiraola-form">
+                                    <form method="post" action="{{ route('customer.address.edit', $address->id) }}" @submit.prevent="onSubmit" class="hiraola-form border-0">
                                         <div class="hiraola-form-inner">
                                             @method('PUT')
                                             @csrf
@@ -70,10 +69,9 @@
                                                 <input type="text" class="control" name="phone" v-validate="'required'" value="{{ $address->phone }}" data-vv-as="&quot;{{ __('shop::app.customer.account.address.create.phone') }}&quot;">
                                                 <span class="control-error" v-if="errors.has('phone')">@{{ errors.first('phone') }}</span>
                                             </div>
-
                                             {!! view_render_event('bagisto.shop.customers.account.address.edit_form_controls.after', ['address' => $address]) !!}
 
-                                            <div class="button-group">
+                                            <div class="single-input">
                                                 <button class="hiraola-btn float-right" type="submit">
                                                     {{ __('shop::app.customer.account.address.create.submit') }}
                                                 </button>

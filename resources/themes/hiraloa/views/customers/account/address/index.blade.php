@@ -8,10 +8,10 @@
     <div class="breadcrumb-area">
         <div class="container">
             <div class="breadcrumb-content">
-                <h2>Other</h2>
+                <h2>{{ __('shop::app.customer.account.address.index.title') }}</h2>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li class="active">My Account</li>
+                    <li><a href="{{ route('customer.account.index') }}">مشخصات من</a></li>
+                    <li><a href="/">خانه</a></li>
                 </ul>
             </div>
         </div>
@@ -29,18 +29,9 @@
                                  aria-labelledby="account-dashboard-tab">
                                 <div class="myaccount-details">
                                     <div class="account-head mb-10">
-                                        <span class="back-icon">
-                                            <a href="{{ route('customer.account.index') }}">
-                                                <i class="icon icon-menu-back"></i>
-                                            </a>
-                                        </span>
-                                        <span class="account-heading">{{ __('shop::app.customer.account.address.index.title') }}</span>
-
                                         @if (! $addresses->isEmpty())
-                                            <span class="cart-page-total">
-
-                                                <a  href="{{ route('customer.address.create') }}">{{ __('shop::app.customer.account.address.index.add') }}</a>
-                                            </span>
+                                            <a href="{{ route('customer.address.create') }}"
+                                               class="col-2 float-right hiraola-btn hiraola-btn_sm">{{ __('shop::app.customer.account.address.index.add') }}</a>
                                         @else
                                             <span></span>
                                         @endif
@@ -52,55 +43,60 @@
                                             <div>{{ __('shop::app.customer.account.address.index.empty') }}</div>
                                             <br/>
                                             <span class="cart-page-total">
-
                                             <a href="{{ route('customer.address.create') }}">{{ __('shop::app.customer.account.address.index.add') }}</a>
-
-                                                @else
-                                            <div class="address-holder">
+                                            </span>
+                                        @else
+                                            <div class="clearfix"></div>
+                                            <div class="myaccount-address">
                                                 @foreach ($addresses as $address)
-                                                    <div class="address-card">
-                                                        <div class="details">
-                                                            <span class="bold">{{ auth()->guard('customer')->user()->name }}</span>
-                                                            <ul class="address-card-list">
-                                                                <li class="mt-5">
-                                                                    {{ $address->name }}
-                                                                </li>
-
-                                                                <li class="mt-5">
-                                                                    {{ $address->address1 }},
-                                                                </li>
-
-                                                                <li class="mt-5">
-                                                                    {{ $address->city }}
-                                                                </li>
-
-                                                                <li class="mt-5">
-                                                                    {{ $address->state }}
-                                                                </li>
-
-                                                                <li class="mt-5">
-                                                                    {{ core()->country_name($address->country) }} {{ $address->postcode }}
-                                                                </li>
-
-                                                                <li class="mt-10">
-                                                                    {{ __('shop::app.customer.account.address.index.contact') }}
-                                                                    : {{ $address->phone }}
-                                                                </li>
-                                                            </ul>
-
-                                                            <div class="control-links mt-20">
-                                    <span>
-                                        <a href="{{ route('customer.address.edit', $address->id) }}">
-                                            {{ __('shop::app.customer.account.address.index.edit') }}
-                                        </a>
-                                    </span>
-
-                                                                <span>
-                                        <a href="{{ route('address.delete', $address->id) }}"
-                                           onclick="deleteAddress('{{ __('shop::app.customer.account.address.index.confirm-delete') }}')">
-                                            {{ __('shop::app.customer.account.address.index.delete') }}
-                                        </a>
-                                    </span>
+                                                    <div class="card mt-2">
+                                                        <div class="card-header">
+                                                            <strong class="card-title"> {{ auth()->guard('customer')->user()->name }}
+                                                                -{{ $address->name }}</strong>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <strong>استان</strong> <span>{{ $address->city }}</span>
+                                                            <strong>شهر</strong> <span>{{ $address->state }}</span>
+                                                            <strong>محله</strong> <span>{{ $address->address1 }}</span>
+                                                        </div>
+                                                        <div class="card-footer">
+                                                            <div class="row">
+                                                                <div class="col-7">
+                                                                    <div class="row">
+                                                                        <div class="col-1"><i
+                                                                                    class="fa fa-mail-bulk "></i></div>
+                                                                        <div class="col-3"><h6 class="px-2">کد پستی</h6>
+                                                                        </div>
+                                                                        <div class="col-8">
+                                                                            <strong>{{ $address->postcode }}</strong>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row pt-2">
+                                                                        <div class="col-1"><i
+                                                                                    class="fa fa-mobile-alt text-center"></i>
+                                                                        </div>
+                                                                        <div class="col-3"><h6
+                                                                                    class="px-2">{{ __('shop::app.customer.account.address.index.contact') }}</h6>
+                                                                        </div>
+                                                                        <div class="col-8">
+                                                                            <strong>{{ $address->phone }}</strong></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-5">
+                                                                    <div class="row">
+                                                                        <div class="col-6">
+                                                                            <a href="{{ route('customer.address.edit', $address->id) }}"
+                                                                               class="hiraola-btn hiraola-btn_sm m-2 py-0 px-0">
+                                                                                {{ __('shop::app.customer.account.address.index.edit') }}</a>
+                                                                        </div>
+                                                                        <div class="col-6">
+                                                                            <a href="{{ route('address.delete', $address->id) }}"
+                                                                               class="hiraola-btn hiraola-btn_sm m-2 py-0 px-0"
+                                                                               onclick="deleteAddress('{{ __('shop::app.customer.account.address.index.confirm-delete') }}')">
+                                                                                {{ __('shop::app.customer.account.address.index.delete') }}</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>

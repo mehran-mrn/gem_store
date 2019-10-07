@@ -1,4 +1,4 @@
-@extends('shop::layouts.master')
+@extends('hiraloa::layouts.master')
 
 @section('page_title')
     {{ __('shop::app.customer.account.profile.index.title') }}
@@ -7,14 +7,13 @@
 @section('content-wrapper')
 
 
-
     <div class="breadcrumb-area">
         <div class="container">
             <div class="breadcrumb-content">
-                <h2>Other</h2>
+                <h2>{{ __('shop::app.customer.account.profile.index.title') }}</h2>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li class="active">My Account</li>
+                    <li><a href="{{ route('customer.account.index') }}">مشخصات من</a></li>
+                    <li><a href="/">خانه</a></li>
                 </ul>
             </div>
         </div>
@@ -32,69 +31,55 @@
                             <div class="tab-pane fade show active" id="account-dashboard" role="tabpanel"
                                  aria-labelledby="account-dashboard-tab">
                                 <div class="myaccount-dashboard">
-                                    <div class="account-head">
-
-                                        <span class="account-heading">{{ __('shop::app.customer.account.profile.index.title') }}</span>
-
-                                        <span class="account-action">
-                                            <a href="{{ route('customer.profile.edit') }}">{{ __('shop::app.customer.account.profile.index.edit') }}</a>
-                                        </span>
-                                        <div class="horizontal-rule"></div>
-                                    </div>
-
                                     {!! view_render_event('bagisto.shop.customers.account.profile.view.before', ['customer' => $customer]) !!}
-
                                     <div class="account-table-content pt-4">
-                                        <table class="table table-responsive">
-                                            <tbody>
-                                            <tr>
-                                                <td>{{ __('shop::app.customer.account.profile.fname') }}</td>
-                                                <td>{{ $customer->first_name }}</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>{{ __('shop::app.customer.account.profile.lname') }}</td>
-                                                <td>{{ $customer->last_name }}</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>{{ __('shop::app.customer.account.profile.gender') }}</td>
-                                                <td>{{ $customer->gender }}</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>{{ __('shop::app.customer.account.profile.dob') }}</td>
-                                                <td>{{ $customer->date_of_birth }}</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>{{ __('shop::app.customer.account.profile.email') }}</td>
-                                                <td>{{ $customer->email }}</td>
-                                            </tr>
-
-                                            {{-- @if ($customer->subscribed_to_news_letter == 1)
-                                                <tr>
-                                                    <td> {{ __('shop::app.footer.subscribe-newsletter') }}</td>
-                                                    <td>
-                                                        <a class="btn btn-sm btn-primary" href="{{ route('shop.unsubscribe', $customer->email) }}">{{ __('shop::app.subscription.unsubscribe') }} </a>
-                                                    </td>
-                                                </tr>
-                                            @endif --}}
-                                            </tbody>
-                                        </table>
-                                    </div>
-
-                                    <accordian :title="'{{ __('shop::app.customer.account.profile.index.title') }}'" :active="true">
-                                        <div slot="body">
-                                            <div class="page-action">
-                                                <form method="POST" action="{{ route('customer.profile.destroy') }}">
-                                                    @csrf
-                                                    <input type="submit" class="hiraola-login_btn mt-10"
-                                                           value="{{ __('shop::app.delete') }}">
-                                                </form>
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <h6 class="text-black-50">{{ __('shop::app.customer.account.profile.fname') }}</h6>
+                                                            <strong>{{ $customer->first_name }}</strong>
+                                                            <hr>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <h6 class="text-black-50">{{ __('shop::app.customer.account.profile.lname') }}</h6>
+                                                            <strong>{{ $customer->last_name }}</strong>
+                                                            <hr>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <h6 class="text-black-50">{{ __('shop::app.customer.account.profile.gender') }}</h6>
+                                                            <strong>{{ $customer->gender }}</strong>
+                                                            <hr>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <h6 class="text-black-50">{{ __('shop::app.customer.account.profile.dob') }}</h6>
+                                                            <strong>{{ $customer->date_of_birth }}</strong>
+                                                            <hr>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <h6 class="text-black-50">{{ __('shop::app.customer.account.profile.email') }}</h6>
+                                                            <strong>{{ $customer->email }}</strong>
+                                                            <hr>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <h6 class="text-black-50">تاریخ عضویت</h6>
+                                                            <strong>{{ $customer->created_at }}</strong>
+                                                            <hr>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <a href="{{ route('customer.profile.edit') }}"
+                                                           class="hiraola-btn float-right">{{ __('shop::app.customer.account.profile.index.edit') }}</a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </accordian>
+
+                                        <div class="clearfix"></div>
+                                    </div>
                                     {!! view_render_event('bagisto.shop.customers.account.profile.view.after', ['customer' => $customer]) !!}
                                 </div>
                             </div>

@@ -29,7 +29,19 @@
     @show
 
     @stack('css')
-
+    <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/vendor/bootstrapRTL.css')}}">
+    <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/vendor/font-awesome.css')}}">
+    <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/vendor/fontawesome-stars.css')}}">
+    <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/vendor/ion-fonts.css')}}">
+    <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/plugins/slick.css')}}">
+    <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/plugins/animate.css')}}">
+    <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/plugins/jquery-ui.min.css')}}">
+    <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/plugins/lightgallery.min.css')}}">
+    <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/plugins/nice-select.css')}}">
+    <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/plugins/pnotify/PNotifyBrightTheme.css')}}">
+    {{--    <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/style.css')}}">--}}
+    <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/styleRTL.css')}}?i=3">
+    <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/fonts.css')}}">
     {!! view_render_event('bagisto.shop.layout.head') !!}
 
 </head>
@@ -105,10 +117,90 @@
         @endif
     </script>
 
+
+
+
     <script type="text/javascript" src="{{ bagisto_asset('js/shop.js') }}"></script>
     <script type="text/javascript" src="{{ asset('vendor/webkul/ui/assets/js/ui.js') }}"></script>
 
+    <script src="{{url('themes/hiraloa/assets/js/vendor/jquery-1.12.4.min.js')}}"></script>
+    {{--    <script src="{{url('themes/hiraloa/assets/js/vendor/jquery-3.3.1.slim.min.js')}}"></script>--}}
+    <script src="{{url('themes/hiraloa/assets/js/vendor/modernizr-2.8.3.min.js')}}"></script>
+    <script src="{{url('themes/hiraloa/assets/js/vendor/popperRTL.min.js')}}"></script>
+    {{--    <script src="{{url('themes/hiraloa/assets/js/vendor/popper.min.js')}}"></script>--}}
+    {{--    <script src="{{url('themes/hiraloa/assets/js/vendor/bootstrap.min.js')}}"></script>--}}
+    <script src="{{url('themes/hiraloa/assets/js/vendor/bootstrapRTL.min.js')}}"></script>
+    <script src="{{url('themes/hiraloa/assets/js/plugins/slick.min.js')}}"></script>
+    <script src="{{url('themes/hiraloa/assets/js/plugins/countdown.js')}}"></script>
+    <script src="{{url('themes/hiraloa/assets/js/plugins/jquery.barrating.min.js')}}"></script>
+    <script src="{{url('themes/hiraloa/assets/js/plugins/jquery.counterup.js')}}"></script>
+    <script src="{{url('themes/hiraloa/assets/js/plugins/jquery.nice-select.js')}}"></script>
+    <script src="{{url('themes/hiraloa/assets/js/plugins/jquery.sticky-sidebar.js')}}"></script>
+    <script src="{{url('themes/hiraloa/assets/js/plugins/jquery-ui.min.js')}}"></script>
+    <script src="{{url('themes/hiraloa/assets/js/plugins/jquery.ui.touch-punch.min.js')}}"></script>
+    <script src="{{url('themes/hiraloa/assets/js/plugins/lightgallery.min.js')}}"></script>
+    <script src="{{url('themes/hiraloa/assets/js/plugins/scroll-top.js')}}"></script>
+    <script src="{{url('themes/hiraloa/assets/js/plugins/theia-sticky-sidebar.min.js')}}"></script>
+    <script src="{{url('themes/hiraloa/assets/js/plugins/waypoints.min.js')}}"></script>
+    <script src="{{url('themes/hiraloa/assets/js/plugins/instafeed.min.js')}}"></script>
+    <script src="{{url('themes/hiraloa/assets/js/plugins/jquery.elevateZoom-3.0.8.min.js')}}"></script>
+    <script>
+        (function ($) {
+            'use strict';
+            /*-----------------------------
+                Hiraola's Window When Loading
+        ---------------------------------*/
+            $(window).on('load', function () {
+                var wind = $(window);
+                /* ----------------------------------------------------------------
+                    [ Preloader ]
+        -----------------------------------------------------------------*/
 
+                $('.loading').fadeOut(500);
+            });
+            /*----------------------------------------*/
+            /* Hiraola's Newsletter Popup
+        /*----------------------------------------*/
+            setTimeout(function () {
+                $('.popup_wrapper').css({
+                    opacity: '1',
+                    visibility: 'visible'
+                });
+                $('.popup_off').on('click', function () {
+                    $('.popup_wrapper').fadeOut(500);
+                });
+            }, 2500);
+            /*----------------------------------------*/
+            /*  Hiraola's Sticky Menu Activation
+        /*----------------------------------------*/
+            $(window).on('scroll', function () {
+                if ($(this).scrollTop() > 300) {
+                    $('.header-sticky').addClass('sticky');
+                } else {
+                    $('.header-sticky').removeClass('sticky');
+                }
+            });
+            /*----------------------------------------*/
+            /*  Hiraola's Main Slider
+        /*----------------------------------------*/
+            $('.main-slider').slick({
+                infinite: true,
+                arrows: true,
+                autoplay: true,
+                fade: true,
+                dots: true,
+                autoplaySpeed: 7000,
+                speed: 1000,
+                adaptiveHeight: true,
+                easing: 'ease-in-out',
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                rtl: true,
+                prevArrow: '<button class="slick-prev"><i class="ion-ios-arrow-forward"></i></button>',
+                nextArrow: '<button class="slick-next"><i class="ion-ios-arrow-back"></i></button>'
+            });
+        })(jQuery);
+    </script>
     @stack('scripts')
 
     {!! view_render_event('bagisto.shop.layout.body.after') !!}

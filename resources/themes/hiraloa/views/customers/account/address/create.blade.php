@@ -55,7 +55,9 @@
                                                     @endfor
                                                 </div>
                                             @endif
-                                            @include ('shop::customers.account.address.country-state', ['countryCode' => old('country'), 'stateCode' => old('state')])
+                                            <div class="single-input">
+                                                @include ('hiraloa::customers.account.address.country-state', ['countryCode' => old('country'), 'stateCode' => old('state')])
+                                            </div>
                                             <div class="single-input">
                                                 <label for="city"
                                                        class="required">{{ __('shop::app.customer.account.address.create.city') }}</label>
