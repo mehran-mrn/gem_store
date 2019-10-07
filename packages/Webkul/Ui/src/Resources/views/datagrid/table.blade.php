@@ -10,7 +10,7 @@
             <div class="grid-container">
                 <div class="filter-row-one" id="datagrid-filters">
                     <div class="search-filter">
-                        <input type="search" id="search-field" class="control" placeholder="{{ __('ui::app.datagrid.search') }}" v-model="searchValue" v-on:keyup.enter="searchCollection(searchValue)" />
+                        <input type="search" id="search-field" class="form-control" placeholder="{{ __('ui::app.datagrid.search') }}" v-model="searchValue" v-on:keyup.enter="searchCollection(searchValue)" />
 
                         <div class="icon-wrapper">
                             <span class="icon search-icon search-btn" v-on:click="searchCollection(searchValue)"></span>
@@ -18,18 +18,16 @@
                     </div>
 
                     <div class="dropdown-filters">
-                        <div class="dropdown-toggle">
-                            <div class="grid-dropdown-header">
+                            <div class="grid-dropdown-header pt-2">
                                 <span class="name">{{ __('ui::app.datagrid.filter') }}</span>
                                 <i class="icon arrow-down-icon active"></i>
                             </div>
-                        </div>
 
-                        <div class="dropdown-list dropdown-container" style="display: none;">
+                        <div class="dropdown-list dropdown-container" >
                             <ul>
                                 <li>
                                     <div class="control-group">
-                                        <select class="filter-column-select control" v-model="filterColumn" v-on:click="getColumnOrAlias(filterColumn)">
+                                        <select class="filter-column-select control form-control" v-model="filterColumn" v-on:click="getColumnOrAlias(filterColumn)">
                                             <option selected disabled>{{ __('ui::app.datagrid.column') }}</option>
                                             @foreach($results['columns'] as $column)
                                                 @if(isset($column['filterable']) && $column['filterable'])
@@ -44,8 +42,8 @@
 
                                 {{-- suitable for string columns --}}
                                 <li v-if='stringConditionSelect'>
-                                    <div class="control-group">
-                                        <select class="control" v-model="stringCondition">
+                                    <div class="control-group pt-2">
+                                        <select class="control form-control" v-model="stringCondition">
                                             <option selected disabled>{{ __('ui::app.datagrid.condition') }}</option>
                                             <option value="like">{{ __('ui::app.datagrid.contains') }}</option>
                                             <option value="nlike">{{ __('ui::app.datagrid.ncontains') }}</option>
@@ -57,15 +55,15 @@
 
                                 {{-- Response fields based on the type of columns to be filtered --}}
                                 <li v-if='stringCondition != null'>
-                                    <div class="control-group">
-                                        <input type="text" class="control response-string" placeholder="Value here" v-model="stringValue" />
+                                    <div class="control-group pt-2">
+                                        <input type="text" class="control response-string form-control" placeholder="Value here" v-model="stringValue" />
                                     </div>
                                 </li>
 
                                 {{-- suitable for numeric columns --}}
                                 <li v-if='numberConditionSelect'>
-                                    <div class="control-group">
-                                        <select class="control" v-model="numberCondition">
+                                    <div class="control-group pt-2">
+                                        <select class="control form-control" v-model="numberCondition">
                                             <option selected disabled>{{ __('ui::app.datagrid.condition') }}</option>
                                             <option value="eq">{{ __('ui::app.datagrid.equals') }}</option>
                                             <option value="neqs">{{ __('ui::app.datagrid.nequals') }}</option>
@@ -78,15 +76,15 @@
                                 </li>
 
                                 <li v-if='numberCondition != null'>
-                                    <div class="control-group">
-                                        <input type="number" class="control response-number" placeholder="Numeric Value here"  v-model="numberValue"/>
+                                    <div class="control-group pt-2">
+                                        <input type="number" class="control response-number form-control" placeholder="Numeric Value here"  v-model="numberValue"/>
                                     </div>
                                 </li>
 
                                 {{-- suitable for boolean columns --}}
                                 <li v-if='booleanConditionSelect'>
-                                    <div class="control-group">
-                                        <select class="control" v-model="booleanCondition">
+                                    <div class="control-group pt-2">
+                                        <select class="control form-control" v-model="booleanCondition">
                                             <option selected disabled>{{ __('ui::app.datagrid.condition') }}</option>
                                             <option value="eq">{{ __('ui::app.datagrid.equals') }}</option>
                                             <option value="neqs">{{ __('ui::app.datagrid.nequals') }}</option>
@@ -95,8 +93,8 @@
                                 </li>
 
                                 <li v-if='booleanCondition != null'>
-                                    <div class="control-group">
-                                        <select class="control" v-model="booleanValue">
+                                    <div class="control-group pt-2">
+                                        <select class="control form-control" v-model="booleanValue">
                                             <option selected disabled>{{ __('ui::app.datagrid.value') }}</option>
                                             <option value="1">{{ __('ui::app.datagrid.true') }}</option>
                                             <option value="0">{{ __('ui::app.datagrid.false') }}</option>
@@ -106,8 +104,8 @@
 
                                 {{-- suitable for date/time columns --}}
                                 <li v-if='datetimeConditionSelect'>
-                                    <div class="control-group">
-                                        <select class="control" v-model="datetimeCondition">
+                                    <div class="control-group pt-2">
+                                        <select class="control form-control" v-model="datetimeCondition">
                                             <option selected disabled>{{ __('ui::app.datagrid.condition') }}</option>
                                             <option value="eq">{{ __('ui::app.datagrid.equals') }}</option>
                                             <option value="neqs">{{ __('ui::app.datagrid.nequals') }}</option>
@@ -121,12 +119,12 @@
                                 </li>
 
                                 <li v-if='datetimeCondition != null'>
-                                    <div class="control-group">
-                                        <input class="control" v-model="datetimeValue" type="date">
+                                    <div class="control-group pt-2">
+                                        <input class="control form-control" v-model="datetimeValue" type="date">
                                     </div>
                                 </li>
 
-                                <button class="btn btn-sm btn-primary apply-filter" v-on:click="getResponse">{{ __('ui::app.datagrid.apply') }}</button>
+                                <button class="hiraola-btn hiraola-btn_sm col-2 apply-filter my-2 float-right" v-on:click="getResponse">{{ __('ui::app.datagrid.apply') }}</button>
                             </ul>
                         </div>
                     </div>
