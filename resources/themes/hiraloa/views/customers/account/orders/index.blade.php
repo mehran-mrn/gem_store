@@ -3,15 +3,17 @@
 @section('page_title')
     {{ __('shop::app.customer.account.order.index.page-title') }}
 @endsection
-
+@push('scripts')
+    <script src="{{ asset('themes/default/assets/js/shop.js') }}" type="text/javascript"></script>
+@endpush
 @section('content-wrapper')
     <div class="breadcrumb-area">
         <div class="container">
             <div class="breadcrumb-content">
-                <h2>Other</h2>
+                <h2>{{ __('shop::app.customer.account.order.index.title') }}</h2>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li class="active">My Account</li>
+                    <li><a href="{{ route('customer.account.index') }}">مشخصات من</a></li>
+                    <li><a href="/">خانه</a></li>
                 </ul>
             </div>
         </div>
@@ -28,12 +30,6 @@
                             <div class="tab-pane fade show active" id="account-dashboard" role="tabpanel"
                                  aria-labelledby="account-dashboard-tab">
                                 <div class="myaccount-details">
-                                    <div class="account-head mb-10">
-                                        <span class="back-icon"><a href="{{ route('customer.account.index') }}"><i class="icon icon-menu-back"></i></a></span>
-                                        <span class="account-heading">{{ __('shop::app.customer.account.order.index.title') }}</span>
-                                        <div class="horizontal-rule"></div>
-                                    </div>
-
                                     {!! view_render_event('bagisto.shop.customers.account.orders.list.before', ['orders' => $orders]) !!}
                                     <div class="account-items-list">
                                         <div class="account-table-content">
