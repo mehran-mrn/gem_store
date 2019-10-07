@@ -16,6 +16,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         $this->app['view']->addNamespace('hiraloa', base_path() . '/resources/themes/hiraloa/views');
+        $this->app['view']->addNamespace('custom', base_path() . '/resources/themes/custom/views');
 
     }
 

@@ -14,6 +14,11 @@ return [
             'assets_path' => 'public/themes/hiraloa/assets',
             'name' => 'Hiraloa'
         ],
+        'custom' => [
+            'views_path' => 'resources/themes/custom/views',
+            'assets_path' => 'public/themes/custom/assets',
+            'name' => 'custom'
+        ],
         // 'bliss' => [
         //     'views_path' => 'resources/themes/bliss/views',
         //     'assets_path' => 'public/themes/bliss/assets',

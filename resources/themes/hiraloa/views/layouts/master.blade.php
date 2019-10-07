@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/plugins/nice-select.css')}}">
     <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/plugins/pnotify/PNotifyBrightTheme.css')}}">
     {{--    <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/style.css')}}">--}}
-    <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/styleRTL.css')}}?i=1">
+    <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/styleRTL.css')}}?i=3">
     <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/fonts.css')}}">
     <!--<link rel="stylesheet" href="assets/css/style.min.css">-->
     <!--
