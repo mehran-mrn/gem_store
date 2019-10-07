@@ -29,28 +29,27 @@
                                           @onShippingMethodSelected="shippingMethodSelected($event)"></shipping-section>
 
                     </div>
-                    <div class="step-content payment" v-show="currentStep == 3" id="payment-section">
+                    <div class="step-content payment col-lg-6 col-12" v-show="currentStep == 3" id="payment-section">
                         <payment-section v-if="currentStep == 3"
                                          @onPaymentMethodSelected="paymentMethodSelected($event)"></payment-section>
 
 
                     </div>
-                    <div class="step-content review" v-show="currentStep == 4" id="summary-section">
+                    <div class="step-content review col-lg-6 col-12" v-show="currentStep == 4" id="summary-section">
                         <review-section v-if="currentStep == 4" :key="reviewComponentKey">
                             <div slot="summary-section">
-                                <summary-section
-                                        discount="1"
-                                        :key="summeryComponentKey"
-                                        @onApplyCoupon="getOrderSummary"
-                                        @onRemoveCoupon="getOrderSummary"
-                                ></summary-section>
+
+
                             </div>
                         </review-section>
 
                     </div>
 
-                    <div class="col-lg-6 col-12" v-show="currentStep != 4">
-                        <summary-section :key="summeryComponentKey"></summary-section>
+                    <div class="col-lg-6 col-12" >
+                        <summary-section :key="summeryComponentKey"
+                                         @onApplyCoupon="getOrderSummary"
+                                         @onRemoveCoupon="getOrderSummary"
+                        ></summary-section>
                         <div class="order-button-payment">
 
                             <button v-if="currentStep == 1" type="button" class="btn btn-success btn-lg btn-block " @click="validateForm('address-form')"
@@ -65,6 +64,7 @@
                                     :disabled="disable_button" id="checkout-payment-continue-button">
                                 {{ __('shop::app.checkout.onepage.continue') }}
                             </button>
+
                             <button v-if="currentStep == 4" type="button" class="btn btn-success btn-lg btn-block " @click="placeOrder()"
                                     :disabled="disable_button" id="checkout-place-order-button">
                                 {{ __('shop::app.checkout.onepage.place-order') }}

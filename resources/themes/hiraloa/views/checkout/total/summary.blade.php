@@ -71,32 +71,6 @@
         @endif
 
     </div>
-    <div class="payment-method">
-        <div class="payment-accordion">
-            <div id="accordion">
-
-                <div class="card">
-                    <div class="card-header" id="#payment-3">
-                        <h5 class="panel-title">
-                            <a href="javascript:void(0)" class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                PayPal
-                            </a>
-                        </h5>
-                    </div>
-                    <div id="collapseThree" class="collapse" data-parent="#accordion">
-                        <div class="card-body">
-                            <p>Make your payment directly into our bank account. Please use your Order
-                                ID as the payment
-                                reference. Your order won’t be shipped until the funds have cleared in
-                                our account.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    </div>
 </div>
 
 

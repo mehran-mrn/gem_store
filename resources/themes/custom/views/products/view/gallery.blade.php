@@ -12,7 +12,7 @@
 
     <product-gallery></product-gallery>
 
-    @include ('shop::products.view.product-add')
+    @include ('custom::products.view.product-add')
 
 </div>
 

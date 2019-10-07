@@ -1,4 +1,4 @@
-@extends('shop::layouts.master')
+@extends('hiraloa::layouts.master')
 
 @section('page_title')
     {{ __('shop::app.customer.account.profile.index.title') }}
@@ -8,7 +8,7 @@
 
 <div class="account-content">
 
-    @include('shop::customers.account.partials.sidemenu')
+    @include('hiraloa::customers.account.partials.sidemenu')
 
     <div class="account-layout">
 

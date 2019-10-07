@@ -11,7 +11,7 @@
 
             @foreach (app('Webkul\Product\Repositories\ProductRepository')->getNewProducts() as $productFlat)
 
-                @include ('shop::products.list.card', ['product' => $productFlat])
+                @include ('custom::products.list.card', ['product' => $productFlat])
 
             @endforeach
 

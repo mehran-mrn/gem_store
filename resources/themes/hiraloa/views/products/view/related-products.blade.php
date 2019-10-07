@@ -17,7 +17,7 @@
 
                 </div>
                 <div class="col-lg-12">
-                    <div class="hiraola-product_slider-3">
+                    <div class="hiraola-product_slider-3 ">
                     @foreach ($relatedProducts as $related_product)
 
                         <!-- Begin Hiraola's Slide Item Area -->

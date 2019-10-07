@@ -13,6 +13,7 @@
                      onerror="this.src='{{ asset('vendor/webkul/ui/assets/images/product/meduim-product-placeholder.png') }}'"
                 >
             </a>
+
             @if ($product->featured)
                 <span class="sticker-2">{{__('shop::app.products.sale')}}</span>
             @endif

@@ -1,30 +1,26 @@
 <div class="form-container">
-    <div class="form-header mb-30">
-        <span class="checkout-step-heading">{{ __('shop::app.checkout.onepage.summary') }}</span>
-    </div>
-
-    <div class="address-summary">
+    <div class="address-summary row">
         @if ($billingAddress = $cart->billing_address)
-            <div class="billing-address">
+            <div class="billing-address col-md-6">
                 <div class="card-title mb-20">
                     <b>{{ __('shop::app.checkout.onepage.billing-address') }}</b>
                 </div>
 
-                <div class="card-content">
-                    <ul>
-                        <li class="mb-10">
+                <div class="card-content ">
+                    <ul class="address-card-list ">
+                        <li class="mb-2">
                             {{ $billingAddress->name }}
                         </li>
-                        <li class="mb-10">
+                        <li class="mb-1">
                             {{ $billingAddress->address1 }},<br/> {{ $billingAddress->state }}
                         </li>
-                        <li class="mb-10">
+                        <li class="mb-1">
                             {{ core()->country_name($billingAddress->country) }} {{ $billingAddress->postcode }}
                         </li>
 
-                        <span class="horizontal-rule mb-15 mt-15"></span>
+                        <span class="horizontal-rule mb-2 mt-2"></span>
 
-                        <li class="mb-10">
+                        <li class="mb-2">
                             {{ __('shop::app.checkout.onepage.contact') }} : {{ $billingAddress->phone }}
                         </li>
                     </ul>
@@ -33,26 +29,26 @@
         @endif
 
         @if ($shippingAddress = $cart->shipping_address)
-            <div class="shipping-address">
+            <div class="shipping-address  col-md-6">
                 <div class="card-title mb-20">
                     <b>{{ __('shop::app.checkout.onepage.shipping-address') }}</b>
                 </div>
 
-                <div class="card-content">
+                <div class="card-content address-box">
                     <ul>
-                        <li class="mb-10">
+                        <li class="mb-2">
                             {{ $shippingAddress->name }}
                         </li>
-                        <li class="mb-10">
+                        <li class="mb-1">
                             {{ $shippingAddress->address1 }},<br/> {{ $shippingAddress->state }}
                         </li>
-                        <li class="mb-10">
+                        <li class="mb-1">
                             {{ core()->country_name($shippingAddress->country) }} {{ $shippingAddress->postcode }}
                         </li>
 
                         <span class="horizontal-rule mb-15 mt-15"></span>
 
-                        <li class="mb-10">
+                        <li class="mb-1">
                             {{ __('shop::app.checkout.onepage.contact') }} : {{ $shippingAddress->phone }}
                         </li>
                     </ul>
@@ -64,7 +60,8 @@
 
     @inject ('productImageHelper', 'Webkul\Product\Helpers\ProductImage')
 
-    <div class="cart-item-list mt-20">
+    <div class=" bg mt-20">
+
         @foreach ($cart->items as $item)
 
             <?php
@@ -76,12 +73,13 @@
                     $productBaseImage = $productImageHelper->getProductBaseImage($item->product);
             ?>
 
-            <div class="item mb-5" style="margin-bottom: 5px;">
-                <div class="item-image">
-                    <img src="{{ $productBaseImage['medium_image_url'] }}" />
+
+            <div class="panel border-b row" style="margin-bottom: 5px;">
+                <div class=" col-md-4">
+                    <img src="{{ $productBaseImage['small_image_url'] }}" />
                 </div>
 
-                <div class="item-details">
+                <div class=" col-md-6">
 
                     {!! view_render_event('bagisto.shop.checkout.name.before', ['item' => $item]) !!}
 
@@ -125,12 +123,13 @@
                         {!! view_render_event('bagisto.shop.checkout.options.after', ['item' => $item]) !!}
                     @endif
                 </div>
+
             </div>
         @endforeach
     </div>
 
-    <div class="order-description mt-20">
-        <div class="pull-left" style="width: 60%; float: left;">
+    <div class="panel order-description mt-20">
+        <div class="pull-left" >
             <div class="shipping">
                 <div class="decorator">
                     <i class="icon shipping-icon"></i>

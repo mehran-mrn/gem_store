@@ -23,7 +23,7 @@
 
                 @foreach ($product->cross_sells()->paginate(2) as $cross_sell_product)
 
-                    @include ('shop::products.list.card', ['product' => $cross_sell_product])
+                    @include ('custom::products.list.card', ['product' => $cross_sell_product])
 
                 @endforeach
 

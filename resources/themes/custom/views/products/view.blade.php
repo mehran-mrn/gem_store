@@ -22,7 +22,7 @@
 
                     <input type="hidden" name="product" value="{{ $product->product_id }}">
 
-                    @include ('shop::products.view.gallery')
+                    @include ('custom::products.view.gallery')
 
                     <div class="details">
 
@@ -30,11 +30,11 @@
                             <span>{{ $product->name }}</span>
                         </div>
 
-                        @include ('shop::products.review', ['product' => $product])
+                        @include ('custom::products.review', ['product' => $product])
 
-                        @include ('shop::products.price', ['product' => $product])
+                        @include ('custom::products.price', ['product' => $product])
 
-                        @include ('shop::products.view.stock', ['product' => $product])
+                        @include ('custom::products.view.stock', ['product' => $product])
 
                         {!! view_render_event('bagisto.shop.products.view.short_description.before', ['product' => $product]) !!}
 
@@ -68,7 +68,7 @@
                             <input type="hidden" value="false" name="is_configurable">
                         @endif
 
-                        @include ('shop::products.view.configurable-options')
+                        @include ('custom::products.view.configurable-options')
 
                         {!! view_render_event('bagisto.shop.products.view.description.before', ['product' => $product]) !!}
 
@@ -87,17 +87,17 @@
 
                         {!! view_render_event('bagisto.shop.products.view.description.before', ['product' => $product]) !!}
 
-                        @include ('shop::products.view.attributes')
+                        @include ('custom::products.view.attributes')
 
-                        @include ('shop::products.view.reviews')
+                        @include ('custom::products.view.reviews')
                     </div>
                 </div>
             </product-view>
         </div>
 
-        @include ('shop::products.view.related-products')
+        @include ('custom::products.view.related-products')
 
-        @include ('shop::products.view.up-sells')
+        @include ('custom::products.view.up-sells')
 
     </section>
 

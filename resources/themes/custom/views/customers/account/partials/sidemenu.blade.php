@@ -1,4 +1,5 @@
 <div class="sidebar">
+
     @foreach ($menu->items as $menuItem)
         <div class="menu-block">
             <div class="menu-block-title">
@@ -10,8 +11,8 @@
             <div class="menu-block-content">
                 <ul class="menubar">
                     @foreach ($menuItem['children'] as $subMenuItem)
-                        <li class="menu-item {{ $menu->getActive($subMenuItem) }}">
-                            <a href="{{ $subMenuItem['url'] }}">
+                        <li class="nav-item {{ $menu->getActive($subMenuItem) }}">
+                            <a class="nav-link" href="{{ $subMenuItem['url'] }}">
                                 {{ trans($subMenuItem['name']) }}
                             </a>
 

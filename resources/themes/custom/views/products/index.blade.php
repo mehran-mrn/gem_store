@@ -18,7 +18,7 @@
         <div class="category-container">
 
             @if (in_array($category->display_mode, [null, 'products_only', 'products_and_description']))
-                @include ('shop::products.list.layered-navigation')
+                @include ('custom::products.list.layered-navigation')
             @endif
 
             <div class="category-block" @if ($category->display_mode == 'description_only') style="width: 100%" @endif>
@@ -41,7 +41,7 @@
 
                     @if ($products->count())
 
-                        @include ('shop::products.list.toolbar')
+                        @include ('custom::products.list.toolbar')
 
                         @inject ('toolbarHelper', 'Webkul\Product\Helpers\Toolbar')
 
@@ -49,7 +49,7 @@
                             <div class="product-grid-3">
                                 @foreach ($products as $productFlat)
 
-                                    @include ('shop::products.list.card', ['product' => $productFlat])
+                                    @include ('custom::products.list.card', ['product' => $productFlat])
 
                                 @endforeach
                             </div>
@@ -57,7 +57,7 @@
                             <div class="product-list">
                                 @foreach ($products as $productFlat)
 
-                                    @include ('shop::products.list.card', ['product' => $productFlat])
+                                    @include ('custom::products.list.card', ['product' => $productFlat])
 
                                 @endforeach
                             </div>

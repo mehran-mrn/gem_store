@@ -1,4 +1,4 @@
-@extends('shop::layouts.master')
+@extends('hiraloa::layouts.master')
 
 @section('page_title')
     {{ __('shop::app.customer.account.address.edit.page-title') }}
@@ -7,7 +7,7 @@
 @section('content-wrapper')
 
     <div class="account-content">
-        @include('shop::customers.account.partials.sidemenu')
+        @include('hiraloa::customers.account.partials.sidemenu')
 
         <div class="account-layout">
 
@@ -44,7 +44,7 @@
                         </div>
                     @endif
 
-                    @include ('shop::customers.account.address.country-state', ['countryCode' => old('country') ?? $address->country, 'stateCode' => old('state') ?? $address->state])
+                    @include ('custom::customers.account.address.country-state', ['countryCode' => old('country') ?? $address->country, 'stateCode' => old('state') ?? $address->state])
 
                     <div class="control-group" :class="[errors.has('city') ? 'has-error' : '']">
                         <label for="city" class="required">{{ __('shop::app.customer.account.address.create.city') }}</label>
