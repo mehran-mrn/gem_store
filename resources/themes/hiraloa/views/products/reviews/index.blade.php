@@ -59,12 +59,14 @@
                             {{ $reviewHelper->getAverageRating($product) }}
                         </span>
 
-                        <span class="stars">
+                        <span class="rating-box stars">
+                            <ul>
                             @for ($i = 1; $i <= $reviewHelper->getAverageRating($product); $i++)
 
-                                <span class="icon star-icon"></span>
+                                <li class="icon star-icon"></li>
 
                             @endfor
+                            </ul>
                         </span>
 
                         <div class="total-reviews mt-5">
@@ -104,15 +106,15 @@
                                 <div class="title">
                                     {{ $review->title }}
                                 </div>
-
-                                <span class="stars">
+<div class="rating-box">
+                                <ul >
                                     @for ($i = 1; $i <= $review->rating; $i++)
 
-                                        <span class="icon star-icon"></span>
+                                        <li class="icon star-icon"></li>
 
                                     @endfor
-                                </span>
-
+                                </ul>
+</div>
                                 <div class="message">
                                     {{ $review->comment }}
                                 </div>

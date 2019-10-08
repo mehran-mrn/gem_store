@@ -6,10 +6,15 @@
             @inject ('productImageHelper', 'Webkul\Product\Helpers\ProductImage')
 
             <?php $productBaseImage = $productImageHelper->getProductBaseImage($product); ?>
+            <?php $productGallery = $productImageHelper->getGalleryImages($product); ?>
 
             <a href="{{ route('shop.products.index', $product->url_key) }}" title="{{ $product->name }}">
                 <img class="primary-img" src="{{ $productBaseImage['medium_image_url'] }}"
-                     alt="Hiraola's Product Image"
+
+                     onerror="this.src='{{ asset('vendor/webkul/ui/assets/images/product/meduim-product-placeholder.png') }}'"
+                >
+                <img class="secondary-img" src="{{ $productGallery[rand(0,count($productGallery)-1)]['medium_image_url'] }}"
+
                      onerror="this.src='{{ asset('vendor/webkul/ui/assets/images/product/meduim-product-placeholder.png') }}'"
                 >
             </a>
@@ -23,11 +28,9 @@
 
             <div class="add-actions">
                 <ul>
-                    <li><a class="hiraola-add_cart" href="cart.html" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="ion-bag"></i></a>
+                    <li><a class="hiraola-add_cart" href="{{ route('shop.product.buynow', $product->product_id)}}" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="ion-bag"></i></a>
                     </li>
-                    <li><a class="hiraola-add_compare" href="compare.html" data-toggle="tooltip" data-placement="top" title="Compare This Product"><i
-                                    class="ion-ios-shuffle-strong"></i></a>
-                    </li>
+
 {{--                    <li class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Quick View"><i--}}
 {{--                                    class="ion-eye"></i></a></li>--}}
                 </ul>
@@ -38,7 +41,7 @@
             <div class="product-desc_info">
                 <h6><a class="product-name" href="{{ url()->to('/').'/products/' . $product->url_key }}" title="{{ $product->name }}">
                         {{ $product->name }}</a></h6>
-                @include ('shop::products.price', ['product' => $product])
+                @include ('hiraloa::products.price', ['product' => $product])
 
                 <div class="additional-add_action">
                     <ul>
@@ -49,13 +52,8 @@
                     </ul>
                 </div>
                 <div class="rating-box">
-                    <ul>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li class="silver-color"><i class="fa fa-star"></i></li>
-                    </ul>
+                    @include ('hiraloa::products.review', ['product' => $product])
+
                 </div>
             </div>
         </div>

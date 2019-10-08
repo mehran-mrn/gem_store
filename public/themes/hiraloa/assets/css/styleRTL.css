@@ -6965,6 +6965,9 @@ button.li-btn:hover {
 .sp-area .sp-nav .sp-content .rating-box > ul > li {
   display: inline-block;
 }
+.rating-box > ul > li {
+  display: inline-block;
+}
 
 .sp-area .sp-nav .sp-content .rating-box > ul > li > i {
   font-size: 14px;

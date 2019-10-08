@@ -1,5 +1,4 @@
 
-
 <div class="col grid-half order-md-2 order-lg-1">
     <div class="category-menu">
         <div class="category-heading">
@@ -15,7 +14,7 @@
             ?>
             <ul>
                 @foreach($categories as $category)
-                    @if(count($category->children)>1)
+                    @if(count($category->children)>0)
                         <li class="right-menu"><a
                                     href="{{ route('shop.categories.index', $category->slug) }}">{{$category->translations->where('locale',core()->getCurrentLocale()->code)->first()->name}}</a>
                             @if(count($category->children)>0)

@@ -9,19 +9,17 @@
         @endfor
         @if($i<=5)
             @for ($i ; $i <= 5; $i++)
-                <li class="silver-color"><i class="fa fa-star"></i></li>
+            <li class="silver-color"><i class="fa fa-star"></i></li>
             @endfor
         @endif
-        <li>
-            {{
-    __('shop::app.products.total-rating', [
-            'total_rating' => $reviewHelper->getTotalRating($product),
-            'total_reviews' => $total,
-        ])
-            }}
-        </li>
-    </ul>
 
+    </ul>
+@else
+    <ul>
+        @for ($i = 1; $i <= 5; $i++)
+            <li><i class="fa fa-star-half-alt"></i></li>
+    @endfor
+    </ul>
 @endif
 
 {!! view_render_event('bagisto.shop.products.review.after', ['product' => $product]) !!}
