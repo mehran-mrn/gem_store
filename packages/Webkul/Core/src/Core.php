@@ -391,12 +391,15 @@ class Core
     */
     public function currency($amount = 0)
     {
-        if (is_null($amount))
+        if (is_null($amount)){
             $amount = 0;
 
-        $formatter = new \NumberFormatter( app()->getLocale(), \NumberFormatter::CURRENCY );
+        }
 
-        return $formatter->formatCurrency($this->convertPrice($amount), $this->getCurrentCurrency()->code);
+//        $formatter = new \NumberFormatter( app()->getLocale(), \NumberFormatter::CURRENCY );
+        $formatter = new \NumberFormatter( app()->getLocale(), \NumberFormatter::DECIMAL );
+
+        return $formatter->formatCurrency($this->convertPrice($amount), $this->getCurrentCurrency()->code) . "تومان";
     }
 
     /**

@@ -40,6 +40,17 @@
 
                         <div class="rating-box text-center text-sm-left">
                             @include ('hiraloa::products.review', ['product' => $product])
+                            @inject ('reviewHelper', 'Webkul\Product\Helpers\Review')
+
+                            {!! view_render_event('bagisto.shop.products.review.before', ['product' => $product]) !!}
+                            <div >
+                                {{
+                        __('shop::app.products.total-rating', [
+                                'total_rating' => $reviewHelper->getTotalRating($product),
+                                'total_reviews' => $reviewHelper->getTotalReviews($product),
+                            ])
+                                }}
+                            </div>
                         </div>
                         <hr>
                         <div class="sp-essential_stuff text-center text-sm-left">
@@ -95,9 +106,9 @@
                             <ul class="nav product-menu">
                                 <li><a class="active" data-toggle="tab" href="#description"><span>{{ __('shop::app.products.description') }}</span></a>
                                 </li>
-                                <li><a data-toggle="tab" href="#specification"><span>Specification</span></a></li>
+                                <li><a data-toggle="tab" href="#specification"><span>{{ __('shop::app.products.specification') }}</span></a></li>
                                 @inject ('reviewHelper', 'Webkul\Product\Helpers\Review')
-                                <li><a data-toggle="tab" href="#reviews"><span>Reviews ({{$reviewHelper->getTotalReviews($product)}})</span></a></li>
+                                <li><a data-toggle="tab" href="#reviews"><span>{{ __('shop::app.reviews.product-review-page-title') }} ({{$reviewHelper->getTotalReviews($product)}})</span></a></li>
                             </ul>
                         </div>
                         <div class="tab-content hiraola-tab_content">
@@ -114,8 +125,10 @@
                             <div id="reviews" class="tab-pane" role="tabpanel">
                                 <div class="tab-pane active" id="tab-review">
 
-                                @include ('hiraloa::products.view.reviews')
+                                    @include ('hiraloa::products.view.reviews')
+
                                 </div>
+
                             </div>
                         </div>
                     </div>

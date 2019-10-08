@@ -319,7 +319,7 @@ return [
         'up-sell-title' => 'ما محصولات دیگری را پیدا کردید که ممکن است دوست داشته باشید!',
         'related-product-title' => 'محصولات مرتبط',
         'cross-sell-title' => 'گزینه های بیشتر',
-        'reviews-title' => 'رتبه بندی ها و بررسی ها',
+        'reviews-title' => 'نظرات و امتیازات',
         'write-review-btn' => 'نوشتن نظر',
         'choose-option' => 'گزینه ای را انتخاب کنید',
         'sale' => 'حراج',

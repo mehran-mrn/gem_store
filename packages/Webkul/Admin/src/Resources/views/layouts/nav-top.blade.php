@@ -8,10 +8,32 @@
                     <img src="{{ asset('vendor/webkul/ui/assets/images/logo.png') }}" alt="Bagisto"/>
                 @endif
             </a>
+
         </div>
+
     </div>
 
     <div class="navbar-top-right">
+        <div class="navbar-top-left">
+            <div class="profile">
+
+
+                <div class="profile-info">
+                    <div class="dropdown-toggle">
+                        <div style="display: inline-block; vertical-align: middle;">
+                            <span class=" icon ">image uploader</span>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+        <div class="navbar-top-right">
+
         <div class="profile">
             <span class="avatar">
             </span>
@@ -47,6 +69,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 </div>
