@@ -7,7 +7,6 @@
             return app()->make(Core::class);
         }
     }
-
     if (! function_exists('array_permutation')) {
         function array_permutation($input)
         {
