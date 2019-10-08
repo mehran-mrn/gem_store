@@ -4,22 +4,7 @@
 @if ($total = $reviewHelper->getTotalReviews($product))
 
 
-    <span class="rating-box">
-        <ul>
-        @for ($i = 1; $i <= round($reviewHelper->getAverageRating($product)); $i++)
-            <li><i class="fa fa-star"></i></li>
-        @endfor
-        @if($i<5)
-            @for ($i ; $i <= 5; $i++)
-                <li class="silver-color"><i class="fa fa-star"></i></li>
-            @endfor
-        @endif
-        </ul>
-    </span>
 
-    <div class="total-reviews">
-        {{ __('shop::app.products.total-reviews', ['total' => $total]) }}
-    </div>
 
 
         <div id="review">
