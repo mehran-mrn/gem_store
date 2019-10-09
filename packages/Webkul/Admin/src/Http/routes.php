@@ -500,7 +500,6 @@ Route::group(['middleware' => ['web']], function () {
 
             Route::post('/channels/delete/{id}', 'Webkul\Core\Http\Controllers\ChannelController@destroy')->name('admin.channels.delete');
 
-
             // Admin Profile route
             Route::get('/account', 'Webkul\User\Http\Controllers\AccountController@edit')->defaults('_config', [
                 'view' => 'admin::account.edit'
