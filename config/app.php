@@ -247,6 +247,10 @@ return [
         Webkul\Discount\Providers\DiscountServiceProvider::class,
         Webkul\CMS\Providers\CMSServiceProvider::class,
 
+        Mehran\PayMe\Providers\PayMeServiceProvider::class,
+        Mehran\UploadMe\Providers\UploadMeServiceProvider::class,
+
+
         Larabookir\Gateway\GatewayServiceProvider::class,
 
     ],
@@ -307,6 +311,7 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Concord' => Konekt\Concord\Facades\Concord::class,
         'Helper'  => Konekt\Concord\Facades\Helper::class,
+
 
         'Gateway' => Larabookir\Gateway\Gateway::class
     ],

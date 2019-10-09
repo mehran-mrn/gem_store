@@ -71,7 +71,8 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
 </div>
 
 <div class="mobile-menu_wrapper" id="mobileMenu">
-    <div class="offcanvas-menu-inner">
+    <div class="offcanvas-menu-inner"
+         style="background-image: url({{url('themes/hiraloa/assets/images/cubes.png')}});">
         <div class="container">
             <a href="#" class="btn-close"><i class="ion-android-close"></i></a>
             <div class="offcanvas-inner_search">
@@ -98,7 +99,8 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
 <div class="offcanvas-minicart_wrapper" id="accountCart">
 
 
-    <div class="offcanvas-menu-inner">
+    <div class="offcanvas-menu-inner"
+         style="background-image: url({{url('themes/hiraloa/assets/images/cubes.png')}});">
         <a href="#" class="btn-close" onclick="close_mini_cart('accountCart')"><i class="ion-android-close"></i></a>
         {!! view_render_event('bagisto.shop.layout.header.account-item.before') !!}
         <div class="minicart-heading">
@@ -144,7 +146,8 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
 
 <div class="offcanvas-minicart_wrapper" id="miniCart">
 
-    <div class="offcanvas-menu-inner">
+    <div class="offcanvas-menu-inner"
+         style="background-image: url({{url('themes/hiraloa/assets/images/cubes.png')}});">
 
         <a href="#" class="btn-close" onclick="close_mini_cart('miniCart')"><i class="ion-android-close"></i></a>
         {!! view_render_event('bagisto.shop.layout.header.cart-item.before') !!}

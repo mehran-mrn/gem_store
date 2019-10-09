@@ -36,6 +36,7 @@
 </div>
 <div class="col grid-full order-md-1 order-lg-2">
     <div class="hiraola-slider_area">
+
         <div class="main-slider" dir="rtl">
             @forelse($sliderData as $data)
                 <div class="single-slide animation-style-0{{random_int(1,2)}} bg-1"

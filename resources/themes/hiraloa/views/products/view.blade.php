@@ -18,19 +18,22 @@
     <div class="sp-area">
         <div class="container">
             <div class="sp-nav">
-                <form method="POST" id="product-form" action="{{ route('cart.add', $product->product_id) }}" @click="onSubmit($event)">
                 <div class="form-container row">
 
-                    @csrf()
 
-                    <input type="hidden" name="product" value="{{ $product->product_id }}">
 
                     {{--    <product-gallery></product-gallery>--}}
+                    <div class="clearfix"></div>
                     <div class="col-lg-6 col-md-6">
                         @include ('hiraloa::products.view.gallery')
 
                     </div>
+
                     <div class="col-lg-6 col-md-6">
+                        <form method="POST" id="product-form" action="{{ route('cart.add', $product->product_id) }}" @click="onSubmit($event)">
+                            @csrf()
+
+                            <input type="hidden" name="product" value="{{ $product->product_id }}">
                         <div class="sp-heading mt-2 text-center text-sm-left">
                             <h5>{{ $product->name }}</h5>
                         </div>
@@ -85,10 +88,11 @@
                         <div class="sp-content">
                             @include ('hiraloa::products.view.product-add')
                         </div>
+                        </form>
 
                     </div>
+
                 </div>
-                </form>
             </div>
         </div>
     </div>
@@ -149,101 +153,101 @@
     {!! view_render_event('bagisto.shop.products.view.after', ['product' => $product]) !!}
 @endsection
 
-@push('scripts')
+{{--@push('scripts')--}}
 
-    <script type="text/x-template" id="product-view-template">
-        <form method="POST" id="product-form" action="{{ route('cart.add', $product->product_id) }}" @click="onSubmit($event)">
+{{--    <script type="text/x-template" id="product-view-template">--}}
+{{--        <form method="POST" id="product-form" action="{{ route('cart.add', $product->product_id) }}" @click="onSubmit($event)">--}}
 
-            <slot></slot>
+{{--            <slot></slot>--}}
 
-        </form>
-    </script>
+{{--        </form>--}}
+{{--    </script>--}}
 
-    <script>
+{{--    <script>--}}
 
-        Vue.component('product-view', {
+{{--        Vue.component('product-view', {--}}
 
-            template: '#product-view-template',
+{{--            template: '#product-view-template',--}}
 
-            inject: ['$validator'],
+{{--            inject: ['$validator'],--}}
 
-            methods: {
-                onSubmit: function(e) {
-                    if (e.target.getAttribute('type') != 'submit')
-                        return;
+{{--            methods: {--}}
+{{--                onSubmit: function(e) {--}}
+{{--                    if (e.target.getAttribute('type') != 'submit')--}}
+{{--                        return;--}}
 
-                    e.preventDefault();
+{{--                    e.preventDefault();--}}
 
-                    this.$validator.validateAll().then(function (result) {
-                        if (result) {
-                          if (e.target.getAttribute('data-href')) {
-                            window.location.href = e.target.getAttribute('data-href');
-                          } else {
-                            document.getElementById('product-form').submit();
-                          }
-                        }
-                    });
-                }
-            }
-        });
+{{--                    this.$validator.validateAll().then(function (result) {--}}
+{{--                        if (result) {--}}
+{{--                          if (e.target.getAttribute('data-href')) {--}}
+{{--                            window.location.href = e.target.getAttribute('data-href');--}}
+{{--                          } else {--}}
+{{--                            document.getElementById('product-form').submit();--}}
+{{--                          }--}}
+{{--                        }--}}
+{{--                    });--}}
+{{--                }--}}
+{{--            }--}}
+{{--        });--}}
 
-        $(document).ready(function() {
-            var addTOButton = document.getElementsByClassName('add-to-buttons')[0];
-            document.getElementById('loader').style.display="none";
-            addTOButton.style.display="flex";
-        });
+{{--        $(document).ready(function() {--}}
+{{--            var addTOButton = document.getElementsByClassName('add-to-buttons')[0];--}}
+{{--            document.getElementById('loader').style.display="none";--}}
+{{--            addTOButton.style.display="flex";--}}
+{{--        });--}}
 
-        window.onload = function() {
-            var thumbList = document.getElementsByClassName('thumb-list')[0];
-            var thumbFrame = document.getElementsByClassName('thumb-frame');
-            var productHeroImage = document.getElementsByClassName('product-hero-image')[0];
+{{--        window.onload = function() {--}}
+{{--            var thumbList = document.getElementsByClassName('thumb-list')[0];--}}
+{{--            var thumbFrame = document.getElementsByClassName('thumb-frame');--}}
+{{--            var productHeroImage = document.getElementsByClassName('product-hero-image')[0];--}}
 
-            if (thumbList && productHeroImage) {
+{{--            if (thumbList && productHeroImage) {--}}
 
-                for(let i=0; i < thumbFrame.length ; i++) {
-                    thumbFrame[i].style.height = (productHeroImage.offsetHeight/4) + "px";
-                    thumbFrame[i].style.width = (productHeroImage.offsetHeight/4)+ "px";
-                }
+{{--                for(let i=0; i < thumbFrame.length ; i++) {--}}
+{{--                    thumbFrame[i].style.height = (productHeroImage.offsetHeight/4) + "px";--}}
+{{--                    thumbFrame[i].style.width = (productHeroImage.offsetHeight/4)+ "px";--}}
+{{--                }--}}
 
-                if (screen.width > 720) {
-                    thumbList.style.width = (productHeroImage.offsetHeight/4) + "px";
-                    thumbList.style.minWidth = (productHeroImage.offsetHeight/4) + "px";
-                    thumbList.style.height = productHeroImage.offsetHeight + "px";
-                }
-            }
+{{--                if (screen.width > 720) {--}}
+{{--                    thumbList.style.width = (productHeroImage.offsetHeight/4) + "px";--}}
+{{--                    thumbList.style.minWidth = (productHeroImage.offsetHeight/4) + "px";--}}
+{{--                    thumbList.style.height = productHeroImage.offsetHeight + "px";--}}
+{{--                }--}}
+{{--            }--}}
 
-            window.onresize = function() {
-                if (thumbList && productHeroImage) {
+{{--            window.onresize = function() {--}}
+{{--                if (thumbList && productHeroImage) {--}}
 
-                    for(let i=0; i < thumbFrame.length; i++) {
-                        thumbFrame[i].style.height = (productHeroImage.offsetHeight/4) + "px";
-                        thumbFrame[i].style.width = (productHeroImage.offsetHeight/4)+ "px";
-                    }
+{{--                    for(let i=0; i < thumbFrame.length; i++) {--}}
+{{--                        thumbFrame[i].style.height = (productHeroImage.offsetHeight/4) + "px";--}}
+{{--                        thumbFrame[i].style.width = (productHeroImage.offsetHeight/4)+ "px";--}}
+{{--                    }--}}
 
-                    if (screen.width > 720) {
-                        thumbList.style.width = (productHeroImage.offsetHeight/4) + "px";
-                        thumbList.style.minWidth = (productHeroImage.offsetHeight/4) + "px";
-                        thumbList.style.height = productHeroImage.offsetHeight + "px";
-                    }
-                }
-            }
-        };
+{{--                    if (screen.width > 720) {--}}
+{{--                        thumbList.style.width = (productHeroImage.offsetHeight/4) + "px";--}}
+{{--                        thumbList.style.minWidth = (productHeroImage.offsetHeight/4) + "px";--}}
+{{--                        thumbList.style.height = productHeroImage.offsetHeight + "px";--}}
+{{--                    }--}}
+{{--                }--}}
+{{--            }--}}
+{{--        };--}}
 
-        function updateQunatity(operation) {
-            var quantity = document.getElementById('quantity').value;
+{{--        function updateQunatity(operation) {--}}
+{{--            var quantity = document.getElementById('quantity').value;--}}
 
-            if (operation == 'add') {
-                quantity = parseInt(quantity) + 1;
-            } else if (operation == 'remove') {
-                if (quantity > 1) {
-                    quantity = parseInt(quantity) - 1;
-                } else {
-                    alert('{{ __('shop::app.products.less-quantity') }}');
-                }
-            }
-            document.getElementById("quantity").value = quantity;
+{{--            if (operation == 'add') {--}}
+{{--                quantity = parseInt(quantity) + 1;--}}
+{{--            } else if (operation == 'remove') {--}}
+{{--                if (quantity > 1) {--}}
+{{--                    quantity = parseInt(quantity) - 1;--}}
+{{--                } else {--}}
+{{--                    alert('{{ __('shop::app.products.less-quantity') }}');--}}
+{{--                }--}}
+{{--            }--}}
+{{--            document.getElementById("quantity").value = quantity;--}}
 
-            event.preventDefault();
-        }
-    </script>
-@endpush
+{{--            event.preventDefault();--}}
+{{--        }--}}
+{{--    </script>--}}
+{{--@endpush--}}
