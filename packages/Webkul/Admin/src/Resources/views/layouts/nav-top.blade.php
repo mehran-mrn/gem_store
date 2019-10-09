@@ -19,11 +19,7 @@
 
 
                 <div class="profile-info">
-                    <div class="dropdown-toggle">
-                        <div style="display: inline-block; vertical-align: middle;">
-                            <a href="{{ route('admin.upload.index') }}" class="">image uploader</a>
-                        </div>
-                    </div>
+
 
                 </div>
             </div>
