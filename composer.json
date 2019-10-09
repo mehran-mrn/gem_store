@@ -26,12 +26,12 @@
         "intervention/imagecache": "^2.3",
         "kalnoy/nestedset": "^4.3",
         "konekt/concord": "^1.2",
+        "larabook/gateway": "dev-master",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
         "maatwebsite/excel": "3.1.11",
         "nwidart/laravel-modules": "^3.2",
         "prettus/l5-repository": "2.6.32",
-        "shetabit/payment": "^1.0@dev",
         "tymon/jwt-auth": "1.0.0-rc.4"
     },
     "require-dev": {
@@ -91,9 +91,7 @@
         "Webkul\\Tax\\": "packages/Webkul/Tax/src",
         "Webkul\\API\\": "packages/Webkul/API",
         "Webkul\\Discount\\": "packages/Webkul/Discount/src",
-        "Webkul\\CMS\\": "packages/Webkul/CMS/src",
-        "Mehran\\PayMe\\": "packages/Mehran/PayMe/src",
-        "Mehran\\UploadMe\\": "packages/Mehran/UploadMe/src"
+        "Webkul\\CMS\\": "packages/Webkul/CMS/src"
       }
     },
     "autoload-dev": {

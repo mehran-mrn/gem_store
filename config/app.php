@@ -102,7 +102,7 @@ return [
     |
     */
 
-    'currency' => 'USD',
+    'currency' => 'تومان',
 
     /*
     |--------------------------------------------------------------------------
@@ -251,6 +251,8 @@ return [
         Mehran\UploadMe\Providers\UploadMeServiceProvider::class,
 
 
+        Larabookir\Gateway\GatewayServiceProvider::class,
+
     ],
 
     /*
@@ -310,5 +312,7 @@ return [
         'Concord' => Konekt\Concord\Facades\Concord::class,
         'Helper'  => Konekt\Concord\Facades\Helper::class,
 
+
+        'Gateway' => Larabookir\Gateway\Gateway::class
     ],
 ];
