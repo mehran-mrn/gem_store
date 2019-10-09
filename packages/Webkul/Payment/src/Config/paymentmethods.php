@@ -26,9 +26,21 @@ return [
         'description' => 'shop::app.checkout.onepage.paypal-desc',
         'class' => 'Webkul\Paypal\Payment\Standard',
         'sandbox' => true,
-        'active' => true,
+        'active' => false,
         'business_account' => 'test@webkul.com',
         'sort' => 3,
         'default' => 'no'
+    ],
+    'Zarin_pal' => [
+        'code' => 'zarin_pal',
+        'title' => 'Zarin Pal',
+        'description' => 'سلام چطوری',
+        'class' => 'Webkul\Paypal\Payment\Standard',
+        'sandbox' => true,
+        'active' => true,
+        'business_account' => 'test@webkul.com',
+        'sort' => 4,
+        'default' => 'no'
     ]
+
 ];
