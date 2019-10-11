@@ -2,6 +2,7 @@
 
 namespace Mehran\Zarinpal\Http\Controllers;
 
+use App\iran_payment;
 use Webkul\Checkout\Facades\Cart;
 use Webkul\Sales\Repositories\OrderRepository;
 use Mehran\Zarinpal\Helpers\Ipn;
@@ -67,10 +68,11 @@ class StandardController extends Controller
             $refId =  $gateway->refId(); // شماره ارجاع بانک
             $transID = $gateway->transactionId(); // شماره تراکنش
 
-            // در اینجا
-            //  شماره تراکنش  بانک را با توجه به نوع ساختار دیتابیس تان
-            //  در جداول مورد نیاز و بسته به نیاز سیستم تان
-            // ذخیره کنید .
+            $iran_payment = new iran_payment();
+            $iran_payment->cart_id = $cart->id;
+            $iran_payment->transaction_id = $gateway->transactionId();
+            $iran_payment->save();
+
             return $gateway->redirect();
 
         } catch (\Exception $e) {
@@ -99,13 +101,32 @@ class StandardController extends Controller
      */
     public function success()
     {
-        $order = $this->orderRepository->create(Cart::prepareDataForOrder());
+        try {
 
-        Cart::deActivateCart();
+            $gateway = \Gateway::verify();
+            $trackingCode = $gateway->trackingCode();
+            $refId = $gateway->refId();
+            $cardNumber = $gateway->cardNumber();
 
-        session()->flash('order', $order);
+            $order = $this->orderRepository->create(Cart::prepareDataForOrder());
 
-        return redirect()->route('shop.checkout.success');
+            Cart::deActivateCart();
+
+            session()->flash('order', $order);
+
+            return redirect()->route('shop.checkout.success');
+
+
+        } catch (\Larabookir\Gateway\Exceptions\RetryException $e) {
+
+            echo $e->getMessage() . "<br>";
+
+        } catch (\Exception $e) {
+            // نمایش خطای بانک
+            $this->cancel();
+            echo $e->getMessage();
+        }
+
     }
 
     /**
