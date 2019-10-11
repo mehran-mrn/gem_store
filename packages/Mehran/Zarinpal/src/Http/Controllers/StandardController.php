@@ -3,6 +3,7 @@
 namespace Mehran\Zarinpal\Http\Controllers;
 
 use App\iran_payment;
+use Illuminate\Support\Facades\DB;
 use Webkul\Checkout\Facades\Cart;
 use Webkul\Sales\Repositories\OrderRepository;
 use Mehran\Zarinpal\Helpers\Ipn;
@@ -108,9 +109,15 @@ class StandardController extends Controller
             $refId = $gateway->refId();
             $cardNumber = $gateway->cardNumber();
 
-            $order = $this->orderRepository->create(Cart::prepareDataForOrder());
 
-            Cart::deActivateCart();
+            $iran_payment = iran_payment::where('transaction_id',$gateway->transactionId())->first();
+            $cart = DB::table('carts')->find($iran_payment['cart_id']);
+
+            $order = $this->orderRepository->create($cart);
+
+            DB::table('carts')
+                ->where('id', $iran_payment['cart_id'])
+                ->update(['is_active' => false]);
 
             session()->flash('order', $order);
 
