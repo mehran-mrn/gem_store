@@ -249,6 +249,7 @@ return [
 
         Mehran\PayMe\Providers\PayMeServiceProvider::class,
         Mehran\UploadMe\Providers\UploadMeServiceProvider::class,
+        Mehran\Zarinpal\Providers\ZarinPalServiceProvider::class,
 
 
         Larabookir\Gateway\GatewayServiceProvider::class,

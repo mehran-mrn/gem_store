@@ -31,14 +31,14 @@ return [
         'sort' => 3,
         'default' => 'no'
     ],
-    'Zarin_pal' => [
-        'code' => 'zarin_pal',
+    'Zarinpal_standard' => [
+        'code' => 'Zarinpal_standard',
         'title' => 'Zarin Pal',
-        'description' => 'سلام چطوری',
-        'class' => 'Webkul\Paypal\Payment\Standard',
+        'description' => 'زرین پال',
+        'class' => 'Mehran\Zarinpal\Payment\Standard',
         'sandbox' => true,
         'active' => true,
-        'business_account' => 'test@webkul.com',
+        'business_account' => 'mehranmarandi@gmail.com',
         'sort' => 4,
         'default' => 'no'
     ]

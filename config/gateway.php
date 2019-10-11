@@ -14,10 +14,10 @@ return [
     'zarinpal' => [
         'merchant-id'  => 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
         'type'         => 'zarin-gate',             // Types: [zarin-gate || normal]
-        'callback-url' => '/',
-        'server'       => 'germany',                // Servers: [germany || iran || test]
+        'callback-url' => '/zarinpal/ddd',
+        'server'       => 'test',                // Servers: [germany || iran || test]
         'email'        => 'email@gmail.com',
-        'mobile'       => '09xxxxxxxxx',
+        'mobile'       => '09365944410',
         'description'  => 'description',
     ],
 
