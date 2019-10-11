@@ -14,6 +14,18 @@
     </div>
 
     <div class="navbar-top-right">
+        <div class="navbar-top-left">
+            <div class="profile">
+
+
+                <div class="profile-info">
+
+
+                </div>
+            </div>
+
+
+        </div>
         <div class="navbar-top-right">
 
         <div class="profile">

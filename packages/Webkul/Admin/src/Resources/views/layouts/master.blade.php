@@ -10,6 +10,8 @@
 
         <link rel="stylesheet" href="{{ asset('vendor/webkul/admin/assets/css/admin.css') }}">
         <link rel="stylesheet" href="{{ asset('vendor/webkul/ui/assets/css/ui.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendor/webkul/ui/assets/fonts.css') }}">
+
 
         @yield('head')
 
