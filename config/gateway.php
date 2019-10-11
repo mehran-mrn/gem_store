@@ -14,9 +14,9 @@ return [
     'zarinpal' => [
         'merchant-id'  => 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
         'type'         => 'zarin-gate',             // Types: [zarin-gate || normal]
-        'callback-url' => '/zarinpal/ddd',
-        'server'       => 'test',                // Servers: [germany || iran || test]
-        'email'        => 'email@gmail.com',
+        'callback-url' => 'Zarinpal/standard/success',
+        'server'       => 'iran',                // Servers: [germany || iran || test]
+        'email'        => 'mehranmarandi90@gmail.com',
         'mobile'       => '09365944410',
         'description'  => 'description',
     ],
