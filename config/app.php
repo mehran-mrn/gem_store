@@ -247,7 +247,6 @@ return [
         Webkul\Discount\Providers\DiscountServiceProvider::class,
         Webkul\CMS\Providers\CMSServiceProvider::class,
 
-        Mehran\PayMe\Providers\PayMeServiceProvider::class,
         Mehran\UploadMe\Providers\UploadMeServiceProvider::class,
         Mehran\Zarinpal\Providers\ZarinPalServiceProvider::class,
 

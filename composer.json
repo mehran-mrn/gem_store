@@ -93,7 +93,6 @@
         "Webkul\\API\\": "packages/Webkul/API",
         "Webkul\\Discount\\": "packages/Webkul/Discount/src",
         "Webkul\\CMS\\": "packages/Webkul/CMS/src",
-        "Mehran\\PayMe\\": "packages/Mehran/PayMe/src",
         "Mehran\\UploadMe\\": "packages/Mehran/UploadMe/src",
         "Mehran\\Zarinpal\\": "packages/Mehran/Zarinpal/src"
 
