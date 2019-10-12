@@ -104,7 +104,7 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
         <a href="#" class="btn-close" onclick="close_mini_cart('accountCart')"><i class="ion-android-close"></i></a>
         {!! view_render_event('bagisto.shop.layout.header.account-item.before') !!}
         <div class="minicart-heading">
-            <h4>My Account</h4>
+            <h4>{{__('shop::app.layout.my-account')}}</h4>
         </div>
         <ul class="minicart-list">
 
@@ -113,10 +113,10 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
 
 
                 <li>
-                    <a href="{{ route('customer.session.index') }}">{{ __('shop::app.header.sign-in') }}</a>
+                    <a class="p-2" href="{{ route('customer.session.index') }}">{{ __('shop::app.header.sign-in') }}</a>
                 </li>
                 <li>
-                    <a href="{{ route('customer.register.index') }}">{{ __('shop::app.header.sign-up') }}</a>
+                    <a class="p-2" href="{{ route('customer.register.index') }}">{{ __('shop::app.header.sign-up') }}</a>
                 </li>
 
             @endguest
