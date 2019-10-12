@@ -18,10 +18,12 @@ return [
     ],
 
     'home' => [
+        'products-categories' => 'دسته بندی',
         'page-title' => 'فروشگاه - خانه',
         'featured-products' => 'فروش ویژه',
         'new-products' => 'جدیدترین محصولات',
         'verify-email' => 'ایمیل خود را تأیید کنید',
+        'enter-email' => 'ایمیل خود را تأیید کنید',
         'resend-verify-email' => 'ایمیل تایید دوباره ارسال شود'
     ],
 

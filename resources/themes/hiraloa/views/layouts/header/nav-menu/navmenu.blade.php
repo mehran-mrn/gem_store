@@ -112,11 +112,11 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
             @guest('customer')
 
 
-                <li>
-                    <a class="p-2" href="{{ route('customer.session.index') }}">{{ __('shop::app.header.sign-in') }}</a>
+                <li class="p-2">
+                    <a  href="{{ route('customer.session.index') }}">{{ __('shop::app.header.sign-in') }}</a>
                 </li>
-                <li>
-                    <a class="p-2" href="{{ route('customer.register.index') }}">{{ __('shop::app.header.sign-up') }}</a>
+                <li class="p-2">
+                    <a  href="{{ route('customer.register.index') }}">{{ __('shop::app.header.sign-up') }}</a>
                 </li>
 
             @endguest

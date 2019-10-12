@@ -25,7 +25,7 @@
                                     @if (count($categories))
 
                                     <div class="footer-widgets_title">
-                                    <h6>Product</h6>
+                                    <h6>{{__('shop::app.home.products-categories')}}</h6>
                                 </div>
                                     <div class="footer-widgets">
                                     <ul>
@@ -47,14 +47,12 @@
                                     <div class="footer-widgets_title">
                                         <h6>{{ __('shop::app.footer.subscribe-newsletter') }}</h6>
                                     </div>
-                                    <div class="widget-short_desc">
-                                        <p>Subscribe to our newsletters now and stay up-to-date with new collections</p>
-                                    </div>
+
                                     <div class="newsletter-form_wrap">
                                         <form action="{{ route('shop.subscribe') }}"  id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" required class="newsletters-form validate"  >
                                             <div id="mc_embed_signup_scroll" :class="[errors.has('subscriber_email') ? 'has-error' : '']">
                                                 <div id="mc-form" class="mc-form subscribe-form">
-                                                    <input  name="subscriber_email" id="mc-email" class="newsletter-input" type="email" autocomplete="off" placeholder="Enter your email" />
+                                                    <input  name="subscriber_email" id="mc-email" class="newsletter-input" type="email" autocomplete="off" placeholder="{{__('shop::app.home.enter-email')}}" />
                                                     <button class="newsletter-btn" id="mc-submit">
                                                         <i class="ion-android-mail" aria-hidden="true"></i>
                                                     </button>

@@ -443,7 +443,7 @@ class Core
         if (is_null($price))
             $price = 0;
 
-        $formatter = new \NumberFormatter( app()->getLocale(), \NumberFormatter::CURRENCY );
+        $formatter = new \NumberFormatter( app()->getLocale(), \NumberFormatter::DECIMAL );
 
         return $formatter->formatCurrency($price, $this->getBaseCurrencyCode());
     }
