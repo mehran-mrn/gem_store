@@ -3596,7 +3596,7 @@ button.li-btn:hover {
 
 .offcanvas-navigation .mobile-menu li > .menu-expand {
   position: absolute;
-  right: 0;
+  left: 0;
   top: 2px;
   width: 50px;
   height: 100%;
