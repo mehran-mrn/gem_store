@@ -104,7 +104,7 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
         <a href="#" class="btn-close" onclick="close_mini_cart('accountCart')"><i class="ion-android-close"></i></a>
         {!! view_render_event('bagisto.shop.layout.header.account-item.before') !!}
         <div class="minicart-heading">
-            <h4>{{__('shop::app.layout.my-account')}}</h4>
+            <h4>{{__('shop::app.layouts.my-account')}}</h4>
         </div>
         <ul class="minicart-list">
 
