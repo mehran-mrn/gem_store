@@ -46,7 +46,7 @@
 </head>
 
 <body class="template-color-1 {{core()->getCurrentLocale()->direction}}"
-      style="scroll-behavior: smooth;direction: {{core()->getCurrentLocale()->direction}}">
+      >
 {!! view_render_event('bagisto.shop.layout.body.before') !!}
 <div class="main-wrapper" id="app">
 {{--        <div class="loading">--}}
