@@ -14,9 +14,15 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
         <div class="row">
             <div class="col-md-4 col-sm-4 d-lg-none d-block">
                 <div class="header-logo">
-                    <a href="/">
-                        <img src="{{asset(url('/themes/hiraloa/assets/images/menu/logo/2.png'))}}" alt="Hiraola's Header Logo">
+                    <a href="{{ route('shop.home.index') }}">
+
+                        @if ($logo = core()->getCurrentChannel()->logo_url)
+                            <img class="w-50" alt="cubicjewelry.ir" src="{{ $logo }}"/>
+                        @else
+                            <img class="w-50" alt="cubicjewelry.ir" src="{{ bagisto_asset('images/logo.svg') }}"/>
+                        @endif
                     </a>
+
                 </div>
             </div>
             <div class="col-lg-9 d-none d-lg-block position-static">
@@ -39,7 +45,7 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
                 <div class="header-right_area">
                     <ul>
                         <li>
-                            <a href="#mobileMenu"
+                            <a href="#" onclick="open_mini_cart('mobileMenu')"
                                class="mobile-menu_btn toolbar-btn color--white d-lg-none d-block">
                                 <i class="ion-navicon"></i>
                             </a>
@@ -74,7 +80,7 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
     <div class="offcanvas-menu-inner"
          style="background-image: url({{url('themes/hiraloa/assets/images/cubes.png')}});">
         <div class="container">
-            <a href="#" class="btn-close"><i class="ion-android-close"></i></a>
+            <a href="#" class="btn-close" onclick="close_mini_cart('mobileMenu')"><i class="ion-android-close"></i></a>
             <div class="offcanvas-inner_search">
                 <form action="#" class="hm-searchbox">
                     <input type="text" placeholder="{{__('shop::app.header.search-text')}}">

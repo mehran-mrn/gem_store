@@ -404,7 +404,7 @@ return [
         ],
 
         'onepage' => [
-            'title' => 'وارسی',
+            'title' => 'بررسی',
             'information' => 'اطلاعات',
             'shipping' => 'حمل دریایی',
             'payment' => 'پرداخت',
@@ -434,7 +434,7 @@ return [
             'billing-address' => 'آدرس قبض',
             'shipping-address' => 'آدرس حمل و نقل',
             'contact' => 'تماس',
-            'place-order' => 'ترتیب سفارش',
+            'place-order' => 'تکمیل سفارش',
             'new-address' => 'آدرس جدید را اضافه کنید',
             'save_as_address' => 'در آدرس های من ذخیره شود',
             'apply-coupon' => 'کد تخفیف را اعمال کنید',

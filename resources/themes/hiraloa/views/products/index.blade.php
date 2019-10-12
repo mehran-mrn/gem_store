@@ -50,7 +50,7 @@
                                         <div class="shop-product-wrap grid gridview-4 row">
 
                                             @foreach ($products as $productFlat)
-                                                <div class="col-lg-3">
+                                                <div class="col-6 col-sm-6 col-lg-3">
                                                     @include ('hiraloa::products.list.card', ['product' => $productFlat])
                                                 </div>
                                             @endforeach
@@ -92,10 +92,9 @@
                         {!! view_render_event('bagisto.shop.products.index.pagination.before', ['category' => $category]) !!}
 
 
-                        <div class="row">
-                            <div class="col-lg-12">
+                        <div class="row m-0">
+                            <div class="col-lg-12 p-0">
                                 <div class="hiraola-paginatoin-area">
-                                    <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-6">
                                             {{ $products->appends(request()->input())->links() }}
 
@@ -106,7 +105,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
