@@ -77,7 +77,7 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
             <a href="#" class="btn-close"><i class="ion-android-close"></i></a>
             <div class="offcanvas-inner_search">
                 <form action="#" class="hm-searchbox">
-                    <input type="text" placeholder="Search for item...">
+                    <input type="text" placeholder="{{__('shop::app.header.search-text')}}">
                     <button class="search_btn" type="submit"><i class="ion-ios-search-strong"></i></button>
                 </form>
             </div>
