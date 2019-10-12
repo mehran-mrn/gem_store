@@ -519,21 +519,21 @@ button {
 
 /* ---Hiraola's Spacing Between Slide Item & Other Related Stuff---*/
 .slick-list {
-  margin-right: -30px;
+  margin-left: -30px;
 }
 
 .slick-list .slick-slide {
-  margin-right: 30px;
+  margin-left: 30px;
   outline: none;
 }
 
 /* ---Only For Single Product Page | Spacing Between Slide Item--- */
 .sp-images .slick-list {
-  margin-right: 0;
+  margin-left: 0;
 }
 
 .sp-images .slick-list .slick-slide {
-  margin-right: 0;
+  margin-left: 0;
 }
 
 /* ---Hiraola's Spacing Between Two Row---*/
@@ -3290,7 +3290,7 @@ button.li-btn:hover {
 
 @media (max-width: 991px) {
   .sp-img_slider-3 .slick-list {
-    margin-right: 0;
+    margin-left: 0;
   }
 }
 
@@ -5120,12 +5120,12 @@ button.li-btn:hover {
 }
 
 .modal-wrapper .modal-dialog .modal-content .modal-body .modal-inner-area .sp-img_slider-nav .slick-list {
-  margin-right: -15px;
+  margin-left: -15px;
 }
 
 .modal-wrapper .modal-dialog .modal-content .modal-body .modal-inner-area .sp-img_slider-nav .slick-list .single-slide {
   border: 1px solid #e5e5e5;
-  margin-right: 15px;
+  margin-left: 15px;
 }
 
 .modal-wrapper .modal-dialog .modal-content .modal-body .modal-inner-area .sp-img_slider-nav .slick-list .single-slide img {
@@ -7600,7 +7600,7 @@ button.li-btn:hover {
 }
 
 .hiraola-blog_slider .slick-list {
-  margin-right: -30px;
+  margin-left: -30px;
 }
 
 /* ---Blog Page Style--- */
