@@ -248,7 +248,7 @@ return [
         Webkul\CMS\Providers\CMSServiceProvider::class,
 
         Mehran\UploadMe\Providers\UploadMeServiceProvider::class,
-        Mehran\Zarinpal\Providers\ZarinPalServiceProvider::class,
+        Mehran\Zarinpal\Providers\ZarinpalServiceProvider::class,
 
 
         Larabookir\Gateway\GatewayServiceProvider::class,

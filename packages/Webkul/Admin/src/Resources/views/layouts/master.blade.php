@@ -13,6 +13,8 @@
         <link rel="stylesheet" href="{{ asset('vendor/webkul/ui/assets/fonts.css') }}">
 
 
+        <meta name="description" content="@yield('meta_description')">
+
         @yield('head')
 
         @yield('css')

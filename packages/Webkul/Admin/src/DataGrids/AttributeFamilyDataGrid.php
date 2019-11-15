@@ -28,7 +28,7 @@ class AttributeFamilyDataGrid extends DataGrid
     {
         $this->addColumn([
             'index' => 'id',
-            'label' => trans('admin::app.id'),
+            'label' => trans('admin::app.catalog.families.title'),
             'type' => 'number',
             'searchable' => false,
             'sortable' => true,

@@ -22,11 +22,11 @@ class MediasDataGrid extends DataGrid
 
     public function prepareQueryBuilder()
     {
-        $queryBuilder = DB::table('Medias')->addSelect('id', 'url', 'org_name', 'type');
-        $this->addFilter('id', 'Medias.id');
-        $this->addFilter('url', 'Medias.url');
-        $this->addFilter('org_name', 'Medias.org_name');
-        $this->addFilter('type', 'Medias.type');
+        $queryBuilder = DB::table('medias')->addSelect('id', 'url', 'org_name', 'type');
+        $this->addFilter('id', 'medias.id');
+        $this->addFilter('url', 'medias.url');
+        $this->addFilter('org_name', 'medias.org_name');
+        $this->addFilter('type', 'medias.type');
 
         $this->setQueryBuilder($queryBuilder);
     }
@@ -59,7 +59,7 @@ class MediasDataGrid extends DataGrid
             'filterable' => false,
             'closure' => true,
             'wrapper' => function ($value) {
-                return '<img src="storage/'.$value->url.'" width="100"/>';
+                return '<img src="/storage/'.$value->url.'" width="100"/>';
 
             }
         ]);
@@ -72,7 +72,7 @@ class MediasDataGrid extends DataGrid
             'filterable' => false,
             'closure' => true,
             'wrapper' => function ($value) {
-                return '<a target="_blank" href="storage/'.$value->url.'" class="control">نمایش</a>';
+                return '<a target="_blank" href="/storage/'.$value->url.'" class="control">نمایش</a>';
             }
         ]);
 

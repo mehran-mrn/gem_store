@@ -56,18 +56,13 @@
 
                         </span>
                     </div>
-
                     <div class="control-group" :class="[errors.has('content') ? 'has-error' : '']">
                         <label for="content">{{ __('admin::app.settings.sliders.content') }}</label>
-
                         <textarea id="tiny" class="control" id="add_content" name="content" rows="5"></textarea>
-
                         <span class="control-error"
                               v-if="errors.has('content')">@{{ errors.first('content') }}</span>
                     </div>
-
                 </div>
-
             </div>
             <hr>
             <div class="form-container">
@@ -84,7 +79,7 @@
                 {!! $medias->render() !!}
                 @foreach($medias as $media)
                     <div class="card">
-                        <img src="{{url('storage/'.$media['url'])}}" alt="" class="card-img-top text-center"
+                        <img src="{{\Illuminate\Support\Facades\Storage::url('/storage/'.$media['url'])}}" alt="" class="card-img-top text-center"
                              width="200">
                         <div class="card-body">
                             <div class="control-group">

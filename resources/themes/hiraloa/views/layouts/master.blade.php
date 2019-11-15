@@ -35,6 +35,34 @@
     <script src="assets/js/vendor/vendor.min.js"></script>
     <script src="assets/js/plugins/plugins.min.js"></script>
     -->
+
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta name="description" content="فروشگاه آنلاین محصولات سواروسکی در ایران به طور مستقیم"/>
+    <meta name="keywords" content="swarovski,سواروسکی,انگشتر,حلقه,نگین,کریستال"/>
+    <meta name="author" content="Mehran Marandi - m.marandi@gmail.com"/>
+    <meta name="author" content="Milad Kardgar - mk.kardgar@gmail.com"/>
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mycubic.ir"/>
+    <meta name="copyright" content="کلیه حقوق این وب سایت متعلق به سایت mycubic می باشد">
+    <meta name="language" content="fa">
+    <meta name="google" content="notranslate">
+    <meta name="robots" content="index follow">
+    <meta name="googlebot" content="index follow">
+    <!--        <meta name="samandehi" content="712692104"/>-->
+    <meta property="og:title" content="فروشگاه آنلاین نگین های سواروسکی"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://mycubic.ir"/>
+    <meta property="og:image" content="{{asset(url('/public/favico.ico'))}}"/>
+    <meta property="og:site_name" content="فروشگاه آنلاین نگین های سواروسکی"/>
+    <meta property="og:description" content="فروشگاه آنلاین محصولات سواروسکی در ایران به طور مستقیم"/>
+
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:description" content="فروشگاه آنلاین محصولات سواروسکی در ایران به طور مستقیم"/>
+    <meta name="twitter:title" content="فروشگاه آنلاین نگین های سواروسکی"/>
+    <meta name="viewport" content="width=device-width">
+    <meta name="google-site-verification" content="D7OWf7fGZ0rXlwfA5klkfxzFKa9lxevnDUwxL4NR3-I" />
     @yield('head')
     @section('seo')
         @if (! request()->is('/'))
@@ -49,37 +77,37 @@
       style="scroll-behavior: smooth;direction: {{core()->getCurrentLocale()->direction}}">
 {!! view_render_event('bagisto.shop.layout.body.before') !!}
 <div class="main-wrapper" id="app">
-{{--        <div class="loading">--}}
-{{--            <div class="text-center middle">--}}
-{{--                <div class="lds-ellipsis">--}}
-{{--                    <div></div>--}}
-{{--                    <div></div>--}}
-{{--                    <div></div>--}}
-{{--                    <div></div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+    {{--        <div class="loading">--}}
+    {{--            <div class="text-center middle">--}}
+    {{--                <div class="lds-ellipsis">--}}
+    {{--                    <div></div>--}}
+    {{--                    <div></div>--}}
+    {{--                    <div></div>--}}
+    {{--                    <div></div>--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
+    {{--        </div>--}}
 
 
-{{--        <div class="popup_wrapper">--}}
-{{--            <div class="test">--}}
-{{--                <span class="popup_off"><i class="ion-android-close"></i></span>--}}
-{{--                <div class="subscribe_area text-center">--}}
-{{--                    <h2>Sign up for send newsletter?</h2>--}}
-{{--                    <p>Subscribe to our newsletters now and stay up-to-date with new collections, the latest lookbooks and exclusive offers.</p>--}}
-{{--                    <div class="subscribe-form-group">--}}
-{{--                        <form action="#">--}}
-{{--                            <input autocomplete="off" type="text" name="message" id="message" placeholder="Enter your email address">--}}
-{{--                            <button type="submit">subscribe</button>--}}
-{{--                        </form>--}}
-{{--                    </div>--}}
-{{--                    <div class="subscribe-bottom">--}}
-{{--                        <input type="checkbox" id="newsletter-permission">--}}
-{{--                        <label for="newsletter-permission">Don't show this popup again</label>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+    {{--        <div class="popup_wrapper">--}}
+    {{--            <div class="test">--}}
+    {{--                <span class="popup_off"><i class="ion-android-close"></i></span>--}}
+    {{--                <div class="subscribe_area text-center">--}}
+    {{--                    <h2>Sign up for send newsletter?</h2>--}}
+    {{--                    <p>Subscribe to our newsletters now and stay up-to-date with new collections, the latest lookbooks and exclusive offers.</p>--}}
+    {{--                    <div class="subscribe-form-group">--}}
+    {{--                        <form action="#">--}}
+    {{--                            <input autocomplete="off" type="text" name="message" id="message" placeholder="Enter your email address">--}}
+    {{--                            <button type="submit">subscribe</button>--}}
+    {{--                        </form>--}}
+    {{--                    </div>--}}
+    {{--                    <div class="subscribe-bottom">--}}
+    {{--                        <input type="checkbox" id="newsletter-permission">--}}
+    {{--                        <label for="newsletter-permission">Don't show this popup again</label>--}}
+    {{--                    </div>--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
+    {{--        </div>--}}
 
     {!! view_render_event('bagisto.shop.layout.header.before') !!}
 

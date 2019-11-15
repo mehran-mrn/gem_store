@@ -48,7 +48,7 @@ class AttributeDataGrid extends DataGrid
 
         $this->addColumn([
             'index' => 'admin_name',
-            'label' => trans('admin::app.name'),
+            'label' => trans('admin::app.datagrid.name'),
             'type' => 'string',
             'searchable' => true,
             'sortable' => true,
@@ -57,7 +57,7 @@ class AttributeDataGrid extends DataGrid
 
         $this->addColumn([
             'index' => 'type',
-            'label' => trans('admin::app.type'),
+            'label' => trans('admin::app.datagrid.type'),
             'type' => 'string',
             'sortable' => true,
             'searchable' => true,
@@ -66,7 +66,7 @@ class AttributeDataGrid extends DataGrid
 
         $this->addColumn([
             'index' => 'is_required',
-            'label' => trans('admin::app.required'),
+            'label' => trans('admin::app.datagrid.required'),
             'type' => 'boolean',
             'sortable' => true,
             'searchable' => false,
@@ -80,7 +80,7 @@ class AttributeDataGrid extends DataGrid
 
         $this->addColumn([
             'index' => 'is_unique',
-            'label' => trans('admin::app.unique'),
+            'label' => trans('admin::app.datagrid.unique'),
             'type' => 'boolean',
             'sortable' => true,
             'searchable' => false,
@@ -95,7 +95,7 @@ class AttributeDataGrid extends DataGrid
 
         $this->addColumn([
             'index' => 'value_per_locale',
-            'label' => trans('admin::app.locale-based'),
+            'label' => trans('admin::app.datagrid.locale-based'),
             'type' => 'boolean',
             'sortable' => true,
             'searchable' => false,
@@ -110,7 +110,7 @@ class AttributeDataGrid extends DataGrid
 
         $this->addColumn([
             'index' => 'value_per_channel',
-            'label' => trans('admin::app.channel-based'),
+            'label' => trans('admin::app.datagrid.channel-based'),
             'type' => 'boolean',
             'sortable' => true,
             'searchable' => false,
