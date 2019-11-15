@@ -7,7 +7,7 @@
             <div class="control-group" :class="[errors.has('shipping-form.shipping_method') ? 'has-error' : '']">
                 <div class="row">
                     @foreach ($shippingRateGroups as $rateGroup)
-                        <div class="col-6 col-xs-12">
+                        <div class="col-6 col-xs-12 ">
                             {!! view_render_event('bagisto.shop.checkout.shipping-method.before', ['rateGroup' => $rateGroup]) !!}
                             <div class="card">
                                 <div class="card-header text-center">

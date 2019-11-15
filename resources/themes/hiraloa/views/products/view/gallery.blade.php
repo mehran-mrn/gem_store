@@ -11,22 +11,19 @@
 {{--    </div>--}}
 
     <div class="zoompro-border">
-        <img class="zoompro" src="{{$images[0]['large_image_url']}}"  alt="Hiraola's Product Image" />
+        <img class="zoompro" src="{{$images[0]['large_image_url']}}"   />
     </div>
     <div id="gallery" class="sp-img_slider">
         @foreach($images as $image)
         <a class="active" data-image="{{$image['large_image_url']}}" >
-            <img src="{{$image['small_image_url']}}" alt="Hiraola's Product Image">
+            <img src="{{$image['small_image_url']}}" >
         </a>
         @endforeach
     </div>
 
-
-
 {!! view_render_event('bagisto.shop.products.view.gallery.after', ['product' => $product]) !!}
 
 @push('scripts')
-
 
 
 {{--    <script type="text/x-template" id="product-gallery-template">--}}

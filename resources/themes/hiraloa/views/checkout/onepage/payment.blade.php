@@ -8,7 +8,7 @@
             <div class="control-group" :class="[errors.has('payment-form.payment[method]') ? 'has-error' : '']">
                 <div class="row">
                     @foreach ($paymentMethods as $payment)
-                        <div class="col-4 col-xs-12">
+                        <div class="col-12 col-xs-12 mb-3">
                             <div class="card">
                                 <div class="card-body">
                                     {!! view_render_event('bagisto.shop.checkout.payment-method.before', ['payment' => $payment]) !!}
@@ -30,7 +30,7 @@
                                     {!! view_render_event('bagisto.shop.checkout.payment-method.after', ['payment' => $payment]) !!}
                                 </div>
                                 <div class="card-footer">
-                                        <span class="text-center method-summary">{{ __($payment['description']) }}</span>
+                                        <span class="text-center method-summary">{!!   __($payment['description']) !!}</span>
                                 </div>
                             </div>
                         </div>

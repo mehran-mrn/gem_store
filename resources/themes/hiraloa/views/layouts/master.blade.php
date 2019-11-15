@@ -158,7 +158,7 @@
 <script src="{{url('themes/hiraloa/assets/js/plugins/theia-sticky-sidebar.min.js')}}"></script>
 <script src="{{url('themes/hiraloa/assets/js/plugins/waypoints.min.js')}}"></script>
 <script src="{{url('themes/hiraloa/assets/js/plugins/instafeed.min.js')}}"></script>
-<script src="{{url('themes/hiraloa/assets/js/plugins/jquery.elevateZoom-3.0.8.min.js')}}"></script>
+<script src="{{url('themes/hiraloa/assets/js/plugins/jquery.elevateZoom-3.0.8.min.js')}}?i=1"></script>
 
 <!--
 <script src="assets/js/vendor/vendor.min.js"></script>
