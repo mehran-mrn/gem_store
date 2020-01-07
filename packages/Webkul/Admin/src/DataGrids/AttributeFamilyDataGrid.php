@@ -37,7 +37,7 @@ class AttributeFamilyDataGrid extends DataGrid
 
         $this->addColumn([
             'index' => 'code',
-            'label' => trans('admin::app.code'),
+            'label' => trans('admin::app.catalog.families.code'),
             'type' => 'string',
             'searchable' => true,
             'sortable' => true,
@@ -46,7 +46,7 @@ class AttributeFamilyDataGrid extends DataGrid
 
         $this->addColumn([
             'index' => 'name',
-            'label' => trans('admin::app.name'),
+            'label' => trans('admin::app.catalog.families.name'),
             'type' => 'string',
             'searchable' => true,
             'sortable' => true,

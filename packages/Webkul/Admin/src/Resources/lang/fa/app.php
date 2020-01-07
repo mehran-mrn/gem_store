@@ -431,21 +431,21 @@ return [
             'decimal' => 'اعشاری',
             'email' => 'پست الکترونیکی',
             'url' => 'URL',
-            'configuration' => 'Configuration',
-            'status' => 'Status',
+            'configuration' => 'پیکربندی',
+            'status' => 'وضعیت',
             'yes' => 'بله',
             'no' => 'خیر',
-            'value_per_locale' => 'مقدار در هر ممحل',
+            'value_per_locale' => 'مقدار در هر محل',
             'value_per_channel' => 'مقدار در هر کانال',
             'is_filterable' => 'استفاده در Navigation Layered',
             'is_configurable' => 'برای ایجاد یک محصول قابل تنظیم استفاده کنید',
             'admin_name' => 'نام مدیر',
             'is_visible_on_front' => 'در صفحه نمایش محصول در Front-end قابل مشاهده است',
-            'swatch_type' => 'نوع Swatch',
-            'dropdown' => 'Dropdown',
-            'color-swatch' => 'رنگ Swatch',
-            'image-swatch' => 'تصویر Swatch',
-            'text-swatch' => 'متن Swatch',
+            'swatch_type' => 'نوع انتخابی',
+            'dropdown' => 'اکاردئون',
+            'color-swatch' => 'رنگ انتخابی',
+            'image-swatch' => 'تصویر انتخابی',
+            'text-swatch' => 'متن انتخابی',
             'swatch' => 'انتخابی',
             'image' => 'تصویر',
             'file' => 'فایل',
@@ -466,7 +466,7 @@ return [
             'type' => 'نوع',
             'add-attribute-title' => 'افزودن ویژگی',
             'search' => 'جست جو',
-            'group-exist-error' => 'گروهی با همین نام در حال حاضر وجود دارد.'
+            'group-exist-error' => 'گروهی با همین نام در حال حاضر وجود دارد.',
         ],
         'categories' => [
             'title' => 'دسته بندی ها',
@@ -476,6 +476,7 @@ return [
             'general' => 'عمومی',
             'name' => 'نام',
             'visible-in-menu' => 'قابل مشاهده در منو',
+            'filterable-attributes'=>'ویژگی های جست و جو',
             'yes' => 'بله',
             'no' => 'خیر',
             'position' => 'موقعیت',
@@ -492,6 +493,7 @@ return [
             'meta_description' => 'توضیحات متا',
             'meta_keywords' => 'کلیدواژه ها متا',
             'image' => 'تصویر',
+            'attributes'=>'ویژگی ها'
         ]
     ],
 
@@ -1012,5 +1014,7 @@ return [
             'credit-max-value' => 'حداکثر میزان اعتبار',
             'use-credit-max' => 'استفاده از حداکثر اعتبار'
         ],
-    ]
+    ],
+    'save'=>'ذخیره',
+    'category'=>'دسته بندی'
 ];

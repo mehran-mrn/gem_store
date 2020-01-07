@@ -1,5 +1,4 @@
 {!! view_render_event('bagisto.shop.products.list.card.before', ['product' => $product]) !!}
-
 <div class="slide-item">
     <div class="single_product">
         <div class="product-img">
@@ -7,13 +6,12 @@
 
             <?php $productBaseImage = $productImageHelper->getProductBaseImage($product); ?>
             <?php $productGallery = $productImageHelper->getGalleryImages($product); ?>
-
             <a href="{{ route('shop.products.index', $product->url_key) }}" title="{{ $product->name }}">
-                <img class="primary-img" src="{{ $productBaseImage['medium_image_url'] }}"
+                <img class="primary-img" src="{{ $productBaseImage['large_image_url'] }}"
 
                      onerror="this.src='{{ asset('vendor/webkul/ui/assets/images/product/meduim-product-placeholder.png') }}'"
                 >
-                <img class="secondary-img" src="{{ $productGallery[rand(0,count($productGallery)-1)]['medium_image_url'] }}"
+                <img class="secondary-img" src="{{ $productGallery[rand(0,count($productGallery)-1)]['large_image_url'] }}"
 
                      onerror="this.src='{{ asset('vendor/webkul/ui/assets/images/product/meduim-product-placeholder.png') }}'"
                 >

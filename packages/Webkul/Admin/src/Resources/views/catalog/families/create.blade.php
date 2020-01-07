@@ -31,7 +31,7 @@
 
                     {!! view_render_event('bagisto.admin.catalog.family.create_form_accordian.general.before') !!}
 
-                    <accordian :title="'{{ __('admin::app.catalog.families.general') }}'" :active="true">
+                    <accordian :title="'{{ trans('admin::app.catalog.families.general') }}'" :active="true">
                         <div slot="body">
 
                             {!! view_render_event('bagisto.admin.catalog.family.create_form_accordian.general.controls.before') !!}

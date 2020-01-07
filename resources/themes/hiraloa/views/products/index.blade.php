@@ -47,7 +47,7 @@
                                         @if ($products->count())
 
                                         @include ('hiraloa::products.list.toolbar')
-                                        <div class="shop-product-wrap grid gridview-4 row">
+                                        <div class="shop-product-wrap grid gridview-3 row">
 
                                             @foreach ($products as $productFlat)
                                                 <div class="col-6 col-sm-6 col-lg-3">

@@ -2,20 +2,18 @@
 @inject ('wishListHelper', 'Webkul\Customer\Helpers\Wishlist')
 
 <?php $images = $productImageHelper->getGalleryImages($product); ?>
-
 {!! view_render_event('bagisto.shop.products.view.gallery.before', ['product' => $product]) !!}
-
 {{--<div class="product-image-group">--}}
 
 {{--    <div class="cp-spinner cp-round" id="loader">--}}
 {{--    </div>--}}
 
     <div class="zoompro-border">
-        <img class="zoompro" src="{{$images[0]['large_image_url']}}"   />
+        <img class="zoompro" src="{{$images[0]['original_image_url']}}"   />
     </div>
     <div id="gallery" class="sp-img_slider">
         @foreach($images as $image)
-        <a class="active" data-image="{{$image['large_image_url']}}" >
+        <a class="active" data-image="{{$image['original_image_url']}}" >
             <img src="{{$image['small_image_url']}}" >
         </a>
         @endforeach
