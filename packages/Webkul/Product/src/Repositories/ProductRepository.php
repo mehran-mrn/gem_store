@@ -610,9 +610,7 @@ class ProductRepository extends Repository
     {
         $results = app('Webkul\Product\Repositories\ProductFlatRepository')->scopeQuery(function ($query) {
             $channel = request()->get('channel') ?: (core()->getCurrentChannelCode() ?: core()->getDefaultChannelCode());
-
             $locale = request()->get('locale') ?: app()->getLocale();
-
             return $query->distinct()
                 ->addSelect('product_flat.*')
                 ->where('product_flat.status', 1)
@@ -622,7 +620,6 @@ class ProductRepository extends Repository
                 ->where('product_flat.locale', $locale)
                 ->orderBy('product_id', 'desc');
         })->paginate(4);
-
         return $results;
     }
 

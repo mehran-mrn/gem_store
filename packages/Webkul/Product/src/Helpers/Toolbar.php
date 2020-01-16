@@ -13,8 +13,8 @@ class Toolbar extends AbstractProduct
     public function getAvailableOrders()
     {
         return [
-            'name-asc' => 'from-a-z',
-            'name-desc' => 'from-z-a',
+//            'name-asc' => 'from-a-z',
+//            'name-desc' => 'from-z-a',
             'created_at-desc' => 'newest-first',
             'created_at-asc' => 'oldest-first',
             'price-asc' => 'cheapest-first',

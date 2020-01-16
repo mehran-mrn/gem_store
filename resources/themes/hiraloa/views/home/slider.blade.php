@@ -4,7 +4,7 @@
         <div class="category-heading">
             <h2 class="categories-toggle"><span>{{__('shop::app.home.products-categories')}}</span></h2>
         </div>
-        <div id="cate-toggle" class="category-menu-list">
+        <div id="cate-toggle" class="category-menu-list pt-2 pb-4">
             <?php
             $categories = [];
             foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCategoryTree(core()->getCurrentChannel()->root_category_id) as $category) {
@@ -15,8 +15,8 @@
             <ul>
                 @foreach($categories as $category)
                     @if(count($category->children)>0)
-                        <li class="right-menu"><a
-                                    href="{{ route('shop.categories.index', $category->slug) }}">{{$category->translations->where('locale',core()->getCurrentLocale()->code)->first()->name}}</a>
+                        <li class="right-menu">
+                            <a href="{{ route('shop.categories.index', $category->slug) }}">{{$category->translations->where('locale',core()->getCurrentLocale()->code)->first()->name}}</a>
                             @if(count($category->children)>0)
                                 <ul class="cat-mega-menu">
                                     @include("hiraloa::layouts.header.nav-menu.foreach_navmenu",["categories"=>$category])
@@ -25,7 +25,7 @@
                         </li>
                     @else
                         <li>
-                            <a href="{{ route('shop.categories.index', $category->slug) }}">{{$category->translations->where('locale',core()->getCurrentLocale()->code)->first()->name}}</a>
+                            <a class="pt-4" href="{{ route('shop.categories.index', $category->slug) }}">{{$category->translations->where('locale',core()->getCurrentLocale()->code)->first()->name}}</a>
                         </li>
                     @endif
 
@@ -36,7 +36,6 @@
 </div>
 <div class="col grid-full order-md-1 order-lg-2">
     <div class="hiraola-slider_area">
-
         <div class="main-slider" dir="rtl">
             @forelse($sliderData as $data)
                 <div class="single-slide animation-style-0{{random_int(1,2)}} bg-1"

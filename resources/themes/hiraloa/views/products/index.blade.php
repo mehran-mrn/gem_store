@@ -37,81 +37,46 @@
 
                 @if (in_array($category->display_mode, [null, 'products_only', 'products_and_description']))
                     <?php $products = $productRepository->getAll($category->id); ?>
-
-                    <!-- Begin Hiraola's Content Wrapper Area -->
-                        <div class="hiraola-content_wrapper">
-                            <div class="container">
-                                <div class="row">
-
-                                    <div class="col-lg-9 order-2 order-lg-2">
-                                        @if ($products->count())
-
+                    <div class="hiraola-content_wrapper" style="padding-top: 50px;">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    @if ($products->count())
                                         @include ('hiraloa::products.list.toolbar')
                                         <div class="shop-product-wrap grid gridview-3 row">
-
                                             @foreach ($products as $productFlat)
-                                                <div class="col-6 col-sm-6 col-lg-3">
+                                                <div class="col-lg-4">
                                                     @include ('hiraloa::products.list.card', ['product' => $productFlat])
                                                 </div>
                                             @endforeach
                                         </div>
-                                        @else
-                                        <!-- Begin Hiraola's Error 404 Page Area -->
-                                            <div class="error404-area">
-                                                <div class="container">
-                                                    <div class="row">
-                                                        <div class="col-lg-8 ml-auto mr-auto text-center">
-                                                            <div class="search-error-wrapper">
-                                                                <h2>{{ __('shop::app.products.whoops') }}</h2>
-                                                                <p class="short_desc">{{ __('shop::app.products.empty') }}</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Hiraola's Error 404 Page End Here -->
+                                    @else
+                                        <h4 class="text-center alert alert-info">هیچ محصولی یافت نشد.</h4>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @inject ('toolbarHelper', 'Webkul\Product\Helpers\Toolbar')
+                    {!! view_render_event('bagisto.shop.products.index.pagination.before', ['category' => $category]) !!}
+                    <div class="row m-0">
+                        <div class="col-lg-12 p-0">
+                            <div class="hiraola-paginatoin-area">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    {{ $products->appends(request()->input())->links() }}
 
-
-                                        @endif
-                                    </div>
-                                    <div class="col-lg-3 order-1 order-lg-1">
-                                        @if (in_array($category->display_mode, [null, 'products_only', 'products_and_description']))
-                                            @include ('hiraloa::products.list.layered-navigation')
-                                        @endif
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="product-select-box">
+                                        <div class="product-short">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Hiraola's Content Wrapper Area End Here -->
+                    </div>
 
-
-
-                        @inject ('toolbarHelper', 'Webkul\Product\Helpers\Toolbar')
-
-
-                        {!! view_render_event('bagisto.shop.products.index.pagination.before', ['category' => $category]) !!}
-
-
-                        <div class="row m-0">
-                            <div class="col-lg-12 p-0">
-                                <div class="hiraola-paginatoin-area">
-                                        <div class="col-lg-6 col-md-6 col-sm-6">
-                                            {{ $products->appends(request()->input())->links() }}
-
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-6">
-                                            <div class="product-select-box">
-                                                <div class="product-short">
-                                                </div>
-                                            </div>
-                                        </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {!! view_render_event('bagisto.shop.products.index.pagination.after', ['category' => $category]) !!}
-
-
+                    {!! view_render_event('bagisto.shop.products.index.pagination.after', ['category' => $category]) !!}
                 @endif
             </div>
         </div>

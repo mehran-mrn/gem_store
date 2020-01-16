@@ -7,9 +7,7 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
 }
 ?>
 
-
-
-<div class="header-bottom_area header-sticky stick p-2">
+<div class="header-bottom_area header-sticky stick p-2" style="background-color: #012150ad!important;">
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-sm-4 d-lg-none d-block">
@@ -28,6 +26,7 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
                 <div class="main-menu_area">
                     <nav>
                         <ul>
+                            <li><a href="/">صفحه اصلی</a></li>
                             @foreach($categories as $category)
                                 <li style="padding-left: 50px!important;"><a style="font-size: 18px!important;" href="{{ route('shop.categories.index', $category->slug) }}">{{$category->translations->where('locale',core()->getCurrentLocale()->code)->first()->name}}</a>
                                 @if(count($category->children)>0)

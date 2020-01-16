@@ -9,8 +9,46 @@
                 </div>
                 <div class="col-lg-12">
                     <div class="hiraola-product_slider">
-                        @forelse (app('Webkul\Product\Repositories\ProductRepository')->getNewProducts(10) as $productFlat)
-                            @include ('shop::products.list.card', ['product' => $productFlat])
+                        @forelse (app('Webkul\Product\Repositories\ProductRepository')->getNewProducts(10) as $product)
+                            <div class="slide-item">
+                                @inject ('productImageHelper', 'Webkul\Product\Helpers\ProductImage')
+                                <?php $productBaseImage = $productImageHelper->getProductBaseImage($product); ?>
+                                <?php $productGallery = $productImageHelper->getGalleryImages($product); ?>
+                                <div class="single_product" style="border-radius: 10px">
+                                    <div class="product-img">
+                                        <a href="{{ route('shop.products.index', $product->url_key) }}">
+                                            <img class="primary-img" style="border-radius: 10px"
+                                                 src="{{ $productBaseImage['medium_image_url'] }}"
+                                                 alt="{{ $product->name }}">
+                                            <img class="secondary-img"  style="border-radius: 10px"
+                                                 src="{{ $productGallery[rand(0,count($productGallery)-1)]['medium_image_url'] }}"
+                                                 alt="{{ $product->name }}">
+                                        </a>
+                                    </div>
+                                    <div class="hiraola-product_content">
+                                        <div class="product-desc_info">
+                                            <h6 class="text-center pt-1">
+                                                <a class="product-name text-center" href="{{ route('shop.products.index', $product->url_key) }}">{{ $product->name }}</a>
+                                            </h6>
+                                            <div class="price-box" style="display: block;text-align: center">
+                                                @inject ('priceHelper', 'Webkul\Product\Helpers\Price')
+
+                                                @if ($product->type == 'configurable')
+                                                    <span class="new-price" style="display: block">{{ core()->currency($priceHelper->getMinimalPrice($product)) }}</span>
+                                                @else
+                                                    @if ($priceHelper->haveSpecialPrice($product))
+
+                                                        <strong class="new-price text-center text-bold text-danger ">{{ core()->currency($priceHelper->getSpecialPrice($product)) }}</strong>
+                                                    @else
+                                                        <h5 class="new-price text-center"
+                                                            style="color: #3a598a !important;text-align: center!important;">{{ core()->currency($product->price) }}</h5>
+                                                    @endif
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         @empty
                             <div class="slide-item">
                                 <div class="single_product">

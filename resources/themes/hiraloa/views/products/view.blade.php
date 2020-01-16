@@ -20,8 +20,6 @@
             <div class="sp-nav">
                 <div class="form-container row">
 
-
-
                     {{--    <product-gallery></product-gallery>--}}
                     <div class="clearfix"></div>
                     <div class="col-lg-6 col-md-6">
@@ -32,13 +30,12 @@
                     <div class="col-lg-6 col-md-6">
                         <form method="POST" id="product-form" action="{{ route('cart.add', $product->product_id) }}" @click="onSubmit($event)">
                             @csrf()
-
                             <input type="hidden" name="product" value="{{ $product->product_id }}">
-                        <div class="sp-heading mt-2 text-center text-sm-left">
-                            <h5>{{ $product->name }}</h5>
+                        <div class="sp-heading mt-2 text-center text-sm-left" >
+                            <h5 style="color: #576784!important;">{{ $product->name }}</h5>
                         </div>
                         {!! view_render_event('bagisto.shop.products.view.short_description.before', ['product' => $product]) !!}
-                        <span class="reference text-center text-sm-left">{!! $product->short_description !!}</span>
+                        <strong class="reference text-center text-sm-left">کد: {!! strtoupper($product->sku) !!}</strong>
                         {!! view_render_event('bagisto.shop.products.view.short_description.after', ['product' => $product]) !!}
 
                         <div class="rating-box text-center text-sm-left">
@@ -47,19 +44,19 @@
 
                             {!! view_render_event('bagisto.shop.products.review.before', ['product' => $product]) !!}
                             <div >
-                                {{
-                        __('shop::app.products.total-rating', [
-                                'total_rating' => $reviewHelper->getTotalRating($product),
-                                'total_reviews' => $reviewHelper->getTotalReviews($product),
-                            ])
-                                }}
+{{--                                {{--}}
+{{--                        __('shop::app.products.total-rating', [--}}
+{{--                                'total_rating' => $reviewHelper->getTotalRating($product),--}}
+{{--                                'total_reviews' => $reviewHelper->getTotalReviews($product),--}}
+{{--                            ])--}}
+{{--                                }}--}}
                             </div>
                         </div>
                         <hr>
                         <div class="sp-essential_stuff text-center text-sm-left">
                             <ul>
-                                <li><h4 class="text-danger">@include ('hiraloa::products.price', ['product' => $product])</h4></li>
-                                <li><strong>@include ('hiraloa::products.view.stock', ['product' => $product])</strong></li>
+                                <li class="pb-lg-1"><h4 class="text-danger">@include ('hiraloa::products.price', ['product' => $product])</h4></li>
+                                <li><span>@include ('hiraloa::products.view.stock', ['product' => $product])</span></li>
                             </ul>
                             <hr>
                         </div>
