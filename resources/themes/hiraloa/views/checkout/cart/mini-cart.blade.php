@@ -67,7 +67,7 @@
 
 
     <div class="minicart-item_total">
-        <span>Subtotal</span>
+        <span>{{__('shop::app.checkout.cart.subtotal')}}</span>
         {!! view_render_event('bagisto.shop.checkout.cart-mini.subtotal.before', ['cart' => $cart]) !!}
 
         <span class="ammount">{{core()->currency($cart->base_sub_total)}}</span>

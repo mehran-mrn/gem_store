@@ -323,7 +323,7 @@ return [
             'item-canceled' => 'Canceled (:qty_canceled)',
             'price' => 'Price',
             'total' => 'Total',
-            'subtotal' => 'Subtotal',
+            'subtotal' => 'جمع کل',
             'shipping-handling' => 'Shipping & Handling',
             'discount' => 'Discount',
             'tax' => 'Tax',
@@ -823,9 +823,9 @@ return [
             'delete-help-title' => 'Delete Customer',
             'mass-destroy-success' => 'Customers deleted successfully',
             'mass-update-success' => 'Customers updated successfully',
-            'status' => 'Status',
-            'active' => 'Active',
-            'in-active' => 'Inactive'
+            'status' => 'ئضعیا',
+            'active' => 'فعال',
+            'in-active' => 'غیر فعال'
         ],
 
         'reviews' => [

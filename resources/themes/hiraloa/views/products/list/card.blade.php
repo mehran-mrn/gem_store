@@ -7,14 +7,10 @@
             <?php $productBaseImage = $productImageHelper->getProductBaseImage($product); ?>
             <?php $productGallery = $productImageHelper->getGalleryImages($product); ?>
             <a href="{{ route('shop.products.index', $product->url_key) }}" title="{{ $product->name }}">
-                <img class="primary-img" src="{{ $productBaseImage['large_image_url'] }}"
-
-                     onerror="this.src='{{ asset('vendor/webkul/ui/assets/images/product/meduim-product-placeholder.png') }}'"
-                >
-                <img class="secondary-img" src="{{ $productGallery[rand(0,count($productGallery)-1)]['large_image_url'] }}"
-
-                     onerror="this.src='{{ asset('vendor/webkul/ui/assets/images/product/meduim-product-placeholder.png') }}'"
-                >
+                <img class="primary-img" src="{{ $productBaseImage['medium_image_url'] }}"
+                     onerror="this.src='{{ asset('vendor/webkul/ui/assets/images/product/medium-product-placeholder.png') }}'">
+                <img class="secondary-img" src="{{ $productGallery[rand(0,count($productGallery)-1)]['medium_image_url'] }}"
+                     onerror="this.src='{{ asset('vendor/webkul/ui/assets/images/product/medium-product-placeholder.png') }}'">
             </a>
 
             @if ($product->featured)
@@ -37,7 +33,9 @@
         </div>
         <div class="hiraola-product_content">
             <div class="product-desc_info">
-                <h6><a class="product-name" href="{{ url()->to('/').'/products/' . $product->url_key }}" title="{{ $product->name }}">
+                <h6 class="mt-2 text-center"><a class="product-name"
+                       href="{{ url()->to('/').'/products/' . $product->url_key }}"
+                       title="{{ $product->name }}">
                         {{ $product->name }}</a></h6>
                 @include ('hiraloa::products.price', ['product' => $product])
 
@@ -45,13 +43,11 @@
                     <ul>
                         <li>
                             @include('hiraloa::products.wishlist')
-
                         </li>
                     </ul>
                 </div>
-                <div class="rating-box">
+                <div class="rating-box text-center">
                     @include ('hiraloa::products.review', ['product' => $product])
-
                 </div>
             </div>
         </div>

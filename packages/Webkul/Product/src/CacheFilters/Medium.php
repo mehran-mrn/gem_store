@@ -9,6 +9,6 @@ class Medium implements FilterInterface
 {
     public function applyFilter(Image $image)
     {
-        return $image->resize(438, 438);
+        return $image->resize(247, 247);
     }
 }

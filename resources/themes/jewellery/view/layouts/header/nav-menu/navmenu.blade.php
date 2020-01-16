@@ -9,12 +9,13 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
 
 
 
-<div class="header-bottom_area header-sticky stick p-2">
+<div class="header-bottom_area header-sticky stick">
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-sm-4 d-lg-none d-block">
                 <div class="header-logo">
                     <a href="{{ route('shop.home.index') }}">
+
                         @if ($logo = core()->getCurrentChannel()->logo_url)
                             <img class="w-50" alt="cubicjewelry.ir" src="{{ $logo }}"/>
                         @else
@@ -29,7 +30,7 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
                     <nav>
                         <ul>
                             @foreach($categories as $category)
-                                <li style="padding-left: 50px!important;"><a style="font-size: 18px!important;" href="{{ route('shop.categories.index', $category->slug) }}">{{$category->translations->where('locale',core()->getCurrentLocale()->code)->first()->name}}</a>
+                                <li><a href="{{ route('shop.categories.index', $category->slug) }}">{{$category->translations->where('locale',core()->getCurrentLocale()->code)->first()->name}}</a>
                                 @if(count($category->children)>0)
                                         <ul class="hm-dropdown hm-sub_dropdown">
                                         @include("hiraloa::layouts.header.nav-menu.foreach_navmenu",["categories"=>$category])

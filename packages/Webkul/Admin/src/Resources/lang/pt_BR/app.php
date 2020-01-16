@@ -272,7 +272,7 @@ return [
             'item-canceled' => 'Cancelado(s) (:qty_canceled)',
             'price' => 'Preço',
             'total' => 'Total',
-            'subtotal' => 'Subtotal',
+            'subtotal' => 'جمع کل',
             'shipping-handling' => 'Entrega & Manuseio',
             'discount' => 'Discount',
             'tax' => 'Imposto',

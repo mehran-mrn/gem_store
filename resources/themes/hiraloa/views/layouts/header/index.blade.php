@@ -1,4 +1,4 @@
-<header class="header-main_area">
+<header class="header-main_area" style="background-color: #ecebf37b">
     <div class="header-middle_area d-none d-lg-block">
         <div class="container">
             <div class="row">
@@ -19,8 +19,7 @@
                 <div class="col-lg-9">
                     <div class="hm-form_area">
                         <form role="search" action="{{ route('shop.search.index') }}" method="GET" class="hm-searchbox">
-                            <input type="text" required name="term"
-                                   placeholder="{{ __('shop::app.header.search-text') }}">
+                            <input type="text" required name="term" placeholder="{{ __('shop::app.header.search-text') }}">
                             <button class="li-btn" type="submit"><i class="fa fa-search"></i></button>
                         </form>
                     </div>

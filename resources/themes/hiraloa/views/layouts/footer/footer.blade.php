@@ -3,70 +3,7 @@
     <div class="footer-top_area">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="footer-widgets_info row">
-                        {!! DbView::make(core()->getCurrentChannel())->field('footer_content')->render() !!}
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="footer-widgets_area">
-                        <div class="row">
-                            <div class="col-lg-5">
-                                <?php
-                                $categories = [];
-
-                                foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCategoryTree(core()->getCurrentChannel()->root_category_id) as $category){
-                                    if ($category->slug)
-                                        array_push($categories, $category);
-                                }
-                                ?>
-
-
-                                    @if (count($categories))
-
-                                    <div class="footer-widgets_title">
-                                    <h6>{{__('shop::app.home.products-categories')}}</h6>
-                                </div>
-                                    <div class="footer-widgets">
-                                    <ul>
-
-                                        @foreach ($categories as $key => $category)
-                                            <li>
-                                                <a href="{{ route('shop.categories.index', $category->slug) }}">{{ $category->name }}</a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                                    @endif
-
-                            </div>
-
-                            <div class="col-lg-7">
-                                @if(core()->getConfigData('customer.settings.newsletter.subscription'))
-                                <div class="instagram-container footer-widgets_area">
-                                    <div class="footer-widgets_title">
-                                        <h6>{{ __('shop::app.footer.subscribe-newsletter') }}</h6>
-                                    </div>
-
-                                    <div class="newsletter-form_wrap">
-                                        <form action="{{ route('shop.subscribe') }}"  id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" required class="newsletters-form validate"  >
-                                            <div id="mc_embed_signup_scroll" :class="[errors.has('subscriber_email') ? 'has-error' : '']">
-                                                <div id="mc-form" class="mc-form subscribe-form">
-                                                    <input  name="subscriber_email" id="mc-email" class="newsletter-input" type="email" autocomplete="off" placeholder="{{__('shop::app.home.enter-email')}}" />
-                                                    <button class="newsletter-btn" id="mc-submit">
-                                                        <i class="ion-android-mail" aria-hidden="true"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                @endif
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {!! DbView::make(core()->getCurrentChannel())->field('footer_content')->render() !!}
             </div>
         </div>
     </div>

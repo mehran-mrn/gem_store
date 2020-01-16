@@ -238,11 +238,9 @@ class ProductController extends Controller
     public function massUpdate()
     {
         $data = request()->all();
-
         if (!isset($data['massaction-type'])) {
             return redirect()->back();
         }
-
         if (!$data['massaction-type'] == 'update') {
             return redirect()->back();
         }
@@ -251,8 +249,8 @@ class ProductController extends Controller
 
         foreach ($productIds as $productId) {
             $this->product->update([
-                'channel' => null,
-                'locale' => null,
+//                'channel' => null,
+//                'locale' => null,
                 'status' => $data['update-options']
             ], $productId);
         }

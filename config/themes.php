@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'default' => 'hiraloa',
+    'default' => 'jewellery',
 
     'themes' => [
         'default' => [
@@ -13,6 +13,11 @@ return [
             'views_path' => 'resources/themes/hiraloa/views',
             'assets_path' => 'public/themes/hiraloa/assets',
             'name' => 'Hiraloa'
+        ],
+        'jewellery' => [
+            'views_path' => 'resources/themes/jewellery/views',
+            'assets_path' => 'public/themes/jewellery/assets',
+            'name' => 'jewellery'
         ],
         'custom' => [
             'views_path' => 'resources/themes/custom/views',
