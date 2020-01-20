@@ -27,7 +27,6 @@
                 <div class="page-title">
                     <h1>
                         <i class="icon angle-left-icon back-link" onclick="history.length > 1 ? history.go(-1) : window.location = '{{ url('/admin/dashboard') }}';"></i>
-
                         {{ __('admin::app.catalog.products.add-title') }}
                     </h1>
                 </div>
@@ -55,9 +54,7 @@
                             <label for="type" class="required">{{ __('admin::app.catalog.products.product-type') }}</label>
                             <select class="control" v-validate="'required'" id="type" name="type" {{ $familyId ? 'disabled' : '' }} data-vv-as="&quot;{{ __('admin::app.catalog.products.product-type') }}&quot;">
                                 @foreach($productTypes as $key => $productType)
-                                    @if($key=="simple")
                                     <option value="{{ $key }}" {{ $key == $productType['key'] ? 'selected' : '' }}>{{ $productType['name'] }}</option>
-                                    @endif
                                 @endforeach
                             </select>
 

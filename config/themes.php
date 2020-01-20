@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'default' => 'jewellery',
+    'default' => 'Default',
 
     'themes' => [
         'default' => [

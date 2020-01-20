@@ -55,28 +55,24 @@
                                     @endif
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    @inject ('toolbarHelper', 'Webkul\Product\Helpers\Toolbar')
-                    {!! view_render_event('bagisto.shop.products.index.pagination.before', ['category' => $category]) !!}
-                    <div class="row m-0">
-                        <div class="col-lg-12 p-0">
-                            <div class="hiraola-paginatoin-area">
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    {{ $products->appends(request()->input())->links() }}
-
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <div class="product-select-box">
-                                        <div class="product-short">
+                            @inject ('toolbarHelper', 'Webkul\Product\Helpers\Toolbar')
+                            {!! view_render_event('bagisto.shop.products.index.pagination.before', ['category' => $category]) !!}
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="hiraola-paginatoin-area">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                                                {{ $products->appends(request()->input())->links() }}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            {!! view_render_event('bagisto.shop.products.index.pagination.after', ['category' => $category]) !!}
                         </div>
+
                     </div>
 
-                    {!! view_render_event('bagisto.shop.products.index.pagination.after', ['category' => $category]) !!}
                 @endif
             </div>
         </div>

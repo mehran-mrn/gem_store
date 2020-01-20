@@ -108,9 +108,7 @@
 
     <script type="text/x-template" id="product-view-template">
         <form method="POST" id="product-form" action="{{ route('cart.add', $product->product_id) }}" @click="onSubmit($event)">
-
             <slot></slot>
-
         </form>
     </script>
 

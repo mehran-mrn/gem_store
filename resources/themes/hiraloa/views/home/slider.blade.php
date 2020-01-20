@@ -4,7 +4,7 @@
         <div class="category-heading">
             <h2 class="categories-toggle"><span>{{__('shop::app.home.products-categories')}}</span></h2>
         </div>
-        <div id="cate-toggle" class="category-menu-list pt-2 pb-4">
+        <div id="cate-toggle" class="category-menu-list pt-2 pb-4" style="background-color: #ecebf37b">
             <?php
             $categories = [];
             foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCategoryTree(core()->getCurrentChannel()->root_category_id) as $category) {
@@ -25,7 +25,7 @@
                         </li>
                     @else
                         <li>
-                            <a class="pt-4" href="{{ route('shop.categories.index', $category->slug) }}">{{$category->translations->where('locale',core()->getCurrentLocale()->code)->first()->name}}</a>
+                            <a class="pt-4" style="color: #3a598a" href="{{ route('shop.categories.index', $category->slug) }}">{{$category->translations->where('locale',core()->getCurrentLocale()->code)->first()->name}}</a>
                         </li>
                     @endif
 

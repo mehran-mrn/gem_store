@@ -1,15 +1,14 @@
 @if ($product->type == 'configurable')
 
     @inject ('configurableOptionHelper', 'Webkul\Product\Helpers\ConfigurableOption')
-    <div class="color-list_heading">
-        <h4>Available Options</h4>
-    </div>
     {!! view_render_event('bagisto.shop.products.view.configurable-options.before', ['product' => $product]) !!}
 
     <product-options></product-options>
+    @push('scripts')
+        <script type="text/javascript" src="{{ url('/themes/default/assets/js/shop.js') }}"></script>
+    @endpush
 
     {!! view_render_event('bagisto.shop.products.view.configurable-options.after', ['product' => $product]) !!}
-
     @push('scripts')
 
         <script type="text/x-template" id="product-options-template">
@@ -22,13 +21,13 @@
 
                     <span v-if="! attribute.swatch_type || attribute.swatch_type == '' || attribute.swatch_type == 'dropdown'">
                         <select
-                            class="control"
-                            v-validate="'required'"
-                            :name="['super_attribute[' + attribute.id + ']']"
-                            :disabled="attribute.disabled"
-                            @change="configure(attribute, $event.target.value)"
-                            :id="['attribute_' + attribute.id]"
-                            :data-vv-as="'&quot;' + attribute.label + '&quot;'">
+                                class="control"
+                                v-validate="'required'"
+                                :name="['super_attribute[' + attribute.id + ']']"
+                                :disabled="attribute.disabled"
+                                @change="configure(attribute, $event.target.value)"
+                                :id="['attribute_' + attribute.id]"
+                                :data-vv-as="'&quot;' + attribute.label + '&quot;'">
 
                             <option v-for='(option, index) in attribute.options' :value="option.id">@{{ option.label }}</option>
 
@@ -37,18 +36,18 @@
 
                     <span class="swatch-container" v-else>
                         <label class="swatch"
-                            v-for='(option, index) in attribute.options'
-                            v-if="option.id"
-                            :data-id="option.id"
-                            :for="['attribute_' + attribute.id + '_option_' + option.id]">
+                               v-for='(option, index) in attribute.options'
+                               v-if="option.id"
+                               :data-id="option.id"
+                               :for="['attribute_' + attribute.id + '_option_' + option.id]">
 
                             <input type="radio"
-                                v-validate="'required'"
-                                :name="['super_attribute[' + attribute.id + ']']"
-                                :id="['attribute_' + attribute.id + '_option_' + option.id]"
-                                :value="option.id"
-                                :data-vv-as="'&quot;' + attribute.label + '&quot;'"
-                                @change="configure(attribute, $event.target.value)"/>
+                                   v-validate="'required'"
+                                   :name="['super_attribute[' + attribute.id + ']']"
+                                   :id="['attribute_' + attribute.id + '_option_' + option.id]"
+                                   :value="option.id"
+                                   :data-vv-as="'&quot;' + attribute.label + '&quot;'"
+                                   @change="configure(attribute, $event.target.value)"/>
 
                             <span v-if="attribute.swatch_type == 'color'" :style="{ background: option.swatch_value }"></span>
 
@@ -96,7 +95,7 @@
                 },
 
                 created: function() {
-                    this.galleryImages = galleryImages.slice(0)
+                    // this.galleryImages = galleryImages.slice(0)
 
                     var config = @json($config);
 
