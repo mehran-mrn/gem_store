@@ -1524,6 +1524,7 @@ button, .global-overlay, .quantity .cart-plus-minus > .qtybutton, .popup_wrapper
   color: #ffffff;
   border: 0;
   padding: 10px 15px;
+  border-radius: 5px;
 }
 .template-color-1 .sp-area .sp-nav .sp-content .qty-btn_area > ul li > a.qty-cart_btn:hover {
   background-color: #012150ad;
@@ -2235,6 +2236,7 @@ button, .global-overlay, .quantity .cart-plus-minus > .qtybutton, .popup_wrapper
   background-color: #333333;
   color: #ffffff;
   border: 0;
+  border-radius: 5px;
 }
 
 .template-color-3 .sp-area .sp-nav .sp-content .qty-btn_area > ul li > a.qty-cart_btn:hover {
@@ -7371,7 +7373,7 @@ button.li-btn:hover {
 
 .sp-product-tab_area .sp-product-tab_nav .product-tab {
   background-color: #f4f4f4;
-  padding: 25px 0 25px;
+  padding: 8px 0 13px;
 }
 
 .sp-product-tab_area .sp-product-tab_nav .product-tab .product-menu {

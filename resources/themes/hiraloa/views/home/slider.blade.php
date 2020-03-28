@@ -25,7 +25,7 @@
                         </li>
                     @else
                         <li>
-                            <a class="pt-4" style="color: #3a598a" href="{{ route('shop.categories.index', $category->slug) }}">{{$category->translations->where('locale',core()->getCurrentLocale()->code)->first()->name}}</a>
+                            <a class="" style="color: #3a598a" href="{{ route('shop.categories.index', $category->slug) }}">{{$category->translations->where('locale',core()->getCurrentLocale()->code)->first()->name}}</a>
                         </li>
                     @endif
 
