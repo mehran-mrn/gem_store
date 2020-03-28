@@ -5791,7 +5791,7 @@ button.li-btn:hover {
 }
 
 .header-bottom_area .main-menu_area > nav > ul > li .hm-dropdown > li > a {
-  padding: 10px 20px;
+  padding: 8px 13px 5px 5px;
   display: block;
 }
 
@@ -5807,6 +5807,10 @@ button.li-btn:hover {
 
 .header-bottom_area .main-menu_area > nav > ul > li > ul > li {
   position: relative;
+}
+.header-bottom_area .main-menu_area > nav > ul > li > ul > li :hover{
+  background-color : #012150ad;
+  color: white !important;
 }
 
 .header-bottom_area .main-menu_area > nav > ul > li > ul > li > ul.hm-sub_dropdown {
@@ -5912,7 +5916,7 @@ button.li-btn:hover {
 }
 
 .header-bottom_area .main-menu_area > nav > ul > li > a {
-  font-weight: 700;
+  /*font-weight: 700;*/
   color: #ffffff;
   display: block;
   padding: 0px 0;
@@ -6001,6 +6005,22 @@ button.li-btn:hover {
   }
 }
 
+.products-detail-divider {
+  margin: 0 0 15px 0;
+  padding-top: 10px;
+  border-bottom: 1px solid #003765;
+}
+
+.reference {
+  background: #eeeeee;
+  color: #333333;
+  display: inline-block;
+  padding: 0 9px;
+  font-weight: bold;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border-radius: 100px;
+}
 .header-bottom_area .header-right_area > ul > li > a {
   width: 60px;
   /*height: 60px;*/
@@ -9876,6 +9896,10 @@ section.review .review-layouter .ratings-reviews .right-side .rater .star-name {
   padding: 20px 20px 10px 20px;
   margin-bottom: 20px;
   border-radius: 25px;
+  line-height: 24px;
+}
+.product-detail-frame .rating-box ul {
+  text-align: right !important;
 }
 .galleryFrame {
   position: relative;

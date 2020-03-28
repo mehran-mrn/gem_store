@@ -33,14 +33,16 @@
                                   @click="onSubmit($event)">
                                 @csrf()
                                 <input type="hidden" name="product" value="{{ $product->product_id }}">
-                                <div class="sp-heading mt-2 text-center text-sm-left">
-                                    <h5 style="color: #576784!important;">{{ $product->name }}</h5>
-                                </div>
                                 {!! view_render_event('bagisto.shop.products.view.short_description.before', ['product' => $product]) !!}
-                                <strong class="reference text-center text-sm-left">کد: {!! strtoupper($product->sku) !!}</strong>
+                                <strong class="reference  text-sm-left">کد: {!! strtoupper($product->sku) !!}</strong>
                                 {!! view_render_event('bagisto.shop.products.view.short_description.after', ['product' => $product]) !!}
 
-                                <div class="rating-box text-center text-sm-left">
+                                <div class="sp-heading mt-2  text-sm-left">
+                                    <h5 style="color: #576784!important;">{{ $product->name }}</h5>
+                                </div>
+
+
+                                <div class="rating-box  text-sm-left">
                                     @include ('hiraloa::products.review', ['product' => $product])
                                     @inject ('reviewHelper', 'Webkul\Product\Helpers\Review')
 
@@ -54,8 +56,8 @@
                                         {{--                                }}--}}
                                     </div>
                                 </div>
-                                <hr>
-                                <div class="sp-essential_stuff text-center text-sm-left">
+                                <div class="products-detail-divider"></div>
+                                <div class="sp-essential_stuff  text-sm-left">
                                     <ul>
                                         <li class="pb-lg-1"><h4
                                                     class="text-danger">@include ('hiraloa::products.price', ['product' => $product])</h4>
@@ -64,7 +66,7 @@
                                             <span>@include ('hiraloa::products.view.stock', ['product' => $product])</span>
                                         </li>
                                     </ul>
-                                    <hr>
+                                    <div class="products-detail-divider"></div>
                                 </div>
                                 <div class="quantity" :class="[errors.has('quantity') ? 'has-error' : '']">
                                     {!! view_render_event('bagisto.shop.products.view.quantity.before', ['product' => $product]) !!}
@@ -88,7 +90,7 @@
                                 </div>
                                 {!! view_render_event('bagisto.shop.products.view.quantity.after', ['product' => $product]) !!}
 
-                                <hr>
+                                <div class="products-detail-divider"></div>
                                 @if ($product->type == 'configurable')
                                     <input type="hidden" value="true" name="is_configurable">
                                     <div class="color-list_area">
