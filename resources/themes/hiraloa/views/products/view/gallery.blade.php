@@ -8,7 +8,7 @@
 {{--    <div class="cp-spinner cp-round" id="loader">--}}
 {{--    </div>--}}
 
-    <div class="zoompro-border">
+    <div class="zoompro-border galleryFrame">
         <img class="zoompro" src="{{$images[0]['original_image_url']}}"   />
     </div>
     <div id="gallery" class="sp-img_slider">

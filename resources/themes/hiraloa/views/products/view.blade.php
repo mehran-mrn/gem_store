@@ -29,7 +29,7 @@
                         </div>
 
                         <div class="col-lg-6 col-md-6">
-                            <form method="POST" id="product-form" action="{{ route('cart.add', $product->product_id) }}"
+                            <form method="POST" id="product-form" action="{{ route('cart.add', $product->product_id) }}" class="product-detail-frame"
                                   @click="onSubmit($event)">
                                 @csrf()
                                 <input type="hidden" name="product" value="{{ $product->product_id }}">

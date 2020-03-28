@@ -30,6 +30,11 @@
     {{--    <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/style.css')}}">--}}
     <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/styleRTL.css')}}?i=5">
     <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/fonts.css')}}">
+    <style>
+        .product-img a img{
+            object-fit: none;
+        }
+    </style>
     <!--<link rel="stylesheet" href="assets/css/style.min.css">-->
     <!--
     <script src="assets/js/vendor/vendor.min.js"></script>
@@ -158,7 +163,7 @@
 <script src="{{url('themes/hiraloa/assets/js/plugins/theia-sticky-sidebar.min.js')}}"></script>
 <script src="{{url('themes/hiraloa/assets/js/plugins/waypoints.min.js')}}"></script>
 <script src="{{url('themes/hiraloa/assets/js/plugins/instafeed.min.js')}}"></script>
-<script src="{{url('themes/hiraloa/assets/js/plugins/jquery.elevateZoom-3.0.8.min.js')}}?i=1"></script>
+<script src="{{url('themes/hiraloa/assets/js/plugins/jquery.elevateZoom-3.0.8.min.js')}}"></script>
 
 <!--
 <script src="assets/js/vendor/vendor.min.js"></script>

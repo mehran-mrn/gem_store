@@ -7,8 +7,8 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
 }
 ?>
 
-<div class="header-bottom_area header-sticky stick p-2" style="background-color: #012150ad!important;">
-    <div class="container">
+<div class="header-bottom_area header-sticky stick pr-3 pl-3 pt-3 pb-2" style="background-color: #003765d9!important;">
+    <div class="">
         <div class="row">
             <div class="col-md-4 col-sm-4 d-lg-none d-block">
                 <div class="header-logo">
