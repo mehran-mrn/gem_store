@@ -57,8 +57,8 @@
                                                 </div>
                                                 <div class="hiraola-product_content">
                                                     <div class="product-desc_info">
-                                                        <h6 class="text-center pt-1">
-                                                            <a class="product-name text-center" href="{{ route('shop.products.index', $product->url_key) }}">{{ $product->name }}</a>
+                                                        <h6 class=" pt-1">
+                                                            <a class="product-name" href="{{ route('shop.products.index', $product->url_key) }}">{{ $product->name }}</a>
                                                         </h6>
                                                         <div class="price-box" style="display: block;text-align: center">
                                                             @inject ('priceHelper', 'Webkul\Product\Helpers\Price')

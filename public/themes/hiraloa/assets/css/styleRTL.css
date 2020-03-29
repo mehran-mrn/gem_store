@@ -8638,6 +8638,11 @@ button.li-btn:hover {
   font-weight: 500;
   text-transform: capitalize;
 }
+h6 .product-name {
+  text-align: right !important;
+  line-height: 25px;
+  font-size: .857rem;
+}
 
 .table-content table td.hiraola-product-price {
   font-size: 16px;
