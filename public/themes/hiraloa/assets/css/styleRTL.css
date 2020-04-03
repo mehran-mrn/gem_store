@@ -1442,7 +1442,8 @@ button, .global-overlay, .quantity .cart-plus-minus > .qtybutton, .popup_wrapper
 }
 
 .template-color-1 .product-tab > ul > li > a.active {
-  color: #012150ad;
+  color: #0061f0;
+  text-decoration: underline;
 }
 
 .template-color-1 .rating-box > ul > li > i {
@@ -4747,7 +4748,7 @@ button.li-btn:hover {
 
 .hiraola-shipping_area .shipping-nav {
   border-bottom: 1px solid #e5e5e5;
-  padding: 80px 0 75px;
+  padding: 20px 0 25px;
 }
 
 .hiraola-shipping_area .shipping-nav .shipping-item {
@@ -4799,7 +4800,7 @@ button.li-btn:hover {
 
 .newsletter-form_wrap .subscribe-form .newsletter-input {
   border: 1px solid #e5e5e5;
-  height: 50px;
+  height: 40px;
   width: 100%;
   padding: 0 70px 0 20px;
 }
@@ -4811,7 +4812,7 @@ button.li-btn:hover {
   top: 0;
   right: 0;
   width: 50px;
-  height: 50px;
+  height: 100%;
   line-height: 50px;
   text-align: center;
 }
@@ -6237,10 +6238,14 @@ button.li-btn:hover {
 /*----------------------------------------*/
 .hiraola-footer_area {
   background-color: #f7f7f7;
+  background-image: url(/themes/hiraloa/assets/images/nav_background_image_2.png);
+  background-size: cover;
+  border-top: 1px solid #1a2064;
 }
 
 .hiraola-footer_area .footer-top_area {
   padding: 80px 0 80px;
+
 }
 
 @media (max-width: 767px) {
@@ -6372,7 +6377,7 @@ button.li-btn:hover {
 
 /* ---Footer Bottom--- */
 .footer-bottom_area .footer-bottom_nav {
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid #1a2064;
   padding: 30px 0 35px;
   /*Footer Static Bottom*/
 }
@@ -8639,9 +8644,14 @@ button.li-btn:hover {
   text-transform: capitalize;
 }
 h6 .product-name {
-  text-align: right !important;
   line-height: 25px;
   font-size: .857rem;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 .table-content table td.hiraola-product-price {

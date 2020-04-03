@@ -72,4 +72,6 @@ class ProductImage extends AbstractProduct
 
         return $image;
     }
+
+
 }
