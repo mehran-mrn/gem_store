@@ -104,6 +104,47 @@
                                 </div>
                             </form>
 
+                            <div class="hiraola-product-tab_area-2 sp-product-tab_area">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="sp-product-tab_nav ">
+                                                <div class="product-tab">
+                                                    <ul class="nav product-menu">
+                                                        <li><a class="active" data-toggle="tab"
+                                                               href="#description"><span>{{ __('shop::app.products.description') }}</span></a>
+                                                        </li>
+                                                        <li><a data-toggle="tab"
+                                                               href="#specification"><span>{{ __('shop::app.products.specification') }}</span></a>
+                                                        </li>
+                                                        @inject ('reviewHelper', 'Webkul\Product\Helpers\Review')
+                                                        <li><a data-toggle="tab" href="#reviews"><span>{{ __('shop::app.reviews.product-review-page-title') }} ({{$reviewHelper->getTotalReviews($product)}})</span></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="tab-content hiraola-tab_content">
+                                                    <div id="description" class="tab-pane active show" role="tabpanel">
+                                                        <div class="product-description">
+                                                            {!! view_render_event('bagisto.shop.products.view.description.before', ['product' => $product]) !!}
+                                                            {!! $product->description !!}
+                                                            {!! view_render_event('bagisto.shop.products.view.description.before', ['product' => $product]) !!}
+                                                        </div>
+                                                    </div>
+                                                    <div id="specification" class="tab-pane" role="tabpanel">
+                                                        @include ('hiraloa::products.view.attributes')
+                                                    </div>
+                                                    <div id="reviews" class="tab-pane" role="tabpanel">
+                                                        <div class="tab-pane active" id="tab-review">
+                                                            @include ('hiraloa::products.view.reviews')
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
@@ -111,47 +152,6 @@
             </div>
         </div>
     </section>
-    <div class="hiraola-product-tab_area-2 sp-product-tab_area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="sp-product-tab_nav ">
-                        <div class="product-tab">
-                            <ul class="nav product-menu">
-                                <li><a class="active" data-toggle="tab"
-                                       href="#description"><span>{{ __('shop::app.products.description') }}</span></a>
-                                </li>
-                                <li><a data-toggle="tab"
-                                       href="#specification"><span>{{ __('shop::app.products.specification') }}</span></a>
-                                </li>
-                                @inject ('reviewHelper', 'Webkul\Product\Helpers\Review')
-                                <li><a data-toggle="tab" href="#reviews"><span>{{ __('shop::app.reviews.product-review-page-title') }} ({{$reviewHelper->getTotalReviews($product)}})</span></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="tab-content hiraola-tab_content">
-                            <div id="description" class="tab-pane active show" role="tabpanel">
-                                <div class="product-description">
-                                    {!! view_render_event('bagisto.shop.products.view.description.before', ['product' => $product]) !!}
-                                    {!! $product->description !!}
-                                    {!! view_render_event('bagisto.shop.products.view.description.before', ['product' => $product]) !!}
-                                </div>
-                            </div>
-                            <div id="specification" class="tab-pane" role="tabpanel">
-                                @include ('hiraloa::products.view.attributes')
-                            </div>
-                            <div id="reviews" class="tab-pane" role="tabpanel">
-                                <div class="tab-pane active" id="tab-review">
-                                    @include ('hiraloa::products.view.reviews')
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="py-3">
         @include ('hiraloa::products.view.related-products')

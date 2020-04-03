@@ -14,10 +14,10 @@
                                 @inject ('productImageHelper', 'Webkul\Product\Helpers\ProductImage')
                                 <?php $productBaseImage = $productImageHelper->getProductBaseImage($product); ?>
                                 <?php $productGallery = $productImageHelper->getGalleryImages($product); ?>
-                                <div class="single_product" style="border-radius: 10px">
+                                <div class="single_product" style="border-radius: 10px 10px 0 0">
                                     <div class="product-img">
                                         <a href="{{ route('shop.products.index', $product->url_key) }}">
-                                            <img class="primary-img" style="border-radius: 10px"
+                                            <img class=" " style="border-radius: 10px 10px 0 0"
                                                  src="{{ $productBaseImage['medium_image_url'] }}"
                                                  alt="{{ $product->name }}">
                                             <img class="secondary-img"  style="border-radius: 10px"

@@ -17,10 +17,10 @@
                                 <div class="single_product" style="border-radius: 10px">
                                     <div class="product-img">
                                         <a href="{{ route('shop.products.index', $product->url_key) }}">
-                                            <img class="primary-img" style="border-radius: 10px"
+                                            <img class="primary-img" style="border-radius: 10px 10px 0 0"
                                                  src="{{ $productBaseImage['medium_image_url'] }}"
                                                  alt="{{ $product->name }}">
-                                            <img class="secondary-img"  style="border-radius: 10px"
+                                            <img class="secondary-img"  style="border-radius: 10px 10px 0 0"
                                                  src="{{ $productGallery[rand(0,count($productGallery)-1)]['medium_image_url'] }}"
                                                  alt="{{ $product->name }}">
                                         </a>

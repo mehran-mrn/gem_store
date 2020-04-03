@@ -11,6 +11,7 @@
 
         <link rel="stylesheet" href="{{ asset('vendor/webkul/admin/assets/css/admin.css') }}">
         <link rel="stylesheet" href="{{ asset('vendor/webkul/ui/assets/css/ui.css') }}">
+        <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/fonts.css')}}">
 
         <style>
             .container {
