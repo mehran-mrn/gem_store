@@ -29,7 +29,7 @@
             .adjacent-center {
                 width: 365px;
                 display: inline-block;
-                text-align: left;
+                text-align: right;
             }
 
             .form-container .control-group .control {
