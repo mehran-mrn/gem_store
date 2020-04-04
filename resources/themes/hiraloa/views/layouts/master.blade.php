@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="{{url('themes/hiraloa/assets/css/fonts.css')}}">
     <style>
         .product-img a img{
-            object-fit: none;
+            /*object-fit: none;*/
         }
     </style>
     <!--<link rel="stylesheet" href="assets/css/style.min.css">-->
