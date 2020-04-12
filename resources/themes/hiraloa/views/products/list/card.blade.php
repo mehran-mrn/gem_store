@@ -12,10 +12,7 @@
                      src="{{ $productBaseImage['medium_image_url'] }}"
                      alt="{{ $product->name }}"
                      onerror="this.src='{{ asset('themes/hiraloa/assets/images/banner/meduim-product-placeholder.png') }}'">
-                <img class="secondary-img"
-                     src="{{ $productGallery[rand(0,count($productGallery)-1)]['medium_image_url'] }}"
-                     alt="{{ $product->name }}"
-                     onerror="this.src='{{ asset('themes/hiraloa/assets/images/banner/meduim-product-placeholder.png') }}'">
+
             </a>
             <div class="add-actions">
                 <ul>
@@ -71,10 +68,7 @@
                      src="{{ $productBaseImage['medium_image_url'] }}"
                      alt="{{ $product->name }}"
                      onerror="this.src='{{ asset('vendor/webkul/ui/assets/images/product/medium-product-placeholder.png') }}'">
-                <img class="secondary-img"
-                     src="{{ $productGallery[rand(0,count($productGallery)-1)]['medium_image_url'] }}"
-                     alt="{{ $product->name }}"
-                     onerror="this.src='{{ asset('vendor/webkul/ui/assets/images/product/medium-product-placeholder.png') }}'">
+
             </a>
         </div>
         <div class="hiraola-product_content">

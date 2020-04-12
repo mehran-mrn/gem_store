@@ -20,9 +20,7 @@
                                             <img class=" " style="border-radius: 10px 10px 0 0"
                                                  src="{{ $productBaseImage['medium_image_url'] }}"
                                                  alt="{{ $product->name }}">
-                                            <img class="secondary-img"  style="border-radius: 10px"
-                                                 src="{{ $productGallery[rand(0,count($productGallery)-1)]['medium_image_url'] }}"
-                                                 alt="{{ $product->name }}">
+
                                         </a>
                                     </div>
                                     <div class="hiraola-product_content">

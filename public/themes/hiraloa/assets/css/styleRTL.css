@@ -6250,43 +6250,67 @@ button.li-btn:hover {
 /*  25 - Section - Footer
 /*----------------------------------------*/
 .hiraola-footer_area {
-  background-color: #f7f7f7;
+  color: white;
+  background-color: #003765;
   background-image: url(/themes/hiraloa/assets/images/nav_background_image_2.png);
   background-size: cover;
   border-top: 1px solid #1a2064;
 }
+.hiraola-footer_area *{
+  color: white;
+
+}
 
 .hiraola-footer_area .footer-top_area {
   padding: 80px 0 80px;
+  color: white;
 
 }
 
 @media (max-width: 767px) {
   .hiraola-footer_area .footer-top_area {
     padding: 60px 0 45px;
+    color: white;
+
   }
 }
 
 .hiraola-footer_area .footer-top_area .footer-widgets_info .footer-widgets_logo {
   padding-bottom: 25px;
+  color: white;
+
 }
 
 .hiraola-footer_area .footer-top_area .footer-widgets_info .widget-short_desc > p {
   margin-bottom: 0;
+  color: white;
+
 }
 
+.hiraola-footer_area .footer-top_area .footer-widgets_info .widgets-essential_stuff > ul > li >span {
+  color: #ddfcfe !important;
+}
 .hiraola-footer_area .footer-top_area .footer-widgets_info .widgets-essential_stuff > ul > li {
   padding-bottom: 15px;
+  color: white;
+
 }
 
 .hiraola-footer_area .footer-top_area .footer-widgets_info .widgets-essential_stuff > ul > li:last-child {
   padding-bottom: 0;
+  color: white;
+
 }
 
 .hiraola-footer_area .footer-top_area .footer-widgets_info .widgets-essential_stuff > ul > li > i {
   font-size: 21px;
   padding-left: 10px;
   vertical-align: middle;
+  color: white;
+
+}
+.hiraola-footer_area .footer-top_area .footer-widgets_info .hiraola-social_link *{
+  font-size: 26px;
 }
 
 .hiraola-footer_area .footer-top_area .footer-widgets_title h6 {
@@ -6294,25 +6318,35 @@ button.li-btn:hover {
   padding-bottom: 20px;
   font-size: 16px;
   margin-bottom: 0;
+  color: #e7fefe !important;
+
 }
 
 @media (max-width: 991px) {
   .hiraola-footer_area .footer-top_area .footer-widgets_title h6 {
     padding-top: 25px;
+    color: white;
+
   }
 }
 
 .hiraola-footer_area .footer-top_area .short-desc > p {
   margin-bottom: 0;
   padding-bottom: 20px;
+  color: white;
+
 }
 
 .hiraola-footer_area .footer-top_area .footer-widgets > ul > li {
   padding-bottom: 10px;
+  color: white;
+
 }
 
 .hiraola-footer_area .footer-top_area .footer-widgets > ul > li:last-child {
   padding-bottom: 0;
+  color: white;
+
 }
 
 /* ---Instafeed--- */
@@ -6390,7 +6424,7 @@ button.li-btn:hover {
 
 /* ---Footer Bottom--- */
 .footer-bottom_area .footer-bottom_nav {
-  border-top: 1px solid #1a2064;
+  border-top: 1px solid #ffffff;
   padding: 30px 0 35px;
   /*Footer Static Bottom*/
 }
