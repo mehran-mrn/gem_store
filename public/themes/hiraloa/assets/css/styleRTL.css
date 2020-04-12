@@ -9987,11 +9987,7 @@ section.review .review-layouter .ratings-reviews .right-side .rater .star-name {
   border-image-outset: initial;
   border-image-repeat: initial;
   background: white;
-  border-radius: 25px;
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
-  border-bottom-right-radius: 25px;
-  border-bottom-left-radius: 25px;
+
 }
 
 
