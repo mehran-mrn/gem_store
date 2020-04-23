@@ -69,7 +69,7 @@ h5,
 h6 {
   font-family: IRANSans,"Lato", sans-serif;
   color: #333333;
-  line-height: 1;
+  line-height: normal !important;
   font-weight: 700;
 }
 
