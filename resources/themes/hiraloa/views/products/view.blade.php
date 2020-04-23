@@ -38,9 +38,8 @@
                                 {!! view_render_event('bagisto.shop.products.view.short_description.after', ['product' => $product]) !!}
 
                                 <div class="sp-heading mt-2  text-sm-left">
-                                    <h5 style="color: #576784!important;">{{ $product->name }}</h5>
+                                    <h5 style="color: #576784!important;line-height: 20px">{{ $product->name }}</h5>
                                 </div>
-
 
                                 <div class="rating-box  text-sm-left">
                                     @include ('hiraloa::products.review', ['product' => $product])
@@ -153,16 +152,13 @@
         </div>
     </section>
 
-    <div class="py-3">
+    <div class="py-1">
         @include ('hiraloa::products.view.related-products')
     </div>
-    <div class="py-3">
-
+    <div class="py-1">
         @include ('hiraloa::products.view.up-sells')
     </div>
-
     {!! view_render_event('bagisto.shop.products.view.after', ['product' => $product]) !!}
-
     @push('scripts')
         <script>
             function updateQunatity(operation) {

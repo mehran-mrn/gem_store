@@ -28,12 +28,12 @@
                                 <table class="table">
                                     <thead>
                                     <tr>
-                                        <th class="hiraola-product-remove">remove</th>
-                                        <th class="hiraola-product-thumbnail">images</th>
-                                        <th class="cart-product-name">Product</th>
-                                        <th class="hiraola-product-quantity">Quantity</th>
-                                        <th class="hiraola-product-subtotal">unit price</th>
-                                        <th class="hiraola-product-subtotal">Total</th>
+                                        <th class="hiraola-product-remove">حذف</th>
+                                        <th class="hiraola-product-thumbnail">تصویر</th>
+                                        <th class="cart-product-name">محصول</th>
+                                        <th class="hiraola-product-quantity">تعداد</th>
+                                        <th class="hiraola-product-subtotal">قیمت واحد</th>
+                                        <th class="hiraola-product-subtotal">جمع کل</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -120,12 +120,12 @@
 
                                 <div class="col-12">
                                     <div class="coupon-all">
-                                        <div class="coupon">
-                                            <input id="coupon_code" class="input-text" name="coupon_code" value=""
-                                                   placeholder="Coupon code" type="text">
-                                            <input class="button" name="apply_coupon" value="Apply coupon"
-                                                   type="submit">
-                                        </div>
+{{--                                        <div class="coupon">--}}
+{{--                                            <input id="coupon_code" class="input-text" name="coupon_code" value=""--}}
+{{--                                                   placeholder="Coupon code" type="text">--}}
+{{--                                            <input class="button" name="apply_coupon" value="Apply coupon"--}}
+{{--                                                   type="submit">--}}
+{{--                                        </div>--}}
                                         <div class="coupon2 ml-2">
                                             <input class="button" name="update_cart"
                                                    value="{{ __('shop::app.checkout.cart.update-cart') }}"

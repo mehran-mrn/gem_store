@@ -73,7 +73,6 @@ class ExportController extends Controller
         }
 
         session()->flash('warning', trans('admin::app.export.illegal-format'));
-
         return redirect()->back();
     }
 }
