@@ -250,6 +250,8 @@ return [
         Mehran\UploadMe\Providers\UploadMeServiceProvider::class,
         Mehran\Zarinpal\Providers\ZarinpalServiceProvider::class,
 
+        MkKardgar\BagistoWeblog\Providers\WeblogServiceProvider::class,
+
 
         Larabookir\Gateway\GatewayServiceProvider::class,
 

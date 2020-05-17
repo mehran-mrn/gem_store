@@ -94,8 +94,8 @@
         "Webkul\\Discount\\": "packages/Webkul/Discount/src",
         "Webkul\\CMS\\": "packages/Webkul/CMS/src",
         "Mehran\\UploadMe\\": "packages/Mehran/UploadMe/src",
-        "Mehran\\Zarinpal\\": "packages/Mehran/Zarinpal/src"
-
+        "Mehran\\Zarinpal\\": "packages/Mehran/Zarinpal/src",
+        "MkKardgar\\BagistoWeblog\\": "packages/MkKardgar/BagistoWeblog/src"
       }
     },
     "autoload-dev": {
