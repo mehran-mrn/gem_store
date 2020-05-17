@@ -76,6 +76,23 @@
     @show
     @stack('css')
     {!! view_render_event('bagisto.shop.layout.head') !!}
+    <script>
+        (function(w,d,s,g,js,fs){
+            g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(f){this.q.push(f);}};
+            js=d.createElement(s);fs=d.getElementsByTagName(s)[0];
+            js.src='https://apis.google.com/js/platform.js';
+            fs.parentNode.insertBefore(js,fs);js.onload=function(){g.load('analytics');};
+        }(window,document,'script'));
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-WS84TB7');</script>
+    <!-- End Google Tag Manager -->
+
 </head>
 
 <body class="template-color-1 "
