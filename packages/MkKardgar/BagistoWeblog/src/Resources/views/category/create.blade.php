@@ -1,12 +1,12 @@
 @extends('admin::layouts.content')
 
 @section('page_title')
-    ویرایش دسته بندی | {{$category['category_name']}}
+    افزودن دسته بندی
 @stop
 
 @section('content')
     <div class="content">
-        <form method="POST" action="{{ route('bagistoweblog.category.update',['id'=>$category['id']]) }}" @submit.prevent="onSubmit">
+        <form method="POST" action="{{ route('bagistoweblog.category.store') }}" @submit.prevent="onSubmit">
             <div class="page-header">
                 <div class="page-title">
                     <h1>
@@ -18,7 +18,7 @@
 
                 <div class="page-action">
                     <button type="submit" class="btn btn-lg btn-primary">
-                        ویرایش دسته بندی
+                       افزودن دسته بندی
                     </button>
                 </div>
             </div>
@@ -27,18 +27,18 @@
                     @csrf()
                     <div class="control-group" :class="[errors.has('categoryName') ? 'has-error' : '']">
                         <label for="categoryName" class="required">نام دسته بندی</label>
-                        <input type="text" class="control" name="categoryName" v-validate="'required'" value="{{ $category['category_name'] }}" data-vv-as="&quot;نام دسته بندی&quot;">
+                        <input type="text" class="control" name="categoryName" v-validate="'required'" value="{{ old('categoryName') }}" data-vv-as="&quot;نام دسته بندی&quot;">
                         <span class="control-error" v-if="errors.has('categoryName')">@{{ errors.first('categoryName') }}</span>
                     </div>
                     <div class="control-group" :class="[errors.has('slug') ? 'has-error' : '']">
                         <label for="slug" class="required">اسلاگ</label>
-                        <input type="text" disabled="disabled" class="control" name="slug" v-validate="'required'" value="{{ $category['slug'] }}" data-vv-as="&quot;اسلاگ&quot;">
+                        <input type="text" disabled="disabled" class="control" name="slug" v-validate="'required'" value="{{ old('slug') }}" data-vv-as="&quot;نام دسته بندی&quot;">
                         <span class="control-error" v-if="errors.has('slug')">@{{ errors.first('slug') }}</span>
                     </div>
 
                     <div class="control-group" :class="[errors.has('description') ? 'has-error' : '']">
                         <label for="description" class="required">توضیحات</label>
-                        <textarea name="description" class="control" v-validate="'required'" value="{{ $category['description'] }}" data-vv-as="&quot;توضیحات&quot;">{{ $category['description'] }} </textarea>
+                        <textarea name="description" class="control" v-validate="'required'" value="{{ old('description') }}" data-vv-as="&quot;توضیحات&quot;"></textarea>
                         <span class="control-error" v-if="errors.has('description')">@{{ errors.first('description') }}</span>
                     </div>
                 </div>

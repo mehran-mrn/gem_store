@@ -16,6 +16,8 @@ class WeblogServiceProvider extends ServiceProvider
         include __DIR__ . '/../Http/routes.php';
 
         $this->loadViewsFrom(__DIR__ . '/../Resources/views', 'bagistoweblog');
+
+        $this->loadMigrationsFrom(__DIR__.'/../Database/Migrations');
     }
 
     /**
