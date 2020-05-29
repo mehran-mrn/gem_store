@@ -10,4 +10,9 @@ class CategoryTranslation extends Model implements CategoryTranslationContract
     public $timestamps = false;
 
     protected $fillable = ['name', 'description', 'slug', 'meta_title', 'meta_description', 'meta_keywords', 'locale_id'];
+
+    public function cat()
+    {
+        return $this->hasOne(Category::class,'id','category_id');
+    }
 }

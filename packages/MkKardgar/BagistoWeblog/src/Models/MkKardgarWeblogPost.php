@@ -21,4 +21,9 @@ class MkKardgarWeblogPost extends Model implements PostCategories
     {
         return $this->hasOne(Medias::class,'id','image_url');
     }
+
+    public function comments()
+    {
+        return $this->hasMany('MkKardgar\BagistoWeblog\Models\MkKardgarWeblogPostComment','post_id','id')->where('approved','=',1);
+    }
 }

@@ -24,6 +24,7 @@ class CreateMkKardgarWeblogPostCommentsTable extends Migration
             $table->string('author_email');
             $table->string('author_website');
             $table->string('author_mobile');
+            $table->integer('parent_id');
             $table->timestamps();
         });
     }

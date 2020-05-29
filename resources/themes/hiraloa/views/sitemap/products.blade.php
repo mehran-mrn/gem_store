@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     @foreach ($products as $article)
         <url>
-            <loc>http://mycubic.ir/products/{{ $article->sku }}</loc>
+            <loc>https://mycubic.ir/products/{{ $article->sku }}</loc>
             <lastmod>{{ $article->created_at->tz('UTC')->toAtomString() }}</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.9</priority>

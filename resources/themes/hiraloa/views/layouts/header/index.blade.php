@@ -37,7 +37,7 @@
             </div>
         </div>
     </div>
-    @include('shop::layouts.header.nav-menu.navmenu')
+    @include('hiraloa::layouts.header.nav-menu.navmenu')
 </header>
 
 @push('scripts')

@@ -32,7 +32,7 @@
                     </div>
                     <div class="control-group" :class="[errors.has('slug') ? 'has-error' : '']">
                         <label for="slug" class="required">اسلاگ</label>
-                        <input type="text" disabled="disabled" class="control" name="slug" v-validate="'required'" value="{{ $category['slug'] }}" data-vv-as="&quot;اسلاگ&quot;">
+                        <input type="text" readonly="readonly" class="control" name="slug" v-validate="'required'" value="{{ $category['slug'] }}" data-vv-as="&quot;اسلاگ&quot;">
                         <span class="control-error" v-if="errors.has('slug')">@{{ errors.first('slug') }}</span>
                     </div>
 

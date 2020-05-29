@@ -7691,7 +7691,7 @@ button.li-btn:hover {
   padding: 0 10px;
   font-size: 14px;
   height: 50px;
-  float: left;
+  float: right;
   text-transform: capitalize;
 }
 
@@ -7748,7 +7748,8 @@ button.li-btn:hover {
   width: 55px;
   height: 2px;
   bottom: -26px;
-  left: 0;
+  /*left: 0;*/
+  right:0;
   background-color: #012150ad;
   content: "";
   position: absolute;

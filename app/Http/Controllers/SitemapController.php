@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use MkKardgar\BagistoWeblog\Models\MkKardgarWeblogPost;
 use Webkul\Category\Models\Category;
 use Webkul\Category\Models\CategoryTranslation;
 use Webkul\Product\Models\Product;
@@ -14,11 +15,15 @@ class SitemapController extends Controller
 
     public function index()
     {
-        $articles = Product::all()->first();
-        $categories = Category::all()->first();
+        $products = Product::orderBy('id', 'desc')->first();
+        $categories = CategoryTranslation::with('cat')->orderBy('id', 'desc')->first();
+        $tags = ProductFlat::orderBy('id', 'desc')->first();
+        $posts = MkKardgarWeblogPost::orderBy('id', 'desc')->first();
         return response()->view('hiraloa::sitemap.index', [
-            'products' => $articles,
+            'products' => $products,
             'categories' => $categories,
+            'tags' => $tags,
+            'posts' => $posts
         ])->header('Content-Type', 'text/xml');
     }
 
@@ -30,9 +35,10 @@ class SitemapController extends Controller
             'products' => $product,
         ])->header('Content-Type', 'text/xml');
     }
+
     public function categories()
     {
-        $category = CategoryTranslation::all();
+        $category = CategoryTranslation::with('cat')->get();
         return response()->view('hiraloa::sitemap.categories', [
             'categories' => $category,
         ])->header('Content-Type', 'text/xml');
@@ -43,6 +49,14 @@ class SitemapController extends Controller
         $tags = ProductFlat::all();
         return response()->view('hiraloa::sitemap.tags', [
             'tags' => $tags,
+        ])->header('Content-Type', 'text/xml');
+    }
+
+    public function posts()
+    {
+        $posts = MkKardgarWeblogPost::all();
+        return response()->view('hiraloa::sitemap.blog', [
+            'posts' => $posts,
         ])->header('Content-Type', 'text/xml');
     }
 

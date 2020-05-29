@@ -17,12 +17,10 @@ class MkKardgarbagistoWebLogCommentDataGrid extends \Webkul\Ui\DataGrid\DataGrid
     {
         // TODO: Implement prepareQueryBuilder() method.
 
-        $queryBuilder = DB::table('mk_kardgar_weblog_post_comments')
-        ->addSelect('mk_kardgar_weblog_post_comments.id', 'mk_kardgar_weblog_post_comments.author_name', 'mk_kardgar_weblog_post_comments.comment',
-                'mk_kardgar_weblog_post_comments.approved',
-                'mk_kardgar_weblog_post_comments.author_mobile');
+        $queryBuilder = DB::table('mk_kardgar_weblog_post_comments as comment')
+            ->addSelect('comment.id', 'comment.author_name', 'comment.comment', 'comment.approved',
+                'comment.author_mobile', 'comment.created_at')->where('parent_id', '=', null);
         $this->addFilter('id', 'mk_kardgar_weblog_post_comments.id');
-
         $this->setQueryBuilder($queryBuilder);
     }
 
@@ -55,6 +53,19 @@ class MkKardgarbagistoWebLogCommentDataGrid extends \Webkul\Ui\DataGrid\DataGrid
             'sortable' => false,
             'filterable' => false
         ]);
+
+        $this->addColumn([
+            'index' => 'created_at',
+            'label' => 'زمان ایجاد',
+            'type' => 'string',
+            'searchable' => false,
+            'sortable' => false,
+            'filterable' => false,
+            'wrapper' => function ($value) {
+                return jdate("Y-m-d H:i:s", strtotime($value->created_at));
+            }
+        ]);
+
         $this->addColumn([
             'index' => 'approved',
             'label' => 'وضعیت',
@@ -62,8 +73,8 @@ class MkKardgarbagistoWebLogCommentDataGrid extends \Webkul\Ui\DataGrid\DataGrid
             'searchable' => false,
             'sortable' => false,
             'filterable' => false,
-            'wrapper' => function($value) {
-                if ($value->is_published == 1)
+            'wrapper' => function ($value) {
+                if ($value->approved == 1)
                     return 'فعال';
                 else
                     return 'غیر فعال';
@@ -71,19 +82,15 @@ class MkKardgarbagistoWebLogCommentDataGrid extends \Webkul\Ui\DataGrid\DataGrid
         ]);
     }
 
-    public function prepareActions() {
+    public function prepareActions()
+    {
         $this->addAction([
             'method' => 'GET', // use GET request only for redirect purposes
             'route' => 'bagistoweblog.comment.edit',
-            'icon' => 'icon pencil-lg-icon',
-            'title' => "ویرایش"
+            'icon' => 'icon eye-icon',
+            'title' => "نمایش"
         ]);
 
-        $this->addAction([
-            'method' => 'POST', // use GET request only for redirect purposes
-            'route' => 'bagistoweblog.post.delete',
-            'icon' => 'icon trash-icon',
-            'title' => 'حذف'
-        ]);
+
     }
 }

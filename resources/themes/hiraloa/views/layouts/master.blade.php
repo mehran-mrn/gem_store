@@ -7,6 +7,7 @@
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="D7OWf7fGZ0rXlwfA5klkfxzFKa9lxevnDUwxL4NR3-I" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="content-language" content="{{ app()->getLocale() }}">
@@ -67,7 +68,6 @@
     <meta name="twitter:description" content="فروشگاه آنلاین محصولات سواروسکی در ایران به طور مستقیم"/>
     <meta name="twitter:title" content="فروشگاه آنلاین نگین های سواروسکی"/>
     <meta name="viewport" content="width=device-width">
-    <meta name="google-site-verification" content="D7OWf7fGZ0rXlwfA5klkfxzFKa9lxevnDUwxL4NR3-I" />
     @yield('head')
     @section('seo')
         @if (! request()->is('/'))

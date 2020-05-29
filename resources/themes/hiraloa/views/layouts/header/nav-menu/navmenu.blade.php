@@ -16,7 +16,7 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
                         @if ($logo = core()->getCurrentChannel()->logo_url)
                             <img class="w-50" alt="cubicjewelry.ir" src="{{ $logo }}"/>
                         @else
-                            <img class="w-50" alt="cubicjewelry.ir" src="{{ bagisto_asset('images/logo.svg') }}"/>
+                            <img class="w-50" alt="cubicjewelry.ir" src="{{ bagisto_asset('/sitemap.xml/postsimages/logo.svg') }}"/>
                         @endif
                     </a>
 
@@ -27,6 +27,7 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
                     <nav>
                         <ul>
                             <li><a href="/">صفحه اصلی</a></li>
+                            <li><a href="/blog">وبلاگ</a></li>
                             @foreach($categories as $category)
                                 <li style="padding-left: 30px!important;"><a style="font-size: 16px!important;" href="{{ route('shop.categories.index', $category->slug) }}">{{$category->translations->where('locale',core()->getCurrentLocale()->code)->first()->name}}</a>
                                 @if(count($category->children)>0)

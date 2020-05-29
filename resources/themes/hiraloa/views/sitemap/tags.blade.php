@@ -3,11 +3,12 @@
     @foreach ($tags as $tag)
         <?php
         $explode = explode("،", $tag['gensgabeh']);
+        $date = \Illuminate\Support\Carbon::createFromTimeString($tag['created_at']);
         ?>
         @foreach($explode as $data)
             <url>
-                <loc>http://mycubic.ir/tags/{{ $data }}</loc>
-                <lastmod>{{ date("Y-m-d H:i:s",strtotime("-7 days",time())) }}</lastmod>
+                <loc>https://mycubic.ir/tags/{{ $data }}</loc>
+                <lastmod>{{ $date->tz('utc')->toAtomString() }}</lastmod>
                 <changefreq>weekly</changefreq>
                 <priority>0.9</priority>
             </url>

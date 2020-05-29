@@ -36,7 +36,7 @@
                     <div class="control-group" :class="[errors.has('slug') ? 'has-error' : '']">
                         <label for="slug" class="required">اسلاگ</label>
                         <input type="text" class="control" name="slug" v-validate="'required'"
-                               value="{{ $post['slug'] }}" disabled="disabled" data-vv-as="&quot;عنوان&quot;">
+                               value="{{ $post['slug'] }}" readonly="readonly" data-vv-as="&quot;عنوان&quot;">
                         <span class="control-error" v-if="errors.has('slug')">@{{ errors.first('slug') }}</span>
                     </div>
 
