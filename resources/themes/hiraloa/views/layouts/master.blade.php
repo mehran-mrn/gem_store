@@ -3,7 +3,8 @@
 
 <head>
 
-    <title>@yield('page_title')</title>
+{{--    <title>@yield('page_title')</title>--}}
+    <title>375514</title>
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -68,6 +69,9 @@
     <meta name="twitter:description" content="فروشگاه آنلاین محصولات سواروسکی در ایران به طور مستقیم"/>
     <meta name="twitter:title" content="فروشگاه آنلاین نگین های سواروسکی"/>
     <meta name="viewport" content="width=device-width">
+
+    <meta name="enamad" content="934331"/>
+
     @yield('head')
     @section('seo')
         @if (! request()->is('/'))

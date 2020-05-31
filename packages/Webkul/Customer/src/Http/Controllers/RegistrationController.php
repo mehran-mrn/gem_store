@@ -60,7 +60,7 @@ class RegistrationController extends Controller
         $request->validate([
             'first_name' => 'string|required',
             'last_name' => 'string|required',
-            'email' => 'email|required|unique:customers,email',
+            'email' => 'required|unique:customers,email',
             'password' => 'confirmed|min:6|required',
         ]);
 
