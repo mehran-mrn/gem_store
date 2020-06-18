@@ -185,6 +185,7 @@
 <script src="{{url('themes/hiraloa/assets/js/plugins/waypoints.min.js')}}"></script>
 <script src="{{url('themes/hiraloa/assets/js/plugins/instafeed.min.js')}}"></script>
 <script src="{{url('themes/hiraloa/assets/js/plugins/jquery.elevateZoom-3.0.8.min.js')}}"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6Ld9xv8UAAAAAAS7ATMRUutTBq80I430paPoSyd_&hl=fa"></script>
 
 <!--
 <script src="assets/js/vendor/vendor.min.js"></script>
@@ -195,6 +196,20 @@
 {{--<script type="text/javascript" src="{{ asset('vendor/webkul/ui/assets/js/ui.js') }}"></script>--}}
 <script src="{{ url('themes/hiraloa/assets/js/plugins/pnotify/PNotify.js') }}"></script>
 <script>
+    $(document).ready(function () {
+        grecaptcha.ready(function () {
+            grecaptcha.execute("6Ld9xv8UAAAAAAS7ATMRUutTBq80I430paPoSyd_").then(function (token) {
+                document.querySelector('input[name=g-recaptcha-response]').value = token
+            });
+        });
+    })
+    function SetCaptchaToken() {
+        grecaptcha.ready(function () {
+            grecaptcha.execute("6Ld9xv8UAAAAAAS7ATMRUutTBq80I430paPoSyd_").then(function (token) {
+                document.querySelector('input[name=g-recaptcha-response]').value = token
+            });
+        });
+    }
     $(document).ready(function () {
         @if(!$errors->isEmpty())
         @foreach ($errors->all() as $key => $error)

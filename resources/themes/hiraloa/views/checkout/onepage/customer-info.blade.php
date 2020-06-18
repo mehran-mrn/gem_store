@@ -127,7 +127,8 @@
             <div class="control-group"
                  :class="[errors.has('address-form.billing[address_id]') ? 'has-error' : '']">
                 <span class="control-error" v-if="errors.has('address-form.billing[address_id]')">
-                    @{{ errors.first('address-form.billing[address_id]') }}
+{{--                    @{{ errors.first('address-form.billing[address_id]') }}--}}
+                    لطفاً آدرس ارسال را انتخاب نمایید یا آدرس جدید اضافه کنید.
                 </span>
             </div>
         </div>

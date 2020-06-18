@@ -2,19 +2,14 @@
 
 @section('page_title')
     {{ __('shop::app.checkout.onepage.title') }}
-
 @stop
 
 @section('content-wrapper')
     <script type="text/javascript" src="{{ url('/themes/default/assets/js/shop.js') }}"></script>
-
     <checkout></checkout>
-
-
 @endsection
 
 @push('scripts')
-
     <script type="text/x-template" id="checkout-template">
         <div id="checkout" class="checkout-area">
             <div class="container">
@@ -45,38 +40,39 @@
 
                     </div>
 
-                    <div class="col-lg-6 col-12" >
+                    <div class="col-lg-6 col-12">
                         <summary-section :key="summeryComponentKey"
                                          @onApplyCoupon="getOrderSummary"
                                          @onRemoveCoupon="getOrderSummary"
                         ></summary-section>
                         <div class="order-button-payment">
 
-                            <button v-if="currentStep == 1" type="button" class="btn btn-success btn-lg btn-block " @click="validateForm('address-form')"
+                            <button v-if="currentStep == 1" type="button" class="btn btn-success btn-lg btn-block "
+                                    @click="validateForm('address-form')"
                                     :disabled="disable_button" id="checkout-address-continue-button">
                                 {{ __('shop::app.checkout.onepage.continue') }}
                             </button>
-                            <button v-if="currentStep == 2" type="button" class="btn btn-success btn-lg btn-block " @click="validateForm('shipping-form')"
+                            <button v-if="currentStep == 2" type="button" class="btn btn-success btn-lg btn-block "
+                                    @click="validateForm('shipping-form')"
                                     :disabled="disable_button" id="checkout-shipping-continue-button">
                                 {{ __('shop::app.checkout.onepage.continue') }}
                             </button>
-                            <button v-if="currentStep == 3" type="button" class="btn btn-success btn-lg btn-block " @click="validateForm('payment-form')"
+                            <button v-if="currentStep == 3" type="button" class="btn btn-success btn-lg btn-block "
+                                    @click="validateForm('payment-form')"
                                     :disabled="disable_button" id="checkout-payment-continue-button">
                                 {{ __('shop::app.checkout.onepage.continue') }}
                             </button>
 
-                            <button v-if="currentStep == 4" type="button" class="btn btn-success btn-lg btn-block " @click="placeOrder()"
+                            <button v-if="currentStep == 4" type="button" class="btn btn-success btn-lg btn-block "
+                                    @click="placeOrder()"
                                     :disabled="disable_button" id="checkout-place-order-button">
                                 {{ __('shop::app.checkout.onepage.place-order') }}
                             </button>
                         </div>
                     </div>
-                    </div>
                 </div>
-
             </div>
         </div>
-
     </script>
     <script>
         var shippingHtml = '';
@@ -89,11 +85,11 @@
 
         @auth('customer')
                 @if(auth('customer')->user()->addresses)
-                    customerAddress = @json(auth('customer')->user()->addresses);
-                    customerAddress.email = "{{ auth('customer')->user()->email }}";
-                    customerAddress.first_name = "{{ auth('customer')->user()->first_name }}";
-                    customerAddress.last_name = "{{ auth('customer')->user()->last_name }}";
-                @endif
+            customerAddress = @json(auth('customer')->user()->addresses);
+        customerAddress.email = "{{ auth('customer')->user()->email }}";
+        customerAddress.first_name = "{{ auth('customer')->user()->first_name }}";
+        customerAddress.last_name = "{{ auth('customer')->user()->last_name }}";
+        @endif
         @endauth
 
         Vue.component('checkout', {
@@ -280,14 +276,18 @@
                 placeOrder: function () {
                     var this_this = this;
 
-                    this.disable_button = true;
-
+                    this.disable_button = false;
                     this.$http.post("{{ route('shop.checkout.save-order') }}", {'_token': "{{ csrf_token() }}"})
                         .then(function (response) {
+                            alert(response);
+                            console.log(response);
+
                             if (response.data.success) {
                                 if (response.data.redirect_url) {
+                                    console.log(response);
                                     window.location.href = response.data.redirect_url;
                                 } else {
+                                    console.log(1);
                                     window.location.href = "{{ route('shop.checkout.success') }}";
                                 }
                             }

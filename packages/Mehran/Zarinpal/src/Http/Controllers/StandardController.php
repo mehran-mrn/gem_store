@@ -33,7 +33,7 @@ class StandardController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @param  \Mehran\Attribute\Repositories\OrderRepository  $orderRepository
+     * @param \Mehran\Attribute\Repositories\OrderRepository $orderRepository
      * @return void
      */
     public function __construct(
@@ -57,30 +57,29 @@ class StandardController extends Controller
 
         try {
 
-            $gateway = \Gateway::Zarinpal();
+        $gateway = \Gateway::Zarinpal();
 
 
-            // $gateway->setCallback(url('/path/to/callback/route')); You can also change the callback
-            $gateway
-                ->price($cart->grand_total)
-                // setShipmentPrice(10) // optional - just for paypal
-                // setProductName("My Product") // optional - just for paypal
-                ->ready();
-            $refId =  $gateway->refId(); // شماره ارجاع بانک
-            $transID = $gateway->transactionId(); // شماره تراکنش
+        $gateway
+            ->set($cart->grand_total*10)
+            ->ready();
+        //  ->setCallback(url('/path/to/callback/route')); You can also change the callback
+
+        $refId = $gateway->refId(); // شماره ارجاع بانک
+        $transID = $gateway->transactionId(); // شماره تراکنش
 
             $iran_payment = new iran_payment();
             $iran_payment->cart_id = $cart->id;
             $iran_payment->transaction_id = $gateway->transactionId();
             $iran_payment->save();
 
-            return $gateway->redirect();
+        return $gateway->redirect();
 
         } catch (\Exception $e) {
 
             echo $e->getMessage();
         }
-        //return view('Zarinpal::standard-redirect');
+        return view('Zarinpal::standard-redirect');
     }
 
     /**
@@ -110,7 +109,7 @@ class StandardController extends Controller
             $cardNumber = $gateway->cardNumber();
 
 
-            $iran_payment = iran_payment::where('transaction_id',$gateway->transactionId())->first();
+            $iran_payment = iran_payment::where('transaction_id', $gateway->transactionId())->first();
             $cart = DB::table('carts')->find($iran_payment['cart_id']);
 
             $order = $this->orderRepository->create($cart);

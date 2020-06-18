@@ -47,7 +47,7 @@
                     @endforeach
                 </div>
             </div>
-            <span class="control-error" v-if="errors.has('shipping-form.shipping_method')">@{{ errors.first('shipping-form.shipping_method') }}</span>
+            <span class="control-error" v-if="errors.has('shipping-form.shipping_method')">سییسب</span>
         </div>
     </div>
 </form>

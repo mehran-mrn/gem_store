@@ -1,36 +1,34 @@
 <div class="form-container">
-    <div class="address-summary row">
         <div class="row">
-            @if ($billingAddress = $cart->billing_address)
-                <div class="col-6 col-xs-12">
-                    <div class="card billing-address">
-                        <div class="card-header">
-                            <strong class="card-title">{{ __('shop::app.checkout.onepage.billing-address') }}</strong>
-                            <strong class="float-right">{{ $billingAddress->name }}</strong>
-                        </div>
-                        <div class="card-body">
-                            <ul class="address-card-list ">
-                                <li class="mb-1">
-                                    {{--                            <strong><span>کشور: </span> {{ core()->country_name($billingAddress->country) }}</strong>--}}
-                                    <span><strong>استان: </strong> {{ $billingAddress->state }}</span>
-                                    <span class="float-right"><strong>شهر: </strong> {{ $billingAddress->city }}</span>
-                                </li>
-                                <li class="mb-1">
-                                    <span><strong>محله: </strong> {{ $billingAddress->address1 }}</span>
-                                </li>
-                                <span class="horizontal-rule mb-2 mt-2"></span>
-                            </ul>
-                        </div>
-                        <div class="card-footer">
-                            <h6><span>کد پستی: </span>{{ $billingAddress->postcode }}</h6>
-                            <h6><span>شماره تماس: </span>{{ $billingAddress->phone }}</h6>
-                        </div>
-                    </div>
-                </div>
-            @endif
+{{--            @if ($billingAddress = $cart->billing_address)--}}
+{{--                <div class="col-12 col-xs-12">--}}
+{{--                    <div class="card billing-address">--}}
+{{--                        <div class="card-header">--}}
+{{--                            <strong class="card-title">{{ __('shop::app.checkout.onepage.billing-address') }}</strong>--}}
+{{--                            <strong class="float-right">{{ $billingAddress->name }}</strong>--}}
+{{--                        </div>--}}
+{{--                        <div class="card-body">--}}
+{{--                            <ul class="address-card-list ">--}}
+{{--                                <li class="mb-1">--}}
+{{--                                    --}}{{--                            <strong><span>کشور: </span> {{ core()->country_name($billingAddress->country) }}</strong>--}}
+{{--                                    <span><strong>استان: </strong> {{ $billingAddress->state }}</span>--}}
+{{--                                    <span class="float-right"><strong>شهر: </strong> {{ $billingAddress->city }}</span>--}}
+{{--                                </li>--}}
+{{--                                <li class="mb-1">--}}
+{{--                                    <span><strong>محله: </strong> {{ $billingAddress->address1 }}</span>--}}
+{{--                                </li>--}}
+{{--                                <span class="horizontal-rule mb-2 mt-2"></span>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
+{{--                        <div class="card-footer">--}}
+{{--                            <h6><span>کد پستی: </span>{{ $billingAddress->postcode }}</h6>--}}
+{{--                            <h6><span>شماره تماس: </span>{{ $billingAddress->phone }}</h6>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            @endif--}}
             @if ($shippingAddress = $cart->shipping_address)
-
-                <div class="col-6 col-xs-12">
+                <div class="col-12 col-md-12 col-xs-12">
                     <div class="card billing-address">
                         <div class="card-header">
                             <strong class="card-title">{{ __('shop::app.checkout.onepage.shipping-address') }}</strong>
@@ -57,8 +55,6 @@
                 </div>
             @endif
         </div>
-    </div>
-
     @inject ('productImageHelper', 'Webkul\Product\Helpers\ProductImage')
     <div class="row pt-2">
         @foreach ($cart->items as $item)
@@ -115,7 +111,6 @@
             </div>
         @endforeach
     </div>
-
     <div class="card order-description mt-3">
         <div class="card-bod">
             <div class="shipping pt-2">

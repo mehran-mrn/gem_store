@@ -39,7 +39,7 @@
                                 <div class="col-md-12">
                                     <label for="email"
                                            class="required">{{ __('shop::app.customer.signup-form.email') }}</label>
-                                    <input type="text" class="control" name="email" v-validate="'required'"
+                                    <input type="email" class="control" name="email" v-validate="'required|email'"
                                            value="{{ old('email') }}"
                                            data-vv-as="&quot;{{ __('shop::app.customer.signup-form.email') }}&quot;">
                                 </div>

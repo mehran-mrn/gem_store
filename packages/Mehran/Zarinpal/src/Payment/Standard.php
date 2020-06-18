@@ -1,4 +1,5 @@
 <?php
+
 namespace Mehran\Zarinpal\Payment;
 /**
  * Zarinpal Standard payment method class
@@ -14,7 +15,7 @@ class Standard extends Zarinpal
      *
      * @var string
      */
-    protected $code  = 'Zarinpal_standard';
+    protected $code = 'Zarinpal_standard';
 
     /**
      * Line items fields mapping
@@ -22,10 +23,10 @@ class Standard extends Zarinpal
      * @var array
      */
     protected $itemFieldsFormat = [
-        'id'       => 'item_number_%d',
-        'name'     => 'item_name_%d',
+        'id' => 'item_number_%d',
+        'name' => 'item_name_%d',
         'quantity' => 'quantity_%d',
-        'price'    => 'amount_%d',
+        'price' => 'amount_%d',
     ];
 
     /**
@@ -50,24 +51,26 @@ class Standard extends Zarinpal
         $cart = $this->getCart();
 
         $fields = [
-            'business'        => $this->getConfigData('business_account'),
-            'invoice'         => $cart->id,
-            'currency_code'   => $cart->cart_currency_code,
-            'paymentaction'   => 'sale',
-            'return'          => route('Zarinpal.standard.success'),
-            'cancel_return'   => route('Zarinpal.standard.cancel'),
-            'notify_url'      => route('Zarinpal.standard.ipn'),
-            'charset'         => 'utf-8',
-            'item_name'       => core()->getCurrentChannel()->name,
-            'amount'          => $cart->sub_total,
-            'tax'             => $cart->tax_total,
-            'shipping'        => $cart->selected_shipping_rate->price,
+            'MerchantID' => config('payment.drivers.zarinpal.merchantId'),
+            'Amount' => $cart->sub_total,
+            'Description' => "پرداخت",
+            'CallbackURL' => route('Zarinpal.standard.success'),
+            'business' => $this->getConfigData('business_account'),
+            'invoice' => $cart->id,
+            'currency_code' => $cart->cart_currency_code,
+            'paymentaction' => 'sale',
+            'return' => route('Zarinpal.standard.success'),
+            'cancel_return' => route('Zarinpal.standard.cancel'),
+            'notify_url' => route('Zarinpal.standard.ipn'),
+            'charset' => 'utf-8',
+            'item_name' => core()->getCurrentChannel()->name,
+            'tax' => $cart->tax_total,
+            'shipping' => $cart->selected_shipping_rate->price,
             'discount_amount' => $cart->discount
         ];
-
         if ($this->getIsLineItemsEnabled()) {
             $fields = array_merge($fields, array(
-                'cmd'    => '_cart',
+                'cmd' => '_cart',
                 'upload' => 1,
             ));
 
@@ -84,8 +87,8 @@ class Standard extends Zarinpal
             }
         } else {
             $fields = array_merge($fields, array(
-                'cmd'           => '_ext-enter',
-                'redirect_cmd'  => '_xclick',
+                'cmd' => '_ext-enter',
+                'redirect_cmd' => '_xclick',
             ));
         }
 

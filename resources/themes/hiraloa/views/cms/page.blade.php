@@ -1,4 +1,4 @@
-@extends('hiraloa::layouts.master')
+@extends('shop::layouts.master')
 
 @section('page_title')
     {{ $page->page_title }}
@@ -17,7 +17,7 @@
         <meta name="keywords" content="{{ $page->meta_keywords }}" />
     @endisset
 
-{{--    <link href="{{ asset('themes/default/assets/css/shop.css') }}" rel="stylesheet" />--}}
+    <link href="{{ asset('themes/default/assets/css/shop.css') }}" rel="stylesheet" />
 @endsection
 
 @section('content-wrapper')
@@ -25,5 +25,5 @@
 @endsection
 
 @push('scripts')
-{{--    <script src="{{ asset('themes/default/assets/js/shop.js') }}" type="text/javascript"></script>--}}
+    <script src="{{ asset('themes/default/assets/js/shop.js') }}" type="text/javascript"></script>
 @endpush

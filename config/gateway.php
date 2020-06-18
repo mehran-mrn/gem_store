@@ -8,18 +8,7 @@ return [
     //--------------------------------
     'timezone' => 'Asia/Tehran',
 
-    //--------------------------------
-    // Zarinpal gateway
-    //--------------------------------
-    'zarinpal' => [
-        'merchant-id'  => 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
-        'type'         => 'zarin-gate',             // Types: [zarin-gate || normal]
-        'callback-url' => 'Zarinpal/standard/success',
-        'server'       => 'iran',                // Servers: [germany || iran || test]
-        'email'        => 'mehranmarandi90@gmail.com',
-        'mobile'       => '09365944410',
-        'description'  => 'description',
-    ],
+
 
     //--------------------------------
     // Mellat gateway
@@ -86,6 +75,21 @@ return [
         'key' => '',
         'iv' => '',
         'callback-url'   => '/',
+    ],
+
+
+    //--------------------------------
+    // Zarinpal gateway
+    //--------------------------------
+
+    'zarinpal' => [
+        'merchant-id'  => '45578191-45fa-473a-8112-815aa2453095',
+        'type'         => 'zarin-gate',             // Types: [zarin-gate || normal]
+        'callback-url' => 'Zarinpal/standard/success',
+        'server'       => 'iran',                // Servers: [germany || iran || test]
+        'email'        => '',
+        'mobile'       => '',
+        'description'  => 'cubic online payment',
     ],
 
     //--------------------------------

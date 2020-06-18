@@ -204,6 +204,7 @@
                                 باشند.</p>
                             <form action="{{route('bagistoweblog.comment.store')}}" method="post">
                                 @csrf
+                                <input type="hidden" name="g-recaptcha-response">
                                 <input type="hidden" name="post_id" value="{{$post['id']}}">
                                 <div class="comment-post-box">
                                     <div class="row">
