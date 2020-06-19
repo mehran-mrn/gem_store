@@ -101,36 +101,41 @@ class StandardController extends Controller
      */
     public function success()
     {
+
+
+
         try {
 
-            $gateway = \Gateway::verify();
-            $trackingCode = $gateway->trackingCode();
-            $refId = $gateway->refId();
-            $cardNumber = $gateway->cardNumber();
+//
+//            $gateway = \Gateway::verify();
+//            $trackingCode = $gateway->trackingCode();
+//            $refId = $gateway->refId();
+//            $cardNumber = $gateway->cardNumber();
+//
+//
+//
+//
+//
+//            $iran_payment = iran_payment::where('transaction_id', $gateway->transactionId())->first();
+//            $cart = DB::table('carts')->find($iran_payment['cart_id']);
+//
+//            $order = $this->orderRepository->create($cart);
+//
+//            DB::table('carts')
+//                ->where('id', $iran_payment['cart_id'])
+//                ->update(['is_active' => false]);
 
-
-            $iran_payment = iran_payment::where('transaction_id', $gateway->transactionId())->first();
-            $cart = DB::table('carts')->find($iran_payment['cart_id']);
-
-            $order = $this->orderRepository->create($cart);
-
-            DB::table('carts')
-                ->where('id', $iran_payment['cart_id'])
-                ->update(['is_active' => false]);
-
+            $order = $this->orderRepository->create(Cart::prepareDataForOrder());
+            Cart::deActivateCart();
             session()->flash('order', $order);
-
             return redirect()->route('shop.checkout.success');
 
 
         } catch (\Larabookir\Gateway\Exceptions\RetryException $e) {
+            $this->cancel();
 
             echo $e->getMessage() . "<br>";
 
-        } catch (\Exception $e) {
-            // نمایش خطای بانک
-            $this->cancel();
-            echo $e->getMessage();
         }
 
     }
