@@ -1,4 +1,4 @@
-<header class="header-main_area" style="background-color: #ecebf37b">
+<header class="header-main_area" style="background-color: #0e406be3">
     <div class="header-middle_area d-none d-lg-block">
         <div class="container">
             <div class="row">

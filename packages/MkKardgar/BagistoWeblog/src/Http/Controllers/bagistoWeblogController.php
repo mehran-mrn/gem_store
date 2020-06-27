@@ -2,18 +2,13 @@
 
 namespace MkKardgar\BagistoWeblog\Http\Controllers;
 
-
-use http\Env\Request;
+use App\Rules\RecaptchaV3;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Validation\Validator;
 use Mehran\UploadMe\Http\Medias;
 use MkKardgar\BagistoWeblog\Models\MkKardgarWeblogCategory;
 use MkKardgar\BagistoWeblog\Models\MkKardgarWeblogPost;
 use MkKardgar\BagistoWeblog\Models\MkKardgarWeblogPostCategory;
 use MkKardgar\BagistoWeblog\Models\MkKardgarWeblogPostComment;
-use Webkul\Customer\Models\Customer;
 use Webkul\Customer\Repositories\CustomerRepository;
 
 class bagistoWeblogController extends Controller
@@ -195,14 +190,14 @@ class bagistoWeblogController extends Controller
             'slug' => ['unique:mk_kardgar_weblog_posts,slug,' . $id],
             'subtitle' => ['required', 'min:2', 'max:255'],
             'meta_description' => ['required', 'min:2', 'max:255'],
-            'post_body' => ['required', 'min:2', 'max:255'],
+            'post_body' => ['required', 'min:2'],
         ]);
-        $post = MkKardgarWeblogPost::find($id);
         if ($validator->fails()) {
-            return redirect()->route('bagistoweblog.post.create')
+            return redirect()->route('bagistoweblog.post.edit', ['id' => $id])
                 ->withErrors($validator)
                 ->withInput();
         } else {
+            $post = MkKardgarWeblogPost::find($id);
             $mediaID = 0;
             $result = $this->save(request()->all());
             if (isset($result['path'])) {
@@ -279,6 +274,8 @@ class bagistoWeblogController extends Controller
                     'post_id' => ['required'],
                     'comment' => ['required', 'min:5', 'max:255'],
                     'author_name' => ['required', 'min:2', 'max:255'],
+                    'g-recaptcha-response' => ['required', new RecaptchaV3],
+
                 ]
             );
             if ($validate->fails()) {
@@ -424,14 +421,16 @@ class bagistoWeblogController extends Controller
             return view($this->_config['view'], compact('posts', 'category'));
         }
     }
-    public function archive($year,$month)
+
+    public function archive($year, $month)
     {
-        $timeStamp =jmktime('','','',$month,1,$year);
+
+        $timeStamp = jmktime('', '', '', $month, 1, $year);
         dd($timeStamp);
-        $lastDay = jdate('t',$timeStamp);
+        $lastDay = jdate('t', $timeStamp);
         dd($lastDay);
-        $startDate = $year."-".$month."-"."01";
-        $endDate = $year."-".$month."-"."01";
+        $startDate = $year . "-" . $month . "-" . "01";
+        $endDate = $year . "-" . $month . "-" . "01";
         $cat = MkKardgarWeblogCategory::where('slug', $slug)->first();
         if (isset($cat['id'])) {
             $postsIDs = MkKardgarWeblogPostCategory::where('category_id', $cat['id'])->pluck('post_id');
@@ -439,6 +438,26 @@ class bagistoWeblogController extends Controller
             $category = $cat['category_name'];
             return view($this->_config['view'], compact('posts', 'category'));
         }
+    }
+
+    function str_slug_persian($title, $separator = '-')
+    {
+        $title = trim($title);
+        $title = mb_strtolower($title, 'UTF-8');
+
+        $title = str_replace('‌', $separator, $title);
+
+        $title = preg_replace(
+            '/[^a-z0-9_\s\-اآؤئبپتثجچحخدذرزژسشصضطظعغفقكکگلمنوةيإأۀءهی۰۱۲۳۴۵۶۷۸۹٠١٢٣٤٥٦٧٨٩]/u',
+            '',
+            $title
+        );
+
+        $title = preg_replace('/[\s\-_]+/', ' ', $title);
+        $title = preg_replace('/[\s_]/', $separator, $title);
+        $title = trim($title, $separator);
+
+        return $title;
     }
 
 }

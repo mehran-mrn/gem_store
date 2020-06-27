@@ -3,9 +3,8 @@
 
 <head>
 
-{{--    <title>@yield('page_title')</title>--}}
-    <title>375514</title>
-
+    <title>@yield('page_title')</title>
+{{--    <title>375514</title>--}}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google-site-verification" content="D7OWf7fGZ0rXlwfA5klkfxzFKa9lxevnDUwxL4NR3-I" />

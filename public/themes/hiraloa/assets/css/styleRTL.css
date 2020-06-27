@@ -587,7 +587,7 @@ button {
 
 /* ---Hiraola's ScrollUp--- */
 #scrollUp {
-  right: 15px;
+  left: 15px;
   bottom: 15px;
   height: 50px;
   width: 50px;

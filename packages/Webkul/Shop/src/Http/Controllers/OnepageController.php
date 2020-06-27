@@ -189,7 +189,6 @@ class OnepageController extends Controller
         $this->validateOrder();
 
         $cart = Cart::getCart();
-
         if ($redirectUrl = Payment::getRedirectUrl($cart)) {
             return response()->json([
                 'success' => true,

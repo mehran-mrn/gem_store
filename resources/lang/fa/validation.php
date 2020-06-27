@@ -123,7 +123,7 @@ return [
     | specify a specific custom language line for a given attribute rule.
     |
     */
-
+    'invalid-input-response, missing-input-secret'=>'خطار اهراز هویت',
     'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',

@@ -9,7 +9,6 @@ return [
         'sort' => 1,
         'default' => 'yes'
     ],
-
     'moneytransfer' => [
         'code' => 'moneytransfer',
         'title' => 'Money Transfer',
@@ -19,7 +18,6 @@ return [
         'sort' => 2,
         'default' => 'no'
     ],
-
     'paypal_standard' => [
         'code' => 'paypal_standard',
         'title' => 'Paypal Standard',
@@ -36,6 +34,7 @@ return [
         'title' => 'Zarin Pal',
         'description' => 'زرین پال',
         'class' => 'Mehran\Zarinpal\Payment\Standard',
+//        'class' => 'Mehran\Zarinpal\Http\Controllers\StandardController',
         'sandbox' => true,
         'active' => true,
         'business_account' => 'mehranmarandi@gmail.com',
